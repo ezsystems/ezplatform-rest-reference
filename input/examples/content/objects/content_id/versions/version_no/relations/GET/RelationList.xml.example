@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Relations media-type="application/vnd.ez.api.RelationList+xml" href="/api/ezp/v2/content/objects/61/versions/6/relations">
+    <Relation media-type="application/vnd.ez.api.Relation+xml" href="/api/ezp/v2/content/objects/61/versions/6/relations/2">
+        <SourceContent media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
+        <DestinationContent media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/86"/>
+        <RelationType>COMMON</RelationType>
+    </Relation>
+    <Relation media-type="application/vnd.ez.api.Relation+xml" href="/api/ezp/v2/content/objects/61/versions/6/relations/3">
+        <SourceContent media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
+        <DestinationContent media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
+        <RelationType>COMMON</RelationType>
+    </Relation>
+</Relations>

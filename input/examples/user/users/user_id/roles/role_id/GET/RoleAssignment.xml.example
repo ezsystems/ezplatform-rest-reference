@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RoleAssignment media-type="application/vnd.ez.api.RoleAssignment+xml" href="/api/ezp/v2/user/users/55/roles/4">
+    <limitation identifier="Section">
+        <values>
+            <ref media-type="application/vnd.ez.api.ref+xml" href="1"/>
+        </values>
+    </limitation>
+    <Role media-type="application/vnd.ez.api.Role+xml" href="/api/ezp/v2/user/roles/4"/>
+</RoleAssignment>

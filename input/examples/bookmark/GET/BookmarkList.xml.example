@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BookmarkList media-type="application/vnd.ez.api.BookmarkList+xml">
+    <count>3</count>
+    <Bookmark media-type="application/vnd.ez.api.Bookmark+xml" _href="/api/ezp/v2/bookmark/62">
+        <Location media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2/62">
+            <id>62</id>
+            <priority>0</priority>
+            <hidden>false</hidden>
+            <invisible>false</invisible>
+            <ParentLocation media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2"/>
+            <pathString>/1/2/62/</pathString>
+            <depth>2</depth>
+            <childCount>0</childCount>
+            <remoteId>5f1bb9f8ea33374082372d6970eccc4b</remoteId>
+            <Children media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/locations/1/2/62/children"/>
+            <Content media-type="application/vnd.ez.api.Content+xml" href="/api/ezp/v2/content/objects/61"/>
+            <sortField>NAME</sortField>
+            <sortOrder>ASC</sortOrder>
+            <UrlAliases media-type="application/vnd.ez.api.UrlAliasRefList+xml" href="/api/ezp/v2/content/locations/1/2/62/urlaliases"/>
+            <ContentInfo media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61">
+                <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61" remoteId="2c90ebb85a849a377a8df1ba775dbba4" id="61">
+                    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/2"/>
+                    <Name>777</Name>
+                    <Versions media-type="application/vnd.ez.api.VersionList+xml" href="/api/ezp/v2/content/objects/61/versions"/>
+                    <CurrentVersion media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/currentversion"/>
+                    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/1"/>
+                    <Locations media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/objects/61/locations"/>
+                    <Owner media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
+                    <lastModificationDate>2018-11-09T14:50:16+01:00</lastModificationDate>
+                    <publishedDate>2018-11-09T14:50:16+01:00</publishedDate>
+                    <mainLanguageCode>eng-GB</mainLanguageCode>
+                    <currentVersionNo>1</currentVersionNo>
+                    <alwaysAvailable>false</alwaysAvailable>
+                    <ObjectStates media-type="application/vnd.ez.api.ContentObjectStates+xml" href="/api/ezp/v2/content/objects/61/objectstates"/>
+                </Content>
+            </ContentInfo>
+        </Location>
+    </Bookmark>
+    <Bookmark media-type="application/vnd.ez.api.Bookmark+xml" _href="/api/ezp/v2/bookmark/60">
+        <Location media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2/60">
+            <id>60</id>
+            <priority>0</priority>
+            <hidden>false</hidden>
+            <invisible>false</invisible>
+            <ParentLocation media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2"/>
+            <pathString>/1/2/60/</pathString>
+            <depth>2</depth>
+            <childCount>0</childCount>
+            <remoteId>bcbb52b6384679f75c80123868ce9374</remoteId>
+            <Children media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/locations/1/2/60/children"/>
+            <Content media-type="application/vnd.ez.api.Content+xml" href="/api/ezp/v2/content/objects/59"/>
+            <sortField>NAME</sortField>
+            <sortOrder>ASC</sortOrder>
+            <UrlAliases media-type="application/vnd.ez.api.UrlAliasRefList+xml" href="/api/ezp/v2/content/locations/1/2/60/urlaliases"/>
+            <ContentInfo media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/59">
+                <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/59" remoteId="4b63356b7fe92db9c39f64c37baa53d3" id="59">
+                    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/2"/>
+                    <Name>555</Name>
+                    <Versions media-type="application/vnd.ez.api.VersionList+xml" href="/api/ezp/v2/content/objects/59/versions"/>
+                    <CurrentVersion media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/59/currentversion"/>
+                    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/1"/>
+                    <Locations media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/objects/59/locations"/>
+                    <Owner media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
+                    <lastModificationDate>2018-11-09T14:48:58+01:00</lastModificationDate>
+                    <publishedDate>2018-11-09T14:48:58+01:00</publishedDate>
+                    <mainLanguageCode>eng-GB</mainLanguageCode>
+                    <currentVersionNo>1</currentVersionNo>
+                    <alwaysAvailable>false</alwaysAvailable>
+                    <ObjectStates media-type="application/vnd.ez.api.ContentObjectStates+xml" href="/api/ezp/v2/content/objects/59/objectstates"/>
+                </Content>
+            </ContentInfo>
+        </Location>
+    </Bookmark>
+    <Bookmark media-type="application/vnd.ez.api.Bookmark+xml" _href="/api/ezp/v2/bookmark/56">
+        <Location media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2/56">
+            <id>56</id>
+            <priority>0</priority>
+            <hidden>false</hidden>
+            <invisible>false</invisible>
+            <ParentLocation media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/2"/>
+            <pathString>/1/2/56/</pathString>
+            <depth>2</depth>
+            <childCount>0</childCount>
+            <remoteId>4e83abdb00439c7383517126ea656631</remoteId>
+            <Children media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/locations/1/2/56/children"/>
+            <Content media-type="application/vnd.ez.api.Content+xml" href="/api/ezp/v2/content/objects/55"/>
+            <sortField>NAME</sortField>
+            <sortOrder>ASC</sortOrder>
+            <UrlAliases media-type="application/vnd.ez.api.UrlAliasRefList+xml" href="/api/ezp/v2/content/locations/1/2/56/urlaliases"/>
+            <ContentInfo media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/55">
+                <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/55" remoteId="02c379510a48965f8253af461079b7fe" id="55">
+                    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/2"/>
+                    <Name>111</Name>
+                    <Versions media-type="application/vnd.ez.api.VersionList+xml" href="/api/ezp/v2/content/objects/55/versions"/>
+                    <CurrentVersion media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/55/currentversion"/>
+                    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/1"/>
+                    <Locations media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/objects/55/locations"/>
+                    <Owner media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
+                    <lastModificationDate>2018-11-08T12:03:34+01:00</lastModificationDate>
+                    <publishedDate>2018-11-08T12:03:34+01:00</publishedDate>
+                    <mainLanguageCode>eng-GB</mainLanguageCode>
+                    <currentVersionNo>1</currentVersionNo>
+                    <alwaysAvailable>false</alwaysAvailable>
+                    <ObjectStates media-type="application/vnd.ez.api.ContentObjectStates+xml" href="/api/ezp/v2/content/objects/55/objectstates"/>
+                </Content>
+            </ContentInfo>
+        </Location>
+    </Bookmark>
+</BookmarkList>

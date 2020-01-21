@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicyList media-type="application/vnd.ez.api.PolicyList+xml" href="/api/ezp/v2/user/policies">
+    <Policy media-type="application/vnd.ez.api.Policy+xml" href="/api/ezp/v2/user/roles/1/policies/328">
+        <id>328</id>
+        <module>content</module>
+        <function>read</function>
+        <limitations>
+            <limitation identifier="Section">
+                <values>
+                    <ref media-type="application/vnd.ez.api.ref+xml" href="1"/>
+                </values>
+            </limitation>
+        </limitations>
+    </Policy>
+    <Policy media-type="application/vnd.ez.api.Policy+xml" href="/api/ezp/v2/user/roles/1/policies/331">
+        <id>331</id>
+        <module>user</module>
+        <function>login</function>
+        <limitations>
+            <limitation identifier="SiteAccess">
+                <values>
+                    <ref media-type="application/vnd.ez.api.ref+xml" href="1766001124"/>
+                </values>
+            </limitation>
+        </limitations>
+    </Policy>
+</PolicyList>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/15/fieldDefinitions/195">
+    <id>195</id>
+    <identifier>title</identifier>
+    <fieldType>ezstring</fieldType>
+    <fieldGroup></fieldGroup>
+    <position>1</position>
+    <isTranslatable>true</isTranslatable>
+    <isRequired>true</isRequired>
+    <isInfoCollector>false</isInfoCollector>
+    <defaultValue>New article</defaultValue>
+    <isSearchable>true</isSearchable>
+    <names>
+        <value languageCode="eng-GB">Title</value>
+    </names>
+    <descriptions/>
+    <fieldSettings/>
+    <validatorConfiguration>
+        <value key="StringLengthValidator">
+            <value key="maxStringLength">255</value>
+            <value key="minStringLength"/></value>
+    </validatorConfiguration>
+</FieldDefinition>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/versions/6">
+    <VersionInfo>
+        <id>555</id>
+        <versionNo>6</versionNo>
+        <status>DRAFT</status>
+        <modificationDate>2019-02-22T14:55:11+01:00</modificationDate>
+        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
+        <creationDate>2019-02-22T14:55:11+01:00</creationDate>
+        <initialLanguageCode>eng-GB</initialLanguageCode>
+        <languageCodes>eng-GB</languageCodes>
+        <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
+            <Language>
+                <languageCode>eng-GB</languageCode>
+            </Language>
+        </VersionTranslationInfo>
+        <names>
+            <value languageCode="eng-GB">777</value>
+        </names>
+        <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
+    </VersionInfo>
+    <Fields>
+        <field>
+            <id>298</id>
+            <fieldDefinitionIdentifier>title</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezstring</fieldTypeIdentifier>
+            <fieldValue>New article 7</fieldValue>
+        </field>
+        <field>
+            <id>299</id>
+            <fieldDefinitionIdentifier>short_title</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezstring</fieldTypeIdentifier>
+            <fieldValue>777</fieldValue>
+        </field>
+        <field>
+            <id>300</id>
+            <fieldDefinitionIdentifier>author</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezauthor</fieldTypeIdentifier>
+            <fieldValue>
+                <value>
+                    <value key="id">1</value>
+                    <value key="name">7777</value>
+                    <value key="email"></value>
+                </value>
+            </fieldValue>
+        </field>
+        <field>
+            <id>301</id>
+            <fieldDefinitionIdentifier>intro</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezrichtext</fieldTypeIdentifier>
+            <fieldValue>
+                <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:ezxhtml=&quot;http://ez.no/xmlns/ezpublish/docbook/xhtml&quot; xmlns:ezcustom=&quot;http://ez.no/xmlns/ezpublish/docbook/custom&quot; version=&quot;5.0-variant ezpublish-1.0&quot;&gt;&lt;para&gt;77777777777778888&lt;/para&gt;&lt;/section&gt;
+</value>
+                <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;&gt;&lt;p&gt;77777777777778888&lt;/p&gt;&lt;/section&gt;
+</value>
+            </fieldValue>
+        </field>
+        <field>
+            <id>302</id>
+            <fieldDefinitionIdentifier>body</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezrichtext</fieldTypeIdentifier>
+            <fieldValue>
+                <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:ezxhtml=&quot;http://ez.no/xmlns/ezpublish/docbook/xhtml&quot; xmlns:ezcustom=&quot;http://ez.no/xmlns/ezpublish/docbook/custom&quot; version=&quot;5.0-variant ezpublish-1.0&quot;&gt;&lt;para&gt;88888888888&lt;/para&gt;&lt;/section&gt;
+</value>
+                <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;&gt;&lt;p&gt;88888888888&lt;/p&gt;&lt;/section&gt;
+</value>
+            </fieldValue>
+        </field>
+        <field>
+            <id>303</id>
+            <fieldDefinitionIdentifier>enable_comments</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezboolean</fieldTypeIdentifier>
+            <fieldValue>false</fieldValue>
+        </field>
+        <field>
+            <id>304</id>
+            <fieldDefinitionIdentifier>image</fieldDefinitionIdentifier>
+            <languageCode>eng-GB</languageCode>
+            <fieldTypeIdentifier>ezobjectrelation</fieldTypeIdentifier>
+            <fieldValue>
+                <value key="destinationContentId"/>
+            </fieldValue>
+        </field>
+    </Fields>
+    <Relations media-type="application/vnd.ez.api.RelationList+xml" href="/api/ezp/v2/content/objects/61/versions/6/relations"/>
+</Version>

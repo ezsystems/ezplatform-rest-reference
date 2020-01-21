@@ -1,0 +1,32 @@
+{% set resource_unique_id = uuid() %}
+{% if (resource.methods or (resource.description and resource.parentUrl)) %}
+    {% for method in resource.methods %}
+        <li class="search-filter">
+            <div class="resource collapsible-header">
+                <span class="resource-method">
+                    <span class="new badge badge-{{ method.type|lower }}" data-badge-caption="{{ method.type }}"></span>
+                </span>
+                <span class="resource-uri">
+                    <code class="bold">{{ resource.uri }}</code>
+                    <p class="resource-description">{{ method.description }}</p>
+                </span>
+                <span class="resource-security">
+                {% if method.securitySchemes %}
+                    <i title="Authentication required" class="material-icons">lock</i>
+                {% endif %}
+                </span>
+            </div>
+            <div class="collapsible-body">
+                {% include theme ~ "/resource-modal.html.twig" %}
+            </div>
+
+            <span class="search-filter-value" style="display: none">
+                {{ method.type }} {{ resource.uri }}
+            </span>
+        </li>
+    {% endfor %}
+{% endif %}
+
+{% for resource in resource.resources %}
+    {% include theme ~ "/resource.html.twig" %}
+{% endfor %}

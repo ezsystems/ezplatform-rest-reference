@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SectionList media-type="application/vnd.ez.api.SectionList+xml" href="/api/ezp/v2/content/sections">
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/1">
+        <sectionId>1</sectionId>
+        <identifier>standard</identifier>
+        <name>Standard</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/2">
+        <sectionId>2</sectionId>
+        <identifier>users</identifier>
+        <name>Users</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/3">
+        <sectionId>3</sectionId>
+        <identifier>media</identifier>
+        <name>Media</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/4">
+        <sectionId>4</sectionId>
+        <identifier>setup</identifier>
+        <name>Setup</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/5">
+        <sectionId>5</sectionId>
+        <identifier>design</identifier>
+        <name>Design</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/6">
+        <sectionId>6</sectionId>
+        <identifier>form</identifier>
+        <name>Form</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/7">
+        <sectionId>7</sectionId>
+        <identifier>restricted</identifier>
+        <name>Restricted</name>
+    </Section>
+</SectionList>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RoleAssignmentList href="/user/groups/1/5/65/roles" media-type="application/vnd.ez.api.RoleAssignmentList+xml">
+  <RoleAssignment href="/user/groups/1/5/65/roles/5" media-type="application/vnd.ez.api.RoleAssignment+xml">
+    <Role href="/user/roles/5" media-type="application/vnd.ez.api.Role+xml"/>
+  </RoleAssignment>
+  <RoleAssignment href="/user/groups/1/5/65/roles/7" media-type="application/vnd.ez.api.RoleAssignment+xml">
+    <limitation identifier="Subtree">
+      <values>
+          <ref href="/content/locations/1/23/88" media-type="application/vnd.ez.api.Location+xml" />
+          <ref href="/content/locations/1/32/67" media-type="application/vnd.ez.api.Location+xml" />
+      </values>
+    </limitation>
+    <Role href="/user/roles/7" media-type="application/vnd.ez.api.Role+xml"/>
+  </RoleAssignment>
+</RoleAssignmentList>
