@@ -17,7 +17,7 @@ To document new REST API, you need to:
 2. Add examples of request (e.g. `SectionInput.xml.example`) and response (e.g. `Section.xml.example`) to `input/examples`.
 3. Update descriptions of request and response elements in `input/ez-types.raml`.
 
-For detailed information on how to use RAML to document API, see [Specification.](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md/)
+For detailed information on how to use RAML to document API, see [Specification.](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md)
 
 ## raml2html
 
