@@ -1,29 +1,71 @@
-{% set resource_unique_id = uuid() %}
-{% if (resource.methods or (resource.description and resource.parentUrl)) %}
-    {% for method in resource.methods %}
-        <li class="search-filter">
-            <div class="row py-5 px-3">
-                <div class="col-lg-4">
-                    <h3 id="{{ method.displayName|replace({'': '-'})|lower }}">{{ method.displayName }}</h3>
-                    <span class="pl-0 new badge badge-{{ method.type|lower }}" data-badge-caption="{{ method.type }}">
-                                {{ method.type }}:
-{#                                 {% if resource.parentResource %}#}
-{#                                     <span class="parent">{{ resource.parentResource.uri }} </span>#}
-{#                                 {% endif %}#}
-                        {{ resource.uri }}
-                            </span>
-                    {% if method.description %}
-                        <p>{{ method.description}}</p>
-                    {% endif %}
-                </div>
-                <div class="col-lg-8">
+<div id="{{ resource_unique_id }}_{{ method.type }}">
+    <div class="row py-5 px-3 mb-5">
+        <div class="col-lg-5">
+            <p>{{ method.displayName}}</p>
+            {{ method.description }}
+        </div>
+        <div class="col-lg-7">
+            <p>{{ method.type }}: {{ resource.uri }}</p>
+        </div>
+    </div>
 
-                </div>
-            </div>
-        </li>
-    {% endfor %}
-{% endif %}
+    {#    <code class="bold">#}
+    {#        {% if resource.parentResource %}#}
+    {#            <span class="parent">#}{# {{ resource.parentResource.uri }} #}{#</span>#}
+    {#        {% endif %}#}
+    {#        {{ resource.uri }}#}
+    {#    </code>#}
 
-{#{% for resource in resource.resources %}#}
-{#    {% include theme ~ "/resource.html.twig" %}#}
-{#{% endfor %}#}
+
+
+{#    <div class="section">#}
+{#        <!--#}
+{#        <ul class="tabs request">#}
+{#            {% set has_request_tab = method.queryParameters or method.headers or method.bodies %}#}
+{#            {% set has_respose_tab = method.responses is not empty %}#}
+{#            {% set has_securedby_tab = method.securitySchemes is not empty %}#}
+
+{#            {% if has_request_tab %}#}
+{#            <li class="tab">#}
+{#                <a class="active" href="#{{ resource_unique_id }}_{{ method.type }}_request">Request</a>#}
+{#            </li>#}
+{#            {% endif %}#}
+
+{#            {% if has_respose_tab %}#}
+{#            <li class="tab">#}
+{#              #}{#if not method.allUriParameters.length and not method.queryParameters#}
+{#              #}{#and not method.queryString#}
+{#              #}{#and not method.headers and not method.body#}
+{#              #}{#%} active{%#}
+{#              #}{#endif#}
+{#              #}{#%}">#}
+{#                <a href="#{{ resource_unique_id }}_{{ method.type }}_response">Response</a>#}
+{#            </li>#}
+{#            {% endif %}#}
+
+{#            {% if has_securedby_tab %}#}
+{#            <li class="tab">#}
+{#                <a href="#{{ resource_unique_id }}_{{ method.type }}_securedby">Security</a>#}
+{#            </li>#}
+{#            {% endif %}#}
+{#        </ul>#}
+{#        -->#}
+{#        <div >#}
+
+{#            {% if has_request_tab %}#}
+{#                <h4>Request</h4>#}
+{#                {% include theme ~ "/resource-request-content.html.twig" %}#}
+{#            {% endif %}#}
+
+{#            {% if has_respose_tab %}#}
+{#                <h4>Responses</h4>#}
+{#                {% include theme ~ "/resource-response-content.html.twig" %}#}
+{#            {% endif %}#}
+
+{#            {% if has_securedby_tab %}#}
+{#                <h4>Security</h4>#}
+{#                {% include theme ~ "/resource-securedby-content.html.twig" %}#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+</div>

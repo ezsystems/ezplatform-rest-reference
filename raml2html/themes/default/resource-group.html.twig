@@ -1,4 +1,12 @@
-{% for resource in resource.resources %}
-    <h4>{{ resource.uri }}</h4>
-    {% include theme ~ "/resource-endpoints.html.twig" %}
-{% endfor %}
+{% if resource.resources|length > 1 %}
+    {% for resource in resource.resources %}
+        <h3 class="py-5">{{ resource.uri }}</h3>
+        <div class="container-fluid">
+            {% include theme ~ "/resource-endpoints.html.twig" %}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="container-fluid">
+        {% include theme ~ "/resource-endpoints.html.twig" %}
+    </div>
+{% endif %}

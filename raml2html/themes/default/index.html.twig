@@ -16,6 +16,9 @@
                 /*font-size: 22px;*/
             }
             h3 {
+                font-size: 22px;
+            }
+            h4 {
                 font-size: 18px;
             }
 
@@ -75,19 +78,13 @@
 
                 <div class="container-fluid">
                     {% for resource in api.resources %}
+                        {% set resource_unique_id = uuid() %}
                         <section class="section">
                             <h2 class="border-bottom pb-2">{{ resource.displayName|default(resource.uri) }}</h2>
-
-                            <ul class="list-unstyled">
-                                {% if resource.resources|length > 1 %}
-                                    {% include theme ~ "/resource-group.html.twig" %}
-                                {% else %}
-                                    {% include theme ~ "/resource-endpoints.html.twig" %}
-                                {% endif %}
-                            </ul>
-                            <ul class="list-unstyled">
-                                {% include theme ~ "/resource.html.twig" %}
-                            </ul>
+                            {% include theme ~ "/resource-group.html.twig" %}
+{#                            <ul class="list-unstyled">#}
+{#                                {% include theme ~ "/resource.html.twig" %}#}
+{#                            </ul>#}
                         </section>
                     {% endfor %}
 
@@ -116,35 +113,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function () {
-            M.AutoInit();
-            $('pre code').each(function (i, block) {
-                hljs.highlightBlock(block);
-            });
-
-            $('.collapsible').collapsible({
-                accordion: false
-            });
-        });
-
-        $("#searchInput").keyup(function () {
-            var searchValue = $('#searchInput').val();
-            searchValue = searchValue === "" ? '.' : searchValue;
-            var regex = new RegExp(searchValue, "i");
-            $('.search-filter').each(function (i, e) {
-                var value = $(e).children('.search-filter-value')[0].innerHTML;
-                if (regex.test(value)) {
-                    $(e).show();
-                } else {
-                    $(e).hide();
-                }
-            });
-        });
-
-        function copyToClipboard(selector) {
-            $(selector).select();
-            document.execCommand("copy");
-        }
+        // $(document).ready(function () {
+        //     M.AutoInit();
+        //     $('pre code').each(function (i, block) {
+        //         hljs.highlightBlock(block);
+        //     });
+        //
+        //     $('.collapsible').collapsible({
+        //         accordion: false
+        //     });
+        // });
+        //
+        // $("#searchInput").keyup(function () {
+        //     var searchValue = $('#searchInput').val();
+        //     searchValue = searchValue === "" ? '.' : searchValue;
+        //     var regex = new RegExp(searchValue, "i");
+        //     $('.search-filter').each(function (i, e) {
+        //         var value = $(e).children('.search-filter-value')[0].innerHTML;
+        //         if (regex.test(value)) {
+        //             $(e).show();
+        //         } else {
+        //             $(e).hide();
+        //         }
+        //     });
+        // });
+        //
+        // function copyToClipboard(selector) {
+        //     $(selector).select();
+        //     document.execCommand("copy");
+        // }
     </script>
 </body>
 </html>
