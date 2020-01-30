@@ -1,0 +1,251 @@
+displayName: Managing content/objectstategroups
+get:
+    displayName: List ObjectStateGroups
+    description: Returns a list of all Object State Groups
+    headers:
+        Accept:
+            description: If set the Object State Group list is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.ObjectStateGroupList+xml
+                application/vnd.ez.api.ObjectStateGroupList+json
+        If-None-Match:
+            description: ETag
+    responses:
+        200:
+            description: OK - returns a list of Object State Groups
+            body:
+                application/vnd.ez.api.ObjectStateGroupList+xml:
+                    type: ObjectStateGroupList
+                    example: !include examples/content/objectstategroups/GET/ObjectStateGroupList.xml.example
+                application/vnd.ez.api.ObjectStateGroupList+json:
+                    type: ObjectStateGroupList
+                    # example: !include examples/content/objectstategroups/GET/ObjectStateGroupList.json.example
+        401:
+            description: Error - The user has no permission to read Object State Groups
+post:
+    displayName: Create ObjectStateGroup
+    description: Creates a new Object State Group
+    headers:
+        Accept:
+            description: If set the new Object State Group is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.ObjectStateGroup+xml
+                application/vnd.ez.api.ObjectStateGroup+json
+        Content-Type:
+            description: The ObjectStateGroup input schema encoded in XML or JSON
+            example: |
+                application/vnd.ez.api.ObjectStateGroupCreate+json
+                application/vnd.ez.api.ObjectStateGroupCreate+xml
+    body:
+        application/vnd.ez.api.ObjectStateGroupCreate+xml:
+            type: ObjectStateGroupCreate
+            #example: !include examples/content/objectstategroups/POST/ObjectStateGroupCreate.xml.example
+        application/vnd.ez.api.ObjectStateGroupCreate+json:
+            type: ObjectStateGroupCreate
+            #example: !include examples/content/objectstategroups/POST/ObjectStateGroupCreate.json.example
+    responses:
+        201:
+            description: Object State Group created
+            body:
+                application/vnd.ez.api.ObjectStateGroup+xml:
+                    type: ObjectStateGroup
+                    example: !include examples/content/objectstategroups/POST/ObjectStateGroup.xml.example
+        400:
+            description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+        401:
+            description: Error - The user is not authorized to create an Object State Group
+        403:
+            description: Error - An Object State Group with same identifier already exists
+
+/{objectStateGroupId}:
+    get:
+        displayName: Get ObjectStateGroup
+        description: Returns the Object State Group with the provided ID
+        headers:
+            Accept:
+                description: If set the Object State Group is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.ObjectStateGroup+xml
+                    application/vnd.ez.api.ObjectStateGroup+json
+            If-None-Match:
+                description: ETag
+        responses:
+            200:
+                description: OK - returns the Object State Group
+                body:
+                    application/vnd.ez.api.ObjectStateGroup+xml:
+                        type: ObjectStateGroup
+                        example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.xml.example
+                    application/vnd.ez.api.ObjectStateGroup+json:
+                        type: ObjectStateGroup
+                        # example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.xml.example
+            401:
+                description: Error - The user is not authorized to read Object State Groups
+            404:
+                description: Error - The Object State Group does not exist
+    patch:
+        displayName: Update ObjectStateGroup
+        description: Updates an Object State Group. PATCH or POST with header X-HTTP-Method-Override PATCH.
+        headers:
+            Accept:
+                description: If set the updated Object State Group is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.ObjectStateGroup+xml
+                    application/vnd.ez.api.ObjectStateGroup+json
+            Content-Type:
+                description: The ObjectStateGroup input schema encoded in XML or JSON
+                example: |
+                    application/vnd.ez.api.ObjectStateGroupUpdate+json
+                    application/vnd.ez.api.ObjectStateGroupUpdate+xml
+            If-Match:
+                description: ETag
+        body:
+            application/vnd.ez.api.ObjectStateGroupUpdate+xml:
+                type: ObjectStateGroupUpdate
+                example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroupUpdate.xml.example
+        responses:
+            200:
+                description: OK - Object Stated group updated
+                body:
+                    application/vnd.ez.api.ObjectStateGroup+xml:
+                        type: ObjectStateGroup
+                        example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroup.xml.example
+            400:
+                description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+            401:
+                description: Error - The user is not authorized to update an Object State Group
+            403:
+                description: Error - An Object State Group with the provided new identifier already exists
+            412:
+                description: Error - The current ETag does not match the one provided in the If-Match header
+    delete:
+        displayName: Delete Object State Group
+        description: Deletes the given Object State Group including Object States
+        responses:
+            204:
+                description: No Content - Object State Group deleted
+            401:
+                description: Error - The user is not authorized to delete an Object State Group
+            404:
+                description: Error - The Object State Group does not exist
+/objectstates:
+    get:
+        displayName: List Object States
+        description: Returns a list of all Object States of the given group
+        headers:
+            Accept:
+                description: If set the Object State list is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.ObjectStateList+xml
+                    application/vnd.ez.api.ObjectStateList+json
+            If-None-Match:
+                description: ETag
+        responses:
+            200:
+                description: OK - returns a list of Object States
+                body:
+                    application/vnd.ez.api.ObjectStateList+xml:
+                        type: ObjectStateList
+                        example: !include examples/content/objectstategroups/object_state_group_id/objectstates/GET/ObjectStateList.xml.example
+            401:
+                description: Error - The user has no permission to read Object States
+    post:
+        displayName: Create Object State
+        description: Creates a new Object State
+        headers:
+            Accept:
+                description: If set the new Object State is returned in XML or JSON format
+                example:
+                    application/vnd.ez.api.ObjectState+xml
+                    application/vnd.ez.api.ObjectState+json
+            Content-Type:
+                description: The Object State input schema encoded in XML or JSON
+                example: |
+                    application/vnd.ez.api.ObjectStateCreate+json
+                    application/vnd.ez.api.ObjectStateCreate+xml
+        body:
+            application/vnd.ez.api.ObjectStateCreate+xml:
+                type: ObjectStateCreate
+                example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectStateCreate.xml.example
+        responses:
+            201:
+                description: Object State created
+                body:
+                    application/vnd.ez.api.ObjectState+xml:
+                        type: ObjectState
+                        example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectState.xml.example
+            400:
+                description: Error - The input does not match the input schema definition, In this case the response contains an ErrorMessage
+            401:
+                description: Error - The user is not authorized to create an Object State
+            403:
+                description: Error - An Object State with the same identifier already exists in the given group
+    /{objectStateId}:
+        get:
+            displayName: Get Object State
+            description: Returns the Object State
+            headers:
+                Accept:
+                    description: If set the Object State is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ObjectState+xml
+                        application/vnd.ez.api.ObjectState+json
+                If-None-Match:
+                    description: ETag
+            responses:
+                200:
+                    description: OK - returns the Object State
+                    body:
+                        application/vnd.ez.api.ObjectState+xml:
+                            type: ObjectState
+                            example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/GET/ObjectState.xml.example
+                401:
+                    description: Error - The user is not authorized to read Object State Groups
+                404:
+                    description: Error - The Object State Group does not exist
+        patch:
+            displayName: Update Object State
+            description: Updates an Object State. PATCH or POST with header X-HTTP-Method-Override PATCH.
+            headers:
+                Accept:
+                    description: If set the updated Object State is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ObjectState+xml
+                        application/vnd.ez.api.ObjectState+json
+                Content-Type:
+                    description: The Object State input schema encoded in XML or JSON
+                    example: |
+                        application/vnd.ez.api.ObjectStateUpdate+json
+                        application/vnd.ez.api.ObjectStateUpdate+xml
+                If-Match:
+                    description: ETag
+            body:
+                application/vnd.ez.api.ObjectStateUpdate+xml:
+                    type: ObjectStateUpdate
+                    example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectStateUpdate.xml.example
+            responses:
+                200:
+                    description: OK - Object State updated
+                    body:
+                        application/vnd.ez.api.ObjectState+xml:
+                            type: ObjectState
+                            example: examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectState.xml.example
+                400:
+                    description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+                401:
+                    description: Error - The user is not authorized to update the Object State
+                403:
+                    description: Error - An Object State with the given new identifier already exists in this group
+                412:
+                    description: Error - The current ETag does not match the one provided in the If-Match header
+        delete:
+            displayName: Delete Object State
+            description: Deletes provided Object State
+            responses:
+                204:
+                    description: No Content - Object State deleted
+                401:
+                    description: Error - The user is not authorized to delete an Object State Group
+                404:
+                    description: Error - The Object State does not exist
+

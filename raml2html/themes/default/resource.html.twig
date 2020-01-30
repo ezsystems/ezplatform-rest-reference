@@ -2,31 +2,28 @@
 {% if (resource.methods or (resource.description and resource.parentUrl)) %}
     {% for method in resource.methods %}
         <li class="search-filter">
-            <div class="resource collapsible-header">
-                <span class="resource-method">
-                    <span class="new badge badge-{{ method.type|lower }}" data-badge-caption="{{ method.type }}"></span>
-                </span>
-                <span class="resource-uri">
-                    <code class="bold">{{ resource.uri }}</code>
-                    <p class="resource-description">{{ method.description }}</p>
-                </span>
-                <span class="resource-security">
-                {% if method.securitySchemes %}
-                    <i title="Authentication required" class="material-icons">lock</i>
-                {% endif %}
-                </span>
-            </div>
-            <div class="collapsible-body">
-                {% include theme ~ "/resource-modal.html.twig" %}
-            </div>
+            <div class="row py-5 px-3">
+                <div class="col-lg-4">
+                    <h3 id="{{ method.displayName|replace({'': '-'})|lower }}">{{ method.displayName }}</h3>
+                    <span class="pl-0 new badge badge-{{ method.type|lower }}" data-badge-caption="{{ method.type }}">
+                                {{ method.type }}:
+{#                                 {% if resource.parentResource %}#}
+{#                                     <span class="parent">{{ resource.parentResource.uri }} </span>#}
+{#                                 {% endif %}#}
+                        {{ resource.uri }}
+                            </span>
+                    {% if method.description %}
+                        <p>{{ method.description}}</p>
+                    {% endif %}
+                </div>
+                <div class="col-lg-8">
 
-            <span class="search-filter-value" style="display: none">
-                {{ method.type }} {{ resource.uri }}
-            </span>
+                </div>
+            </div>
         </li>
     {% endfor %}
 {% endif %}
 
-{% for resource in resource.resources %}
-    {% include theme ~ "/resource.html.twig" %}
-{% endfor %}
+{#{% for resource in resource.resources %}#}
+{#    {% include theme ~ "/resource.html.twig" %}#}
+{#{% endfor %}#}

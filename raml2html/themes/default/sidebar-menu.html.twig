@@ -1,0 +1,13 @@
+{% if (resource.methods or (resource.description and resource.parentUrl)) %}
+    {% for method in resource.methods %}
+        <li class="search-filter">
+            <a href="#{{ method.displayName|replace({'': '-'})|lower }}">
+                {{ method.displayName }}
+            </a>
+        </li>
+    {% endfor %}
+{% endif %}
+
+{% for resource in resource.resources %}
+    {% include theme ~ "/sidebar-menu.html.twig" %}
+{% endfor %}

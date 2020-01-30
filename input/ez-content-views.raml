@@ -1,0 +1,77 @@
+post:
+    displayName: Create View
+    description: Executes a query and returns view including the results. The View input reflects the criteria model of the public API. Will respond with a 301, as the resource has been moved to /views (Platform 1.0) - DEPRECATED
+    headers:
+        Accept:
+            description: The view in XML or JSON format
+            example:  |
+                application/vnd.ez.api.View+xml
+                application/vnd.ez.api.View+json
+                application/vnd.ez.api.View+xml; version=1.1
+                application/vnd.ez.api.View+json; version=1.1
+        Content-Type:
+            description: The view input in XML or JSON format
+            example:  |
+                application/vnd.ez.api.ViewInput+xml
+                application/vnd.ez.api.ViewInput+json
+                application/vnd.ez.api.ViewInput+xml; version=1.1
+                application/vnd.ez.api.ViewInput+json; version=1.1
+    responses:
+        301:
+            description: Moved permanently
+        400:
+            description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+    get:
+        displayName: List views
+        description: Returns a list of view URIs. The list includes public view and private view of the authenticated user. - DEPRECATED
+        headers:
+            Accept:
+                description: The view link list in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.RefList+xml
+                    application/vnd.ez.api.RefList+json
+        responses:
+            200:
+                description: OK - list of view URIs
+
+/{identifier}:
+    get:
+        displayName: Get View
+        description: Returns the view - DEPRECATED
+        headers:
+            Accept:
+                description: The view excluding results in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.View+xml
+                    application/vnd.ez.api.View+json
+        responses:
+            200:
+                description: OK - returns the view
+            401:
+                description: Error - the view is not public and from another user
+    delete:
+        displayName: Delete View
+        description: The given view is deleted - DEPRECATED
+        responses:
+            204:
+                description: No content - the given view is deleted
+            401:
+                description: Error - the user is not authorized to delete this view
+            404:
+                description: Error - the view does not exist
+    /results:
+        get:
+            displayName: Get Results of existing View
+            description: Returns result of the view - DEPRECATED
+            headers:
+                Accept:
+                    description: The view excluding results in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.ViewResult+xml
+                        application/vnd.ez.api.ViewResult+json
+            responses:
+                200:
+                    description: OK - result of the view
+                401:
+                    description: Error - the view is not public and from another user
+

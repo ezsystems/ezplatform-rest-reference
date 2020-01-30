@@ -1,0 +1,356 @@
+get:
+    displayName: Load Roles
+    description: Returns a list of all roles
+    queryParameters:
+        identifier:
+            description: Restricts the result to a list containing the Role with the given identifier. If the Role is not found an empty list is returned.
+        offset:
+            description: The offset of the result set
+            type: integer
+        limit:
+            description: Only limit items will be returned started by offset
+            type: integer
+    headers:
+        Accept:
+            description: If set the user list returned in XML or JSON format
+            example:  |
+                application/vnd.ez.api.RoleList+xml
+                application/vnd.ez.api.RoleList+json
+    responses:
+        200:
+            description: OK - list of all roles
+            body:
+                application/vnd.ez.api.RoleList+xml:
+                    type: RoleList
+                    example: !include examples/user/roles/GET/RoleList.xml.example
+        401:
+            description: Error - the user has no permission to read roles
+
+post:
+    displayName: Create Role / Role Draft
+    description: Creates a new Role or Role draft
+    queryParameters:
+        publish:
+            type: boolean
+            description: If true the role is published after creation
+            default: true
+    headers:
+        Accept:
+            description: If set the new user is returned in XML or JSON format
+            example:  |
+                application/vnd.ez.api.Role+xml
+                application/vnd.ez.api.Role+json
+                application/vnd.ez.api.RoleDraft+xml
+                application/vnd.ez.api.RoleDraft+json
+        Content-Type:
+            description: The RoleInput schema encoded in XML or JSON
+            example:  |
+                application/vnd.ez.api.RoleInput+json
+                application/vnd.ez.api.RoleInput+xml
+    body:
+        application/vnd.ez.api.RoleInput+xml:
+            type: RoleInput
+            example: examples/user/roles/POST/RoleInput.xml.example
+    responses:
+        201:
+            body:
+                application/vnd.ez.api.Role+xml:
+                    type: Role
+                    example: !include examples/user/roles/POST/Role.xml.example
+        400:
+            description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+        401:
+            description: Error - the user is not authorized to create this Role / Role draft
+
+/{id}:
+    get:
+        displayName: Load Role
+        description: Loads a Role for the given ID
+        headers:
+            Accept:
+                description: If set the user list returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Role+xml
+                    application/vnd.ez.api.Role+json
+            If-None-Match:
+                description: ETag
+        responses:
+            200:
+                description: OK - Role for the given ID
+                body:
+                    application/vnd.ez.api.Role+xml:
+                        type: Role
+                        example: !include examples/user/roles/id/GET/Role.xml.example
+            401:
+                description: Error - the user has no permission to read roles
+            404:
+                description: Error - the Role does not exist
+    post:
+        displayName: Create Role Draft
+        description: Creates a new Role draft from an existing role.
+        headers:
+            Accept:
+                description: If set the new user is returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Role+xml
+                    application/vnd.ez.api.Role+json
+            Content-Type:
+                description: The RoleInput schema encoded in XML or JSON
+                example:  |
+                    application/vnd.ez.api.RoleInput+json
+                    application/vnd.ez.api.RoleInput+xml
+        responses:
+            201:
+                body:
+                    application/vnd.ez.api.RoleDraft+xml:
+                        type: RoleDraft
+                        example: !include examples/user/roles/id/POST/RoleDraft.xml.example
+            401:
+                description: Error - the user is not authorized to create this Role / Role draft
+    patch:
+        displayName: Update Role
+        description: Updates a role. PATCH or POST with header X-HTTP-Method-Override PATCH
+        headers:
+            Accept:
+                description: If set the new user is returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Role+xml
+                    application/vnd.ez.api.Role+json
+            Content-Type:
+                description: The RoleInput schema encoded in XML or JSON
+                example:  |
+                    application/vnd.ez.api.RoleInput+json
+                    application/vnd.ez.api.RoleInput+xml
+            If-Match:
+                description: ETag Causes to patch only if the specified ETag is the current one. Otherwise a 412 is returned.
+        body:
+            application/vnd.ez.api.RoleInput+xml:
+                type: RoleInput
+                example: !include examples/user/roles/id/PATCH/RoleInput.xml.example
+        responses:
+            200:
+                description: OK - role updated
+                body:
+                    application/vnd.ez.api.Role+xml:
+                        type: Role
+                        example: !include examples/user/roles/id/PATCH/Role.xml.example
+            400:
+                description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+            401:
+                description: Error - the user is not authorized to update the role
+            412:
+                description: Error - the current ETag does not match with the provided one in the If-Match header
+    delete:
+        displayName: Delete Role
+        description: The given Role and all assignments to users or user groups are deleted
+        responses:
+            204:
+                description: No Content
+            401:
+                description: Error - the user is not authorized to delete this role
+    /draft:
+        get:
+            displayName: Load Role draft
+            description: Loads a Role draft by original Role ID
+            headers:
+                Accept:
+                    description: If set the user list returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.Role+xml
+                        application/vnd.ez.api.Role+json
+                If-None-Match:
+                    description: ETag
+            responses:
+                200:
+                    description: OK - Role draft by original Role ID
+                    body:
+                        application/vnd.ez.api.Role+xml:
+                            type: Role
+                            example: !include examples/user/roles/id/draft/GET/Role.xml.example
+                401:
+                    description: Error - the user has no permission to read roles
+                404:
+                    description: Error - there is no draft or Role with the given ID
+        patch:
+            displayName: Update Role draft
+            description: Updates a Role draft. PATCH or POST with header X-HTTP-Method-Override PATCH
+            headers:
+                Accept:
+                    description: If set the updated Role is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.Role+xml
+                        application/vnd.ez.api.Role+json
+                Content-Type:
+                    description: The RoleInput schema encoded in XML or JSON
+                    example:  |
+                        application/vnd.ez.api.RoleInput+json
+                        application/vnd.ez.api.RoleInput+xml
+                If-Match:
+                    description: ETag Causes to patch only if the specified ETag is the current one. Otherwise a 412 is returned.
+            body:
+                application/vnd.ez.api.RoleInput+xml:
+                    type: RoleInput
+                    example: !include examples/user/roles/id/draft/PATCH/RoleInput.xml.example
+            responses:
+                200:
+                    description: OK - Role draft updated
+                    body:
+                        application/vnd.ez.api.Role+xml:
+                            type: Role
+                            example: !include examples/user/roles/id/draft/PATCH/Role.xml.example
+                400:
+                    description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+                401:
+                    description: Error - the user is not authorized to update the role
+                404:
+                    description: Error - there is no draft or Role with the given ID
+                412:
+                    description: Error - the current ETag does not match with the provided one in the If-Match header
+        publish:
+            displayName: Publish Role draft
+            description: Publishes a Role draft. PUBLISH or POST with header X-HTTP-Method-Override PUBLISH
+            responses:
+                204:
+                    description: No Content
+                401:
+                    description: Error - the user is not authorized to publish this Content Type draft
+                403:
+                    description: Error - the Content Type draft is not complete e.g. there is no field definition provided
+                404:
+                    description: Error - there is no draft or Role with the given ID
+        delete:
+            displayName: Delete Role Draft
+            description: The given Role draft is deleted.
+            responses:
+                204:
+                    description: No Content
+                401:
+                    description: Error - the user is not authorized to delete this role
+    /policies:
+        get:
+            displayName: Load Policies
+            description: Loads policies for the given role
+            headers:
+                Accept:
+                    description: If set the Policy list is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.PolicyList+xml
+                        application/vnd.ez.api.PolicyList+json
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.PolicyList+xml:
+                            type: PolicyList
+                            example: !include examples/user/roles/id/policies/GET/PolicyList.xml.example
+                401:
+                    description: Error - the user has no permission to read roles
+                404:
+                    description: Error - the Role does not exist
+        delete:
+            displayName: Delete Policies
+            description: All policies of the given Role are deleted
+            responses:
+                204:
+                    description: No Content - all policies of the given Role are deleted
+                401:
+                    description: Error - the user is not authorized to delete this Content Type
+        post:
+            # Currently does not work
+            displayName: Create Policy
+            description: Creates a policy
+            headers:
+                Accept:
+                    description: If set the updated Policy is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.Policy+xml
+                        application/vnd.ez.api.Policy+json
+                Content-Type:
+                    description: If set the updated Policy is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.PolicyCreate+xml
+                        application/vnd.ez.api.PolicyCreate+json
+            body:
+                application/vnd.ez.api.PolicyCreate+xml:
+                    type: PolicyCreate
+                    example: !include examples/user/roles/id/policies/POST/PolicyCreate.xml.example
+            responses:
+                201:
+                    body:
+                        application/vnd.ez.api.Policy+xml:
+                            type: Policy
+                            example: !include examples/user/roles/id/policies/POST/Policy.xml.example
+                400:
+                    description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage OR validation of limitation in PolicyCreate fails
+                401:
+                    description: Error - the user is not authorized to create the policy
+                404:
+                    description: Error - the Role does not exist
+        /{id}:
+            patch:
+                # Currently does not work
+                displayName: Update Policy
+                description: Updates a policy. PATCH or POST with header X-HTTP-Method-Override PATCH
+                headers:
+                    Accept:
+                        description: If set the updated Policy is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.Policy+xml
+                            application/vnd.ez.api.Policy+json
+                    Content-Type:
+                        description: If set the updated Policy is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.PolicyUpdate+xml
+                            application/vnd.ez.api.PolicyUpdate+json
+                    If-Match:
+                        description: Causes to patch only if the specified ETag is the current one. Otherwise a 412 is returned.
+                        example: ETag
+                body:
+                    application/vnd.ez.api.PolicyUpdate+xml:
+                        type: PolicyUpdate
+                        example: !include examples/user/roles/id/policies/id/PATCH/PolicyUpdate.xml.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Policy+xml:
+                                type: Policy
+                                example: !include examples/user/roles/id/policies/id/PATCH/Policy.xml.example
+                    400:
+                        description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage OR validation of limitation in PolicyUpdate fails
+                    401:
+                        description: Error - the user is not authorized to update the policy
+                    404:
+                        description: Error - the Role does not exist
+                    412:
+                        description: Error - the current ETag does not match with the provided one in the If-Match header
+            get:
+                displayName: Load Policy
+                description: Loads a Policy for the given module and function
+                headers:
+                    Accept:
+                        description: If set the Policy is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.Policy+xml
+                            application/vnd.ez.api.Policy+json
+                    If-None-Match:
+                        description: ETag
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Policy+xml:
+                                type: Policy
+                                example: !include examples/user/roles/id/policies/id/GET/Policy.xml.example
+                    401:
+                        description: Error - the user has no permission to read roles
+                    404:
+                        description: Error - the Role or Policy does not exist
+            delete:
+                displayName: Delete Policy
+                description: The given Policy is deleted
+                responses:
+                    204:
+                        description: No Content - the given Policy is deleted
+                    401:
+                        description: Error - the user is not authorized to delete this Content Type
+                    404:
+                        description: Error - the Role or Policy does not exist
+

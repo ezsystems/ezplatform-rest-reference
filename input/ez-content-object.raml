@@ -1,0 +1,551 @@
+post:
+    displayName: Creating Content
+    description: Creates a new content draft assigned to the authenticated user. If a different userId is given in the input it is assigned to the given user but this required special rights for the authenticated user (this is useful for content staging where the transfer process does not have to authenticate with the user which created the content object in the source server). The user has to publish the content if it should be visible.
+    headers:
+        Accept:
+            description: Content - if set all informations for the content object including the embedded current version are returned in XML or JSON format. ContentInfo - if set all informations for the content object (excluding the current version) are returned in XML or JSON format
+            example:  |
+                application/vnd.ez.api.Content+xml
+                application/vnd.ez.api.Content+json
+                application/vnd.ez.api.ContentInfo+xml
+                application/vnd.ez.api.ContentInfo+json
+        Content-Type:
+            description: The ContentCreate schema encoded in XML or JSON
+            example:  |
+                application/vnd.ez.api.ContentCreate+xml
+                application/vnd.ez.api.ContentCreate+json
+    body:
+        application/vnd.ez.api.ContentCreate+xml:
+            type: ContentCreate
+            example: !include examples/content/objects/POST/ContentCreate.xml.example
+    responses:
+        201:
+            body:
+                application/vnd.ez.api.Content+xml:
+                    type: Content
+                    example: !include examples/content/objects/POST/Content.xml.example
+                application/vnd.ez.api.ContentInfo+xml:
+                    type: ContentInfo
+                    example: !include examples/content/objects/POST/ContentInfo.xml.example
+        400:
+            description: Error - the Input does not match the input schema definition or the validation on a field fails
+        401:
+            description: Error - the user is not authorized to create this object in this location
+        404:
+            description: Error - a parent Location is specified in the request body and it does not exist
+
+get:
+    displayName: Load Content by remote id
+    description: Loads the content for a given remote ID
+    queryParameters:
+        remoteId:
+            description: The remote ID of the content. If present the content with the given remote ID is returned
+    responses:
+        307:
+            description: Temporary Redirect
+        404:
+            description: Error - the content with the given remote ID does not exist
+/{contentId}:
+    get:
+        displayName: Load Content
+        description: Loads the Content Object for the given ID. Depending on the Accept header the current version is embedded (i.e the current published version or if not exists the draft of the authenticated user)
+        queryParameters:
+            languages:
+                description: Restricts the output of translatable fields to the given languages. Comma separated list
+                type: string
+        headers:
+            Accept:
+                description: Content - 	if set all informations for the content object including the embedded current version are returned in XML or JSON format. ContentInfo - if set all informations for the content object (excluding the current version) are returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Content+xml
+                    application/vnd.ez.api.Content+json
+                    application/vnd.ez.api.ContentInfo+xml
+                    application/vnd.ez.api.ContentInfo+json
+            If-None-Match:
+                description: If the provided ETag matches the current ETag then a "304 Not Modified" is returned. The ETag changes if the meta data was changed - this happens also if there is a new published version.
+                example: ETag
+        responses:
+            200:
+                body:
+                    application/vnd.ez.api.Content+xml:
+                        type: Content
+                        example: !include examples/content/objects/content_id/GET/Content.xml.example
+                    application/vnd.ez.api.ContentInfo+xml:
+                        type: ContentInfo
+                        example: !include examples/content/objects/content_id/GET/ContentInfo.xml.example
+            401:
+                description: Error - the user is not authorized to read this object. This could also happen if there is no published version yet and another user owns a draft of this content
+            404:
+                description: Error - the ID is not found
+    patch:
+        displayName: Update Content
+        description: This method updates the content metadata which is independent from a version. PATCH or POST with header X-HTTP-Method-Override PATCH.
+        headers:
+            Accept:
+                description: If set all informations for the content object (excluding the current version) are returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.ContentInfo+xml
+                    application/vnd.ez.api.ContentInfo+json
+            If-match:
+                description: Causes to patch only if the specified ETag is the current one. Otherwise a 412 is returned.
+                example: ETag
+            Content-Type:
+                description: The ContentUpdate schema encoded in XML or JSON
+                example:  |
+                    application/vnd.ez.api.ContentUpdate+xml
+                    application/vnd.ez.api.ContentUpdate+json
+        body:
+            application/vnd.ez.api.ContentUpdate+xml:
+                type: ContentInfo
+                example: !include examples/content/objects/content_id/PATCH/ContentUpdate.xml.example
+        responses:
+            200:
+                body:
+                    application/vnd.ez.api.ContentInfo+xml:
+                        type: ContentInfo
+                        example: !include examples/content/objects/content_id/PATCH/ContentInfo.xml.example
+            400:
+                description: Error - the Input does not match the input schema definition
+            401:
+                description: Error - the user is not authorized to update this object
+            404:
+                description: Error - the content ID does not exist
+            412:
+                description: Error - the current ETag does not match with the provided one in the If-Match header
+            415:
+                description: Error - the media-type is not one of those specified in headers
+    delete:
+        displayName: Delete Content
+        description: The content is deleted. If the content has locations (which is required in 4.x) on delete all locations assigned the content object are deleted via delete subtree.
+        responses:
+            204:
+                description: The content is deleted.
+            404:
+                description: Error - content object was not found
+            401:
+                description: Error - the user is not authorized to delete this object
+    copy:
+        displayName: Copy content
+        description: Creates a new content object as copy under the given parent Location given in the destination header. COPY or POST with header X-HTTP-Method-Override COPY.
+        headers:
+            destination:
+                description: A Location resource to which the content object should be copied.
+        responses:
+            201:
+                description: Copy created
+            401:
+                description: Error - the user is not authorized to copy this object to the given location
+            404:
+                description: Error - the source or destination resource do not exist.
+
+    /translations/{languageCode}:
+        delete:
+            displayName: Delete (permanently) Translation from all Versions of a Content
+            description: Permanently delete a Translation from all Versions of a Content
+            responses:
+                204:
+                    description: No Content
+                401:
+                    description: Error - the user is not authorized to delete Content (content/remove policy)
+                404:
+                    description: Error - the Content item was not found
+                406:
+                    description: Error - the given Translation does not exist for the Content
+                409:
+                    description: Error - the specified Translation is the only one any Version has or is the Main Translation
+
+    /currentversion:
+        get:
+            displayName: Get Current Version
+            description: Redirects to the current version of the content object
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.Version+xml:
+                            type: Version
+                            example: !include examples/content/objects/content_id/currentversion/GET/Version.xml.example
+                307:
+                    description: Temporary redirect
+                404:
+                    description: Error - the resource does not exist
+        copy:
+            displayName: Create a Draft from current Version
+            description: The system creates a new draft version as a copy from the current version. COPY or POST with header X-HTTP-Method-Override COPY.
+            headers:
+                Accept:
+                    description: If set the updated version is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.Version+xml
+                        application/vnd.ez.api.Version+json
+            responses:
+                201:
+                    description: Created
+                    body:
+                        application/vnd.ez.api.Version+xml:
+                            type: Version
+                            example: !include examples/content/objects/content_id/currentversion/COPY/Version.xml.example
+                401:
+                    description: Error - the user is not authorized to update this object
+                403:
+                    description: Error - the current version is already a draft
+                404:
+                    description: Error - the content object was not found
+
+    /versions:
+        get:
+            displayName: List Versions
+            description: Returns a list of all versions of the content. This method does not include fields and relations in the Version elements of the response.
+            headers:
+                Accept:
+                    description: If set the version list is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.VersionList+xml
+                        application/vnd.ez.api.VersionList+json
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.VersionList+xml:
+                            type: VersionList
+                            example: !include examples/content/objects/content_id/versions/GET/VersionList.xml.example
+                401:
+                    description: Error - the user has no permission to read the versions
+        /{versionNo}:
+            get:
+                displayName: Load Version
+                description: Loads a specific version of a content object. This method returns fields and relations
+                queryParameters:
+                    fields:
+                        description: Fields which should be returned in the response. Comma separated list.
+                        type: string
+                    responseGroups:
+                        description: Alternative comma separated lists of predefined field groups
+                        type: string
+                    languages:
+                        description: Restricts the output of translatable fields to the given languages. Comma separated list
+                        type: string
+                headers:
+                    If-None-Match:
+                        description: Only return the version if the given ETag is the not current one otherwise a 304 is returned.
+                        example: ETag
+                    Accept:
+                        description: If set the version list is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.Version+xml
+                            application/vnd.ez.api.Version+json
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Version+xml:
+                                type: Version
+                                example: !include examples/content/objects/content_id/versions/version_no/GET/Version.xml.example
+                    304:
+                        description: Error - the ETag does not match the current one
+                    401:
+                        description: Error - the user is not authorized to read this object
+                    404:
+                        description: Error - the ID or version is not found
+            patch:
+                displayName: Update Version
+                description: A specific draft is updated. PATCH or POST with header X-HTTP-Method-Override PATCH.
+                queryParameters:
+                    languages:
+                        description: Restricts the output of translatable fields to the given languages. Comma separated list
+                        type: string
+                headers:
+                    Accept:
+                        description: If set the updated version is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.Version+xml
+                            application/vnd.ez.api.Version+json
+                    If-match:
+                        description: Causes to patch only if the specified ETag is the current one
+                    Content-Type:
+                        description: The VersionUpdate schema encoded in XML or JSON
+                        example:  |
+                            application/vnd.ez.api.VersionUpdate+xml
+                            application/vnd.ez.api.VersionUpdate+json
+                body:
+                    application/vnd.ez.api.VersionUpdate+xml:
+                        type: VersionUpdate
+                        example: !include examples/content/objects/content_id/versions/version_no/PATCH/VersionUpdate.xml.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Version+xml:
+                                type: Version
+                                example: !include examples/content/objects/content_id/versions/version_no/PATCH/Version.xml.example
+                    400:
+                        description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+                    401:
+                        description: Error - the user is not authorized to update this version
+                    403:
+                        description: Error - the version is not allowed to change - i.e is not a DRAFT
+                    404:
+                        description: Error - the content ID or version ID does not exist
+                    412:
+                        description: Error - the current ETag does not match with the provided one in the If-Match header
+            copy:
+                displayName: Create a Draft from a Version
+                description: The system creates a new draft version as a copy from the given version. COPY or POST with header X-HTTP-Method-Override COPY.
+                headers:
+                    Accept:
+                        description: If set the updated version is returned in XML or JSON format
+                        example:  |
+                            application/vnd.ez.api.Version+xml
+                            application/vnd.ez.api.Version+json
+                responses:
+                    201:
+                        description: Created
+                        body:
+                            application/vnd.ez.api.Version+xml:
+                                type: Version
+                                example: !include examples/content/objects/content_id/versions/version_no/COPY/Version.xml.example
+                    401:
+                        description: Error - the user is not authorized to update this object
+                    404:
+                        description: Error - the content object was not found
+            delete:
+                displayName: Delete Content Version
+                description: The version is deleted
+                responses:
+                    204:
+                        description: No Content - the version is deleted
+                    404:
+                        description: Error - the content object or version nr was not found
+                    401:
+                        description: Error - the user is not authorized to delete this version
+                    403:
+                        description: Error - the version is in state published
+            publish:
+                displayName: Publish a content version
+                description: The content version is published. PUBLISH or POST with header X-HTTP-Method-Override PUBLISH
+                responses:
+                    204:
+                        description: No Content - the content version is published
+                    401:
+                        description: Error - the user is not authorized to publish this version
+                    403:
+                        description: Error - the version is not a draft
+                    404:
+                        description: Error - the content object or version nr was not found
+            /translations/{languageCode}:
+                delete:
+                    displayName: Delete Content Version Draft Translation
+                    description: Removes a translation from a version draft
+                    responses:
+                        204:
+                            description: No Content - removes a translation from a version draft
+                        401:
+                            description: Error - the user is not authorized to delete this translation
+                        403:
+                            description: Error - the version is in not draft state
+                        404:
+                            description: Error - the Content item or version number were not found
+                        406:
+                            description: Error - the given translation does not exist for the version
+                        409:
+                            description: Error - the specified translation is the only one the Version has or is the main translation
+            /relations:
+                get:
+                    displayName: Load relations of content
+                    description: Loads the relations of the given version
+                    queryParameters:
+                        offset:
+                            description: The offset of the result set
+                            type: integer
+                        limit:
+                            description: The number of bookmarks returned
+                            type: integer
+                    headers:
+                        Accept:
+                            description: If set the relation is returned in XML or JSON format
+                            example:  |
+                                application/vnd.ez.api.RelationList+xml
+                                application/vnd.ez.api.RelationList+json
+                    responses:
+                        200:
+                            body:
+                                application/vnd.ez.api.RelationList+xml:
+                                    type: RelationList
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/GET/RelationList.xml.example
+                        401:
+                            description: Error - the user is not authorized to read this object
+                        404:
+                            description: Error - the content object was not found
+                post:
+                    displayName: Create a new Relation
+                    description: Creates a new relation of type COMMON for the given draft.
+                    headers:
+                        Accept:
+                            description: If set the updated version is returned in XML or JSON format
+                            example:  |
+                                application/vnd.ez.api.Relation+xml
+                                application/vnd.ez.api.Relation+json
+                        Content-Type:
+                            description: The RelationCreate schema encoded in XML or JSON
+                            example:  |
+                                application/vnd.ez.api.RelationCreate+xml
+                                application/vnd.ez.api.RelationCreate+json
+                    body:
+                        application/vnd.ez.api.RelationCreate+xml:
+                            type: Relation
+                            example: !include examples/content/objects/content_id/versions/version_no/relations/POST/RelationCreate.xml.example
+                    responses:
+                        201:
+                            body:
+                                application/vnd.ez.api.Relation+xml:
+                                    type: Relation
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/POST/Relation.xml.example
+                /{relationId}:
+                    get:
+                        displayName: Load a relation
+                        description: Loads a relation for the given content object
+                        headers:
+                            Accept:
+                                description: If set the relation is returned in XML or JSON format
+                                example:  |
+                                    application/vnd.ez.api.Relation+xml
+                                    application/vnd.ez.api.Relation+json
+                        responses:
+                            200:
+                                description: OK - loads a relation for the given content object
+                                body:
+                                    application/vnd.ez.api.Relation+xml:
+                                        type: Relation
+                                        example: !include examples/content/objects/content_id/versions/version_no/relations/relation_id/GET/Relation.xml.example
+                            401:
+                                description: Error - the user is not authorized to read this object
+                            404:
+                                description: Error - the object with the given ID or the relation does not exist
+                    delete:
+                        displayName: Delete a relation
+                        description: Deletes a relation of the given draft.
+                        responses:
+                            204:
+                                description: No Content - deleted a relation of the given draft.
+                            401:
+                                description: Error - the user is not authorized to delete this relation
+                            403:
+                                description: Error - the relation is not of type COMMON or the given version is not a draft
+                            404:
+                                description: Error - content object was not found or the relation was not found in the given version
+
+    /relations:
+        get:
+            displayName: Load relations of content
+            description: Redirects to the relations of the current version
+            responses:
+                307:
+                    description: Temporary redirect
+                401:
+                    description: Error - the user is not authorized to read this object
+                404:
+                    description: Error - the content object was not found
+
+    /locations:
+        post:
+            displayName: Create a new location for a content object
+            description: Creates a new Location for the given Content Object
+            headers:
+                Accept:
+                    description: If set the new Location is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.Location+xml
+                        application/vnd.ez.api.Location+json
+                Content-Type:
+                    description: The LocationCreate schema encoded in XML or JSON
+                    example:  |
+                        application/vnd.ez.api.LocationCreate+json
+                        application/vnd.ez.api.LocationCreate+xml
+            body:
+                application/vnd.ez.api.LocationCreate+xml:
+                    type: LocationCreate
+                    example: !include examples/content/objects/content_id/locations/POST/LocationCreate.xml.example
+            responses:
+                201:
+                    body:
+                        application/vnd.ez.api.Location+xml:
+                            type: Location
+                            example: !include examples/content/objects/content_id/locations/POST/Location.xml.example
+                400:
+                    description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+                401:
+                    description: Error - the user is not authorized to create this location
+                403:
+                    description: Error - a Location under the given parent ID already exists
+        get:
+            displayName: Get locations for a content object
+            description: Loads all locations for the given content object
+            headers:
+                Accept:
+                    description: If set the new Location is returned in XML or JSON format
+                    example:  |
+                        application/vnd.ez.api.LocationList+xml
+                        application/vnd.ez.api.LocationList+json
+                If-None-Match:
+                    description: ETag
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.LocationList+xml:
+                            type: LocationList
+                            example: !include examples/content/objects/content_id/locations/GET/LocationList.xml.example
+                401:
+                    description: Error - the user is not authorized to read this object
+                404:
+                    description: Error - the object with the given ID does not exist
+
+    /objectstates:
+        get:
+            displayName: Get Object States of Content
+            description: Returns the Object States of a Content item
+            headers:
+                Accept:
+                    description: If set the Object State is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ContentObjectStates+xml
+                        application/vnd.ez.api.ContentObjectStates+json
+                If-None-Match:
+                    description: ETag
+            responses:
+                200:
+                    description: OK - returns the Object State
+                    body:
+                        application/vnd.ez.api.ContentObjectStates+xml:
+                            type: ContentObjectStates
+                            example: !include examples/content/objects/content_id/objectstates/GET/ContentObjectStates.xml.example
+                404:
+                    description: Error - The Content item does not exist
+        patch:
+            displayName: Set Object States of Content
+            description: Updates Object States of content. An Object State in the input overrides the state of the Object State Group. PATCH or POST with header X-HTTP-Method-Override PATCH.
+            headers:
+                Accept:
+                    description: If set the updated Object State is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ObjectState+xml
+                        application/vnd.ez.api.ObjectState+json
+                Content-Type:
+                    description: The Content Object States input schema encoded in XML or JSON
+                    example: |
+                        application/vnd.ez.api.ObjectStateUpdate+xml
+                        application/vnd.ez.api.ObjectStateUpdate+json
+                If-Match:
+                    description: ETag
+            body:
+                application/vnd.ez.api.ObjectState+xml:
+                    type: ObjectStateUpdate
+            responses:
+                204:
+                    description: OK - Object State updated
+                    body:
+                        application/vnd.ez.api.ObjectState+xml:
+                            type: ObjectState
+                400:
+                    description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+                401:
+                    description: Error - The user is not authorized to set an Object State
+                403:
+                    description: Error - The input contains multiple Object States of the same Object State Group
+                412:
+                    description: Error - The current ETag does not match the one provided in the If-Match header

@@ -1,14 +1,12 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <code class="bold">
-        {% if resource.parentResource %}
-            <span class="parent">{# {{ resource.parentResource.uri }} #}</span>
-        {% endif %}
-        {{ resource.uri }}
-    </code>
+{#    <code class="bold">#}
+{#        {% if resource.parentResource %}#}
+{#            <span class="parent">#}{# {{ resource.parentResource.uri }} #}{#</span>#}
+{#        {% endif %}#}
+{#        {{ resource.uri }}#}
+{#    </code>#}
 
-    {% if method.description %}
-        <p>{{ method.description}}</p>
-    {% endif %}
+
 
     <div class="section">
         <!--

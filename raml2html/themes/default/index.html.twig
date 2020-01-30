@@ -4,343 +4,116 @@
         <meta charset="utf-8"/>
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+        <link href="../fonts/MavenPro.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>{{ api.title }}</title>
-
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
         <style>
-            a {
-                color: #000;
+            .sidebar-menu, .search-input  {
+                background-color: #fcfcfc;
             }
-
-            .bold {
-                font-weight: bold;
+            h2 {
+                /*font-size: 22px;*/
             }
-
-            .badge {
-                text-transform: uppercase;
-                font-weight: bold !important;
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                min-width: 85px !important;
-                margin-right: 0.5rem;
-            }
-
-            .badge i {
-                margin-right: 0.2rem;
-                font-size: 1rem;
-            }
-
-            .badge-get {
-                background-color: #2196f3 !important;
-            }
-
-            .badge-post {
-                background-color: #4caf50 !important;
-            }
-
-            .badge-delete {
-                background-color: #f44336 !important;
-            }
-
-            .badge-put {
-                background-color: #ff9800 !important;
-            }
-
-            .badge-patch {
-                background-color: #673ab7 !important;
-            }
-
-            .badge-head {
-                background-color: #222222 !important;
-            }
-
-            .badge-options {
-                background-color: #616161 !important;
-            }
-
-            .text-primary {
-                color: #ee6e73 !important;
-            }
-
-            .bg-primary {
-                background-color: #ee6e73 !important;
-            }
-
-            .tabs .indicator {
-                display: none;
-            }
-
-            .tabs a {
-                color: #212121 !important;
-            }
-
-            .tabs .tab a.active {
-                border-bottom: 2px solid #212121;
-            }
-
-            .tabs a:focus {
-                background-color: #f5f5f5 !important;
-            }
-
-            .tabs.request a {
-                color: #039be5 !important;
-            }
-
-            .tabs.request .tab a.active {
-                border-bottom: 2px solid #039be5;
-            }
-
-            .tabs.request a:focus {
-                background-color: #e1f5fe !important;
-            }
-
-            .tabs.response a {
-                color: #4db6ac !important;
-            }
-
-            .tabs.response .tab a.active {
-                border-bottom: 2px solid #4db6ac;
-            }
-
-            .tabs.response a:focus {
-                background-color: #e0f2f1 !important;
-            }
-
-            .space-between {
-                justify-content: space-between;
-            }
-
-            .d-flex {
-                display: flex;
-            }
-
-            .chip {
-                line-height: 22px;
-                font-size: 15px;
-                height: 22px;
-                margin-bottom: 0;
-                border-radius: 2px;
-                padding: 0 5px;
-                margin-left: 5px;
-            }
-
-            ul.browser-default {
-                padding-left: 20px;
-            }
-
-            ul.browser-default li {
-                margin-top: 10px;
-            }
-
-            .example {
-                position: relative;
-                border: 1px solid #e0e0e0;
-            }
-
-            .example pre {
-                padding: 8px;
-                margin: 0;
-            }
-
-            .collapsible .example {
-                border: none;
-            }
-
-            .collapsible .example pre {
-                padding: 0;
-            }
-
-            .modal {
-                height: 80% !important;
-                max-height: 80% !important;
-                width: 60% !important;
-            }
-
-            .hljs {
-                color: #000;
-                background: transparent;
-            }
-
-            .hljs-attr {
-                color: #000;
-            }
-
-            .hljs-string {
-                color: #1976d2;
-            }
-
-            .hljs-number {
-                color: #00796b;
-            }
-
-            .hljs-literal {
-                color: #d32f2f;
-            }
-
-            .copy-to-clipboard {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-
-            .copy-to-clipboard-text {
-                height: 0;
-                width: 0;
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-
-            .search-input {
-                margin: 0 !important;
-                margin-top: 20px !important;
-                border: 0 !important;
-                background: #eeeeee !important;
-                border-radius: 1000px !important;
-                box-shadow: none !important;
-                padding: 0 15px !important;
-                max-width: 300px;
-                height: 2.4rem !important;
-            }
-
-            .search-input::placeholder {
-                color: #555;
-            }
-
-            .property-badge {
-                padding: 0 5px;
-                margin: 0;
-                font-size: 10px;
-                font-weight: bold;
-                color: #FFF;
-                border-radius: 100px;
-                line-height: 13px;
-                text-align: center;
-                text-transform: uppercase;
-                margin-right: 15px;
-                margin-top: 1px;
-            }
-
-            .property-condition {
-                display: flex;
-                align-items: center;
-                margin-right: 15px;
-            }
-
-            .property-condition span {
-                color: #777;
-                font-style: italic;
-                margin-right: 4px;
-            }
-
-            .resource {
-            }
-
-            .resource-description {
-                color: #666;
-                margin: 5px 0;
-            }
-
-            .resource-method {
-                flex-grow: 0;
-            }
-
-            .resource-uri {
-                flex-grow: 1;
-            }
-
-            .resource-security {
-                align-self: flex-end;
-                vertical-align: top;
-            }
-
-            .section {
-                padding: 0;
-            }
-
-            .collection.with-header .collection-header,
-            .collection.with-header .collection-item {
-                padding-left: 0;
-            }
-
-            .collection .collection-item {
-                padding: 10px 0;
+            h3 {
+                font-size: 18px;
             }
 
         </style>
     </head>
 <body>
-    <div class="section grey darken-4">
-        <div class="container">
-            <h3 class="white-text">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAAOdJREFUWIXt1rEOwUAYwPH/VwYDNpuBMFkYDB6D3eAVbN7Di3gCVhOJFxAMTYwSDNJ8phukRHuuQnL/7Zr7cr82TVpR1QAo853OInKLXVXVmn6v/jNZkPm9J8gjTB5h8ghTPuG+AzB3cN7+E8RKREYOEE9LigBAVYtA17FhmQoBNIGFY0T9r17MWNfpmCjc2h3a6lEYTj5HROGWaLexmg0q1ce1LcJlHmHyCJNHmDzC5BGmPHAEBm/2hZkiROQCzLI85C3CerDVi30NE8822g9rSTOsqh1gbXXy637jzyrtk8gBJceG0x0et5SL8kjo6AAAAABJRU5ErkJggg==" alt="" />
-                {{ api.title }} 
-                {% if api.version %}
-                    <small class="white-text">{{ api.version }}</small>
-                {% endif %}
-            </h3>
-            <p class="white-text">{{ api.baseUri }}</p>
-        </div>
-    </div>
-
-    {% if api.documentationList is not empty %}
-        <div class="container">
-            <div class="section">
-                {% if api.baseUriParameters %}
-                    <ul>
-                        {% for item in api.baseUriParameters %}
-                            {#{% include "./templates/item.nunjucks" %} #}
+<main class="overflow-hidden">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 pt-3 sidebar-menu">
+                <div class="container text-left">
+                    <h1 class="text-center">
+                        <a href="{{ api.baseUri }}">
+                            <img class="w-25" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
+                        </a>
+                    </h1>
+                    <div class="d-flex justify-content-center mt-3">
+                        <i class="material-icons">search</i>
+                        <input type="text" id="searchInput" class="search-input w-100 rounded-sm border-top-0 border-left-0 border-right-0 pl-3" placeholder="Search">
+                    </div>
+                    <ul class="list-item list-unstyled test-left mt-3">
+                        <li class="py-2">
+                            <a href="{{ api.baseUri }}">{{ api.title }}</a>
+                        </li>
+                        {% for resource in api.resources %}
+                            <li class="py-2">
+                                <a href="#">{{ resource.displayName|default(resource.uri) }}</a>
+                                <ul class="list-unstyled">
+                                    {% include theme ~ "/sidebar-menu.html.twig" %}
+                                </ul>
+                            </li>
                         {% endfor %}
                     </ul>
-                {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-10 pt-5">
 
-                {% for documentation in api.documentationList %}
-                    <h5>{{ documentation.title }}</h5>
-                    {{ documentation.content }}
-                {% endfor %}
+{#                {{ dump(api) }}#}
+{#                {% if api.documentationList is not empty %}#}
+{#                    <div class="container-fluid">#}
+{#                        <div class="section">#}
+{#                            {% if api.baseUriParameters %}#}
+{#                                <ul>#}
+{#                                    {% for item in api.baseUriParameters %}#}
+{#                                        #}{#{% include "./templates/item.nunjucks" %} #}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                            {% endif %}#}
+
+{#                            {% for documentation in api.documentationList %}#}
+{#                                <h5>{{ documentation.title }}</h5>#}
+{#                                {{ documentation.content }}#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
+
+                <div class="container-fluid">
+                    {% for resource in api.resources %}
+                        <section class="section">
+                            <h2 class="border-bottom pb-2">{{ resource.displayName|default(resource.uri) }}</h2>
+
+                            <ul class="list-unstyled">
+                                {% if resource.resources|length > 1 %}
+                                    {% include theme ~ "/resource-group.html.twig" %}
+                                {% else %}
+                                    {% include theme ~ "/resource-endpoints.html.twig" %}
+                                {% endif %}
+                            </ul>
+                            <ul class="list-unstyled">
+                                {% include theme ~ "/resource.html.twig" %}
+                            </ul>
+                        </section>
+                    {% endfor %}
+
+{#                    {% if api.types is not empty %}#}
+{#                        <div class="section">#}
+{#                            <h5>Types</h5>#}
+{#                            <ul>#}
+{#                                {% for type in api.types %}#}
+{#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
+{#                                {% endfor %}#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+                </div>
             </div>
         </div>
-    {% endif %}
-
-    <div class="container">
-        <div style="display:flex; justify-content:center;">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search"></input>
-        </div>
-
-        {% for resource in api.resources %}
-            <div class="section">
-                <h5>{{ resource.displayName|default(resource.uri) }}</h5>
-                <ul class="collapsible expandable">
-                    {% include theme ~ "/resource.html.twig" %}
-                </ul>
-            </div>
-        {% endfor %}
-
-        {% if api.types is not empty %}
-        <div class="section" style="display: none">
-            <h5>Types</h5>
-            <ul>
-                {% for type in api.types %}
-                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
     </div>
-
-    <div class="section grey darken-4">
-        <div class="container">
-            <p class="white-text">Copyright 1999-2020 eZ Systems AS and others.</p>
-        </div>
+</main>
+<footer>
+    <div class="container text-center">
+        <p class="white-text">Copyright 1999-2020 eZ Systems AS and others.</p>
     </div>
+</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function () {

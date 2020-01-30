@@ -1,0 +1,4 @@
+{% for resource in resource.resources %}
+    <h4>{{ resource.uri }}</h4>
+    {% include theme ~ "/resource-endpoints.html.twig" %}
+{% endfor %}

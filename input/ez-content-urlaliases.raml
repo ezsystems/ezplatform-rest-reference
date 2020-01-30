@@ -1,0 +1,84 @@
+get:
+    displayName: List Global UrlAliases
+    description: Returns the list of global URL aliases
+    headers:
+        Accept:
+            description: If set the URL alias list contains only references and is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.UrlAliasRefList+xml
+                application/vnd.ez.api.UrlAliasRefList+json
+    responses:
+        200:
+            description: OK - returns the list of URL aliases
+            body:
+                application/vnd.ez.api.UrlAliasRefList+xml:
+                    type: UrlAliasRefList
+                    example: !include examples/content/urlaliases/GET/UrlAliasRefList.xml.example
+        401:
+            description: Error - The user has no permission to read URL aliases
+
+post:
+    displayName: Create Url Alias
+    description: Creates a new URL alias
+    headers:
+        Accept:
+            description: If set the new URL alias is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.UrlAlias+xml
+                application/vnd.ez.api.UrlAlias+json
+        Content-Type:
+            description: The URL alias input schema encoded in XML or JSON
+            example: |
+                application/vnd.ez.api.UrlAliasCreate+xml
+                application/vnd.ez.api.UrlAliasCreate+json
+    body:
+        application/vnd.ez.api.UrlAliasCreate+xml:
+            type: UrlAliasCreate
+            example: !include examples/content/urlaliases/POST/UrlAliasCreate.xml.example
+    responses:
+        201:
+            description: URL alias created
+            body:
+                application/vnd.ez.api.UrlAlias+xml:
+                    type: UrlAlias
+                    example: !include examples/content/urlaliases/POST/UrlAlias.xml.example
+        400:
+            description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+        401:
+            description: Error - The user is not authorized to create a URL alias
+        403:
+            description: Error - A URL alias with the same identifier already exists
+
+/{urlAliasId}:
+    get:
+        displayName: Get UrlAlias
+        description: Returns the URL alias with the given ID
+        headers:
+            Accept:
+                description: If set the URL alias is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.UrlAlias+xml
+                    application/vnd.ez.api.UrlAlias+json
+        responses:
+            200:
+                description: OK - returns the URL alias
+                body:
+                    application/vnd.ez.api.UrlAlias+xml:
+                        type: UrlAlias
+                        example: !include examples/content/urlaliases/url_alias_id/GET/UrlAlias.xml.example
+            401:
+                description: Error - The user is not authorized to read URL aliases
+            404:
+                description: Error - The URL alias does not exist
+    delete:
+        displayName: Delete UrlAlias
+        description: Deleted the provided URL alias
+        responses:
+            204:
+                description: No Content - URL alias deleted
+            401:
+                description: Error - The user is not authorized to delete a URL alias
+            404:
+                description: Error - The URL alias does not exist
+
+

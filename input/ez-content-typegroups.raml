@@ -1,0 +1,191 @@
+displayName: Managing Content Type Groups
+get:
+    displayName: Get Content Type Groups
+    description: Returns a list of all Content Type Groups. If an identifier is provided, loads the Content Type Group for this identifier
+    queryParameters:
+        identifier:
+            description: The identifier of the Content Type Group. If present, the Content Type Group with this identifier is returned.
+            required: false
+    headers:
+        Accept:
+            description: If set the Content Type Group list is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.ContentTypeGroupList+xml
+                application/vnd.ez.api.ContentTypeGroupList+json
+    responses:
+        200:
+            description: OK - returns a list of Content Type Groups
+            body:
+                application/vnd.ez.api.ContentTypeGroupList+xml:
+                    type: ContentTypeGroupList
+                    example: !include examples/content/typegroups/GET/ContentTypeGroupList.xml.example
+        307:
+            description: Temporary Redirect
+        401:
+            description: Error - The user has no permission to read Content Types
+        404:
+            description: Error - The Content Type Group with the given identifier does not exist
+
+post:
+    displayName: Create Content Type Group
+    description: Creates a new Content Type Group
+    headers:
+        Accept:
+            description: If set the new Content Type Group is returned in XML or JSON format
+            example: |
+                application/vnd.ez.api.ContentTypeGroup+xml
+                application/vnd.ez.api.ContentTypeGroup+json
+        Content-Type:
+            description: The Content Type Group input schema encoded in XML or JSON
+            example: |
+                application/vnd.ez.api.ContentTypeGroupInput+xml
+                application/vnd.ez.api.ContentTypeGroupInput+json
+    body:
+        application/vnd.ez.api.ContentTypeGroupInput+xml:
+            type: ContentTypeGroupInput
+            example: !include examples/content/typegroups/POST/ContentTypeGroupInput.xml.example
+    responses:
+        201:
+            description: Content Type Group created
+            body:
+                application/vnd.ez.api.ContentTypeGroup+xml:
+                    type: ContentTypeGroup
+                    example: !include examples/content/typegroups/POST/ContentTypeGroup.xml.example
+        400:
+            description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+        401:
+            description: Error - The user is not authorized to create this Content Type Group
+        403:
+            description: Error - A Content Type Group with the same identifier already exists
+
+/{contentTypeGroupId}:
+    get:
+        displayName: Get Content Type Group
+        description: Returns the Content Type Group with the provided ID
+        headers:
+            Accept:
+                description: If set the Content Type Group is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.ContentTypeGroup+xml
+                    application/vnd.ez.api.ContentTypeGroup+json
+            If-None-Match:
+                description: ETag
+        responses:
+            200:
+                description: OK - returns the Content Type Group
+                body:
+                    application/vnd.ez.api.ContentTypeGroup+xml:
+                        type: ContentTypeGroup
+                        example: !include examples/content/typegroups/content_type_group_id/GET/ContentTypeGroup.xml.example
+            401:
+                description: Error - The user is not authorized to read this Content Type Group
+            404:
+                description: Error - The Content Type Group does not exist
+    patch:
+        displayName: Update Content Type Group
+        description: Updates a Content Type Group. PATCH or POST with header X-HTTP-Method-Override PATCH.
+        headers:
+            Accept:
+                description: If set the updated Content Type Group is returned in XML or JSON format
+                example: |
+                    application/vnd.ez.api.ContentTypeGroup+xml
+                    application/vnd.ez.api.ContentTypeGroup+json
+            Content-Type:
+                description: The Content Type Group input schema encoded in XML or JSON
+                example: |
+                    application/vnd.ez.api.ContentTypeGroupInput+xml
+                    application/vnd.ez.api.ContentTypeGroupInput+json
+            If-Match:
+                description: ETag causes patching only if the specified ETag is the current one. Otherwise a 412 is returned.
+        body:
+            application/vnd.ez.api.ContentTypeGroupInput+xml:
+                type: ContentTypeGroupInput
+                example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroupInput.xml.example
+        responses:
+            200:
+                description: Content Type Group updated
+                body:
+                    application/vnd.ez.api.ContentTypeGroup+xml:
+                        type: ContentTypeGroup
+                        example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroup.xml.example
+            400:
+                description: Error - The input does not match the input schema definition. In this case the response contains an ErrorMessage
+            401:
+                description: Error - The user is not authorized to create this Content Type group
+            403:
+                description: Error - A Content Type Group with the given identifier already exists
+            412:
+                description: Error - The current ETag does not match the one provided in the If-Match header
+    delete:
+        displayName: Delete Content Type Group
+        description: Deletes the provided Content Type Group
+        responses:
+            204:
+                description: No Content - Content Type Group deleted
+            401:
+                description: Error - The user is not authorized to delete this Content Type Group
+            403:
+                description: Error - The Content Type Group is not empty
+            404:
+                description: Error - The Content Type Group does not exist
+    /types:
+        get:
+            displayName: List Content Types for Group
+            description: Returns a list of Content Types in the provided group
+            headers:
+                Accept:
+                    description: If set the list of Content Type info objects or Content Types (including Field definitions) is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ContentTypeInfoList+xml
+                        application/vnd.ez.api.ContentTypeInfoList+json
+                        application/vnd.ez.api.ContentTypeList+xml
+                        application/vnd.ez.api.ContentTypeList+json
+            responses:
+                200:
+                    description: OK - returns a list on Content Types
+                    body:
+                        application/vnd.ez.api.ContentTypeInfoList+xml:
+                            type: ContentTypeInfoList
+                            example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeInfoList.xml.example
+                        application/vnd.ez.api.ContentTypeList+xml:
+                            type: ContentTypeList
+                            example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeList.xml.example
+                401:
+                    description: Error - The user has no permission to read the Content Types
+        post:
+            displayName: Create Content Type
+            description: Creates a new Content Type draft in the given Content Type Group
+            queryParameters:
+                publish:
+                    description: If true, the Content Type is published after creating (default false)
+                    type: boolean
+            headers:
+                Accept:
+                    description: If set the new Content Type or draft is returned in XML or JSON format
+                    example: |
+                        application/vnd.ez.api.ContentType+xml
+                        application/vnd.ez.api.ContentType+json
+                Content-Type:
+                    description: The Content Type Create schema encoded in XML or JSON
+                    example: |
+                        application/vnd.ez.api.ContentTypeCreate+xml
+                        application/vnd.ez.api.ContentTypeCreate+json
+            body:
+                application/vnd.ez.api.ContentTypeCreate.xml:
+                    type: ContentTypeCreate
+                    example: !include examples/content/typegroups/content_type_group_id/types/POST/ContentTypeCreate.xml.example
+            responses:
+                201:
+                    description: Content Type created
+                    body:
+                        application/vnd.ez.api.ContentType+xml:
+                            type: ContentType
+                            example: !include examples/content/typegroups/content_type_group_id/types/POST/ContentType.xml.example
+                400:
+                    description: Error - The input does not match the input schema definition. Validation on a field definition fails. Validation of the Content Type fails, e.g. multiple Fields of a same singular Field Type are provided. publish is set to true and the input is not complete e.g. no field definitions are provided.
+                401:
+                    description: Error - The user is not authorized to create this Content Type
+                403:
+                    description: Error - A Content Type with same identifier already exists
+
+

@@ -1,0 +1,125 @@
+post:
+    displayName: Create a new Section
+    description: Creates a new section
+    headers:
+        Accept:
+            description: If set the new Section is returned in XML or JSON format
+            example:  |
+                application/vnd.ez.api.Section+xml
+                application/vnd.ez.api.Section+json
+        Content-Type:
+            description: The Section input schema encoded in XML or JSON
+            example:  |
+                application/vnd.ez.api.SectionInput+json
+                application/vnd.ez.api.SectionInput+xml
+    body:
+        application/vnd.ez.api.SectionInput+xml:
+            type: SectionInput
+            example: !include examples/content/sections/POST/SectionInput.xml.example
+    responses:
+        201:
+            body:
+                application/vnd.ez.api.Section+xml:
+                    type: Section
+                    example: !include examples/content/sections/POST/Section.xml.example
+
+get:
+    displayName: Get Sections
+    description: Returns a list of all sections
+    queryParameters:
+        identifer:
+            description: Only the Section with the given identifier is returned.
+    headers:
+        Accept:
+            description: If set the Section list is returned in XML or JSON format
+            example:  |
+                application/vnd.ez.api.SectionList+xml
+                application/vnd.ez.api.SectionList+json
+        If-None-Match:
+            description: ETag
+    responses:
+        200:
+            body:
+                application/vnd.ez.api.SectionList+xml:
+                    type: SectionList
+                    example: !include examples/content/sections/GET/SectionList.xml.example
+        401:
+            description: Error - Iif the user has no permission to read the sections
+
+/{sectionId}:
+    get:
+        displayName: Get Section
+        description: Returns the Section given by Section ID
+        headers:
+            Accept:
+                description: If set the Section is returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Section+xml
+                    application/vnd.ez.api.Section+json
+            If-None-match:
+                description: ETag
+        responses:
+            200:
+                body:
+                    application/vnd.ez.api.Section+xml:
+                        type: Section
+                        example: !include examples/content/sections/section_id/GET/Section.xml.example
+            401:
+                description: Error - the user is not authorized to read this section
+            404:
+                description: Error - the Section does not exist
+    patch:
+        displayName: Update a Section
+        description: Updates a section. PATCH or POST with header X-HTTP-Method-Override PATCH
+        headers:
+            Accept:
+                description: If set the updated Section is returned in XML or JSON format
+                example:  |
+                    application/vnd.ez.api.Section+xml
+                    application/vnd.ez.api.Section+json
+            Content-Type:
+                description: The Section input schema encoded in XML or JSON
+                example:  |
+                    application/vnd.ez.api.SectionInput+xml
+                    application/vnd.ez.api.SectionInput+json
+            If-Match:
+                description: ETag
+        body:
+            application/vnd.ez.api.SectionInput+xml:
+                type: SectionInput
+                example: !include examples/content/sections/section_id/PATCH/SectionInput.xml.example
+        responses:
+            200:
+                description: OK - Section updated
+                body:
+                    application/vnd.ez.api.Section+xml:
+                        type: Section
+                        example: !include examples/content/sections/section_id/PATCH/Section.xml.example
+            400:
+                description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+            401:
+                description: Error - the user is not authorized to create this section
+            403:
+                description: Error - a Section with the given new identifier already exists
+            412:
+                description: Error - the current ETag does not match with the provided one in the If-Match header
+    delete:
+        displayName: Delete Section
+        description: The given Section is deleted
+          #headers: TODO
+          # a little obvious?
+        #Accept:
+        #description: If set in the case of an error the error message is returned in XML or JSON format
+        #example:  |
+        #application/vnd.ez.api.ErrorMessage+xml
+        #application/vnd.ez.api.ErrorMessage+json
+        responses:
+            204:
+                description: No Content - given Section is deleted
+            401:
+                description: Error - the user is not authorized to delete this section
+            404:
+                description: Error - the Section does not exist
+
+
+

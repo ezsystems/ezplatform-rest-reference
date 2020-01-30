@@ -1,0 +1,18 @@
+{% if (resource.methods or (resource.description and resource.parentUrl)) %}
+    <li class="d-flex p-2">
+        <h6 class="mr-4">{{ resource.uri }}:</h6>
+        <ul class="list-unstyled d-inline-flex">
+            {% for method in resource.methods %}
+                <li class="search-filter border-right px-3">
+                   <span class="pl-0 new badge badge-{{ method.type|lower }}" data-badge-caption="{{ method.type }}">
+                        {{ method.type }}
+                   </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endif %}
+
+{% for resource in resource.resources %}
+    {% include theme ~ "/resource-endpoints.html.twig" %}
+{% endfor %}
