@@ -1,12 +1,126 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <div class="row py-5 px-3 mb-5">
-        <div class="col-lg-5">
-            <p>{{ method.displayName}}</p>
-            {{ method.description }}
-        </div>
-        <div class="col-lg-7">
+    <div class="row px-3 pb-5">
+        <div class="col-lg-4 py-5 ">
+            <h5>{{ method.displayName}}</h5>
             <p>{{ method.type }}: {{ resource.uri }}</p>
+            <p>{{ method.description }}</p>
+            {% if method.headers %}
+                <div class="py-3">
+                    <h6>Header parameters</h6>
+                    {% for item in method.headers %}
+                        <p><strong>{{ item.key }}</strong></p>
+                        <p>{{ item.description }}</p>
+                        <p></p>
+                    <table class="table responsive-table mb-2 w-100">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% include theme ~ "/header-parameters.html.twig" %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if method.queryParameters %}
+                <div class="py-3">
+                    <h6>Query parameters</h6>
+                    <table class="table responsive-table">
+                        <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in method.queryParameters %}
+                                {% include theme ~ "/named-parameter.html.twig" %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+            {% if method.responses %}
+                <div class="py-3">
+                    <h6>Possible responses</h6>
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for response in method.responses %}
+                                <tr>
+                                    <td>
+                                        <a href="#{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}"
+                                           {% if loop.first %}class="active"{% endif %}>
+                                            {{ response.statusCode }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <p>{{ response.description }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
         </div>
+        <div class="col-lg-8 py-5 example">
+            {% set has_request_tab = method.queryParameters or method.headers or method.bodies %}
+            {% set has_respose_tab = method.responses is not empty %}
+            {% set has_securedby_tab = method.securitySchemes is not empty %}
+
+            {% if has_request_tab %}
+                <h5>Request</h5>
+                {% include theme ~ "/resource-request-content.html.twig" %}
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div >
+
+
+{#                {% if has_securedby_tab %}#}
+{#                    <h4>Security</h4>#}
+{#                    {% include theme ~ "/resource-securedby-content.html.twig" %}#}
+{#                {% endif %}#}
+            </div>
+        </div>
+{#        <div class="col-12">#}
+{#            {% if has_respose_tab %}#}
+{#                <h4>Responses</h4>#}
+{#                {% include theme ~ "/resource-response-content.html.twig" %}#}
+{#            {% endif %}#}
+{#        </div>#}
     </div>
 
     {#    <code class="bold">#}
@@ -20,52 +134,12 @@
 
 {#    <div class="section">#}
 {#        <!--#}
-{#        <ul class="tabs request">#}
-{#            {% set has_request_tab = method.queryParameters or method.headers or method.bodies %}#}
-{#            {% set has_respose_tab = method.responses is not empty %}#}
-{#            {% set has_securedby_tab = method.securitySchemes is not empty %}#}
 
-{#            {% if has_request_tab %}#}
-{#            <li class="tab">#}
-{#                <a class="active" href="#{{ resource_unique_id }}_{{ method.type }}_request">Request</a>#}
-{#            </li>#}
-{#            {% endif %}#}
 
-{#            {% if has_respose_tab %}#}
-{#            <li class="tab">#}
-{#              #}{#if not method.allUriParameters.length and not method.queryParameters#}
-{#              #}{#and not method.queryString#}
-{#              #}{#and not method.headers and not method.body#}
-{#              #}{#%} active{%#}
-{#              #}{#endif#}
-{#              #}{#%}">#}
-{#                <a href="#{{ resource_unique_id }}_{{ method.type }}_response">Response</a>#}
-{#            </li>#}
-{#            {% endif %}#}
-
-{#            {% if has_securedby_tab %}#}
-{#            <li class="tab">#}
-{#                <a href="#{{ resource_unique_id }}_{{ method.type }}_securedby">Security</a>#}
-{#            </li>#}
-{#            {% endif %}#}
-{#        </ul>#}
 {#        -->#}
 {#        <div >#}
 
-{#            {% if has_request_tab %}#}
-{#                <h4>Request</h4>#}
-{#                {% include theme ~ "/resource-request-content.html.twig" %}#}
-{#            {% endif %}#}
 
-{#            {% if has_respose_tab %}#}
-{#                <h4>Responses</h4>#}
-{#                {% include theme ~ "/resource-response-content.html.twig" %}#}
-{#            {% endif %}#}
-
-{#            {% if has_securedby_tab %}#}
-{#                <h4>Security</h4>#}
-{#                {% include theme ~ "/resource-securedby-content.html.twig" %}#}
-{#            {% endif %}#}
 {#        </div>#}
 {#    </div>#}
 </div>
