@@ -1,6 +1,6 @@
 {% if resource.resources|length > 1 %}
     {% for resource in resource.resources %}
-        <h3 class="py-5">{{ resource.uri }}</h3>
+        <h3 class="py-5 border-top">{{ resource.uri }}</h3>
         <div class="container-fluid">
             {% include theme ~ "/resource-endpoints.html.twig" %}
         </div>

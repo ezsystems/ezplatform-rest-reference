@@ -1,6 +1,6 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <div class="row px-3 pb-5">
-        <div class="col-lg-4 py-5 ">
+    <div class="row px-3 pb-3 border-top">
+        <div class="col-lg-4 py-5">
             <h5>{{ method.displayName}}</h5>
             <p>{{ method.type }}: {{ resource.uri }}</p>
             <p>{{ method.description }}</p>
@@ -8,32 +8,33 @@
                 <div class="py-3">
                     <h6>Header parameters</h6>
                     {% for item in method.headers %}
-                        <p><strong>{{ item.key }}</strong></p>
-                        <p>{{ item.description }}</p>
-                        <p></p>
-                    <table class="table responsive-table mb-2 w-100">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% include theme ~ "/header-parameters.html.twig" %}
-                        </tbody>
-                    </table>
+                        <div class="table-responsive mb-2">
+                            <p><strong>{{ item.key }}</strong></p>
+                            <p>{{ item.description }}</p>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Property</th>
+                                    <th scope="col">Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% include theme ~ "/header-parameters.html.twig" %}
+                                </tbody>
+                            </table>
+                        </div>
                     {% endfor %}
                 </div>
             {% endif %}
             {% if method.queryParameters %}
-                <div class="py-3">
-                    <h6>Query parameters</h6>
-                    <table class="table responsive-table">
+                <h6>Query parameters</h6>
+                <div class="table-responsive py-3">
+                    <table class="table">
                         <thead>
                         <tr>
-                            <th>Property</th>
-                            <th>Type</th>
-                            <th>Value</th>
+                            <th scope="col">Property</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Value</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,13 +46,13 @@
                 </div>
             {% endif %}
             {% if method.responses %}
-                <div class="py-3">
-                    <h6>Possible responses</h6>
-                    <table class="table table-responsive">
+                <h6>Possible responses</h6>
+                <div class="table-responsive py-3">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Description</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
                             </tr>
                         </thead>
                         <tbody>
