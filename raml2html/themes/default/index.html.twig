@@ -1,157 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-        <link href="../raml2html/themes/fonts/MavenPro.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>{{ api.title }}</title>
-        <style>
-            body {
-                font-family: "Maven Pro";
-            }
-            .header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 10000;
-                height: 3rem;
-                box-shadow: 0 0 0.4rem rgba(0,0,0,.1), 0 0.4rem 0.8rem rgba(0,0,0,.2);
-            }
-            .sidebar-menu, .search-input  {
-                background-color: #fcfcfc;
-            }
-            .sidebar-menu {
-                position: fixed;
-                left: 0;
-                top: 0;
-                overflow-y: scroll;
-                height: 100%;
-                z-index: 9999;
-                margin-top: 3rem;
-                padding-bottom: 3rem;
-            }
-            .sidebar-menu a {
-                color: #2b2b2b;
-                font-size: 15px;
-                display: block;
-            }
-            .sidebar-menu a:hover {
-                color: #f15a22;
-                text-decoration: none;
-            }
-            .page-wrapper {
-                margin-top: 3em;
-                margin-left: 16.666667%;
-                padding-top: 4rem;
-            }
-            .text-orange {
-                color: #f15a22!important;
-            }
-            h2 {
-                font-size: 34px;
-            }
-            h3 {
-                font-size: 28px;
-            }
-            h4 {
-                font-size: 22px;
-            }
-            h5 {
-                font-size: 20px;
-            }
-            h6 {
-                font-size: 18px;
-            }
-            .text-gray {
-                color: #63605d;
-            }
-            .table-responsive {
-                box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
-            }
-            table {
-                max-width: 100%;
-                border-radius: .2rem;
-            }
-            table th {
-                background-color: rgba(0,0,0,.54);
-                color: #fff;
-                vertical-align: top;
-            }
-            table:not([class]) td {
-                border-top: .1rem solid rgba(0,0,0,.07);
-                vertical-align: top;
-            }
-            code {
-                background-color: #ededed;
-                padding: 1px 0px;
-                margin: 0;
-                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
-                color: #2b2b2b;
-                font-family: monospace;
-                font-size: 14px;
-            }
-            .badge {
-                text-transform: uppercase;
-                font-weight: 700;
-                align-items: center;
-                justify-content: center;
-                min-width: 85px;
-                color: #ffffff;
-            }
-            .badge--sm {
-                min-width: auto;
-            }
-            .badge i {
-                margin-right: 0.2rem;
-                font-size: 1rem;
-            }
-            .badge--get {
-                background-color: #2196f3!important;
-            }
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link href="../raml2html/themes/fonts/MavenPro.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>{{ api.title }}</title>
+    <style>
+        body {
+            font-family: "Maven Pro";
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            height: 3rem;
+        }
+        .nav-brand {
+            display: flex;
+        }
+        .nav-brand img {
+            width: 100%;
+            max-width: 40px;
+        }
+        .sidebar-menu, .search-input  {
+            background-color: #fcfcfc;
+        }
+        .sidebar-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: scroll;
+            height: 100%;
+            z-index: 9999;
+            margin-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .sidebar-menu a {
+            color: #2b2b2b;
+            font-size: 15px;
+            display: block;
+        }
+        .sidebar-menu a:hover {
+            color: #f15a22;
+            text-decoration: none;
+        }
+        .page-wrapper {
+            margin-top: 3em;
+            margin-left: 16.666667%;
+            padding-top: 4rem;
+        }
+        .text-orange {
+            color: #f15a22!important;
+        }
+        h1 {
+            font-size: 20px;
+            line-height: 33px;
+        }
+        h2 {
+            font-size: 34px;
+        }
+        h3 {
+            font-size: 28px;
+        }
+        h4 {
+            font-size: 22px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+        h6 {
+            font-size: 18px;
+        }
+        .text-gray {
+            color: #63605d;
+        }
+        .table-responsive {
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+        }
+        table {
+            max-width: 100%;
+            border-radius: .2rem;
+        }
+        table th {
+            background-color: rgba(0,0,0,.54);
+            color: #fff;
+            vertical-align: top;
+        }
+        table:not([class]) td {
+            border-top: .1rem solid rgba(0,0,0,.07);
+            vertical-align: top;
+        }
+        code {
+            background-color: #ededed;
+            padding: 1px 0px;
+            margin: 0;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+            color: #2b2b2b;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .badge {
+            text-transform: uppercase;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+            min-width: 85px;
+            color: #ffffff;
+        }
+        .badge--sm {
+            min-width: auto;
+        }
+        .badge i {
+            margin-right: 0.2rem;
+            font-size: 1rem;
+        }
+        .badge--get {
+            background-color: #2196f3!important;
+        }
 
-            .badge--post {
-                background-color: #4caf50!important;
-            }
+        .badge--post {
+            background-color: #4caf50!important;
+        }
 
-            .badge--delete {
-                background-color: #f44336!important;
-            }
+        .badge--delete {
+            background-color: #f44336!important;
+        }
 
-            .badge--put {
-                background-color: #ff9800!important;
-            }
+        .badge--put {
+            background-color: #ff9800!important;
+        }
 
-            .badge--patch {
-                background-color: #673ab7!important;
-            }
+        .badge--patch {
+            background-color: #673ab7!important;
+        }
 
-            .badge--head {
-                background-color: #222222!important;
-            }
+        .badge--head {
+            background-color: #222222!important;
+        }
 
-            .badge--options {
-                background-color: #616161!important;
-            }
-            .badge--copy {
-                background-color: #26a69a!important;
-            }
-            .background--gray {
-                background-color: #fcfcfc;
-                /*color: #ffffff;*/
-            }
-            .section {
-                padding-top: 3rem;
-            }
-        </style>
-    </head>
+        .badge--options {
+            background-color: #616161!important;
+        }
+        .badge--copy {
+            background-color: #26a69a!important;
+        }
+        .background--gray {
+            background-color: #fcfcfc;
+            /*color: #ffffff;*/
+        }
+        .section {
+            padding-top: 3rem;
+        }
+    </style>
+</head>
 <body>
 <header class="header background--gray">
-    <div class="container text-center">
-        <h1>{{ api.title }}</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-inline-flex">
+                <a href="{{ api.baseUri }}" class="nav-brand text-center">
+                    <img class="img-fluid" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
+                </a>
+                <h1>{{ api.title }}</h1>
+            </div>
+        </div>
     </div>
 </header>
 <main class="overflow-hidden">
@@ -159,9 +176,6 @@
         <div class="row">
             <div class="sidebar-menu col-lg-2 pt-5">
                 <div class="container text-left">
-                    <a href="{{ api.baseUri }}" class="nav-brand text-center">
-                        <img class="w-25" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
-                    </a>
                     <div class="d-flex justify-content-center mt-3">
                         <i class="material-icons">search</i>
                         <input type="text" id="searchInput" class="search-input w-100 rounded-sm border-top-0 border-left-0 border-right-0 pl-3" placeholder="Search">
@@ -185,25 +199,25 @@
             </div>
             <div class="page-wrapper col-lg-10 pt-5">
 
-{#                {{ dump(api) }}#}
-{#                {% if api.documentationList is not empty %}#}
-{#                    <div class="container-fluid">#}
-{#                        <div class="section">#}
-{#                            {% if api.baseUriParameters %}#}
-{#                                <ul>#}
-{#                                    {% for item in api.baseUriParameters %}#}
-{#                                        #}{#{% include "./templates/item.nunjucks" %} #}
-{#                                    {% endfor %}#}
-{#                                </ul>#}
-{#                            {% endif %}#}
+                {#                {{ dump(api) }}#}
+                {#                {% if api.documentationList is not empty %}#}
+                {#                    <div class="container-fluid">#}
+                {#                        <div class="section">#}
+                {#                            {% if api.baseUriParameters %}#}
+                {#                                <ul>#}
+                {#                                    {% for item in api.baseUriParameters %}#}
+                {#                                        #}{#{% include "./templates/item.nunjucks" %} #}
+                {#                                    {% endfor %}#}
+                {#                                </ul>#}
+                {#                            {% endif %}#}
 
-{#                            {% for documentation in api.documentationList %}#}
-{#                                <h5>{{ documentation.title }}</h5>#}
-{#                                {{ documentation.content }}#}
-{#                            {% endfor %}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endif %}#}
+                {#                            {% for documentation in api.documentationList %}#}
+                {#                                <h5>{{ documentation.title }}</h5>#}
+                {#                                {{ documentation.content }}#}
+                {#                            {% endfor %}#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                {% endif %}#}
 
                 <div class="container-fluid">
                     {% for resource in api.resources %}
@@ -214,16 +228,16 @@
                         </section>
                     {% endfor %}
 
-{#                    {% if api.types is not empty %}#}
-{#                        <div class="section">#}
-{#                            <h5>Types</h5>#}
-{#                            <ul>#}
-{#                                {% for type in api.types %}#}
-{#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
-{#                                {% endfor %}#}
-{#                            </ul>#}
-{#                        </div>#}
-{#                    {% endif %}#}
+                    {#                    {% if api.types is not empty %}#}
+                    {#                        <div class="section">#}
+                    {#                            <h5>Types</h5>#}
+                    {#                            <ul>#}
+                    {#                                {% for type in api.types %}#}
+                    {#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
+                    {#                                {% endfor %}#}
+                    {#                            </ul>#}
+                    {#                        </div>#}
+                    {#                    {% endif %}#}
                 </div>
             </div>
         </div>
@@ -235,39 +249,39 @@
     </div>
 </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <script>
-        // $(document).ready(function () {
-        //     M.AutoInit();
-        //     $('pre code').each(function (i, block) {
-        //         hljs.highlightBlock(block);
-        //     });
-        //
-        //     $('.collapsible').collapsible({
-        //         accordion: false
-        //     });
-        // });
-        //
-        // $("#searchInput").keyup(function () {
-        //     var searchValue = $('#searchInput').val();
-        //     searchValue = searchValue === "" ? '.' : searchValue;
-        //     var regex = new RegExp(searchValue, "i");
-        //     $('.search-filter').each(function (i, e) {
-        //         var value = $(e).children('.search-filter-value')[0].innerHTML;
-        //         if (regex.test(value)) {
-        //             $(e).show();
-        //         } else {
-        //             $(e).hide();
-        //         }
-        //     });
-        // });
-        //
-        // function copyToClipboard(selector) {
-        //     $(selector).select();
-        //     document.execCommand("copy");
-        // }
-    </script>
+<script>
+    // $(document).ready(function () {
+    //     M.AutoInit();
+    //     $('pre code').each(function (i, block) {
+    //         hljs.highlightBlock(block);
+    //     });
+    //
+    //     $('.collapsible').collapsible({
+    //         accordion: false
+    //     });
+    // });
+    //
+    // $("#searchInput").keyup(function () {
+    //     var searchValue = $('#searchInput').val();
+    //     searchValue = searchValue === "" ? '.' : searchValue;
+    //     var regex = new RegExp(searchValue, "i");
+    //     $('.search-filter').each(function (i, e) {
+    //         var value = $(e).children('.search-filter-value')[0].innerHTML;
+    //         if (regex.test(value)) {
+    //             $(e).show();
+    //         } else {
+    //             $(e).hide();
+    //         }
+    //     });
+    // });
+    //
+    // function copyToClipboard(selector) {
+    //     $(selector).select();
+    //     document.execCommand("copy");
+    // }
+</script>
 </body>
 </html>
