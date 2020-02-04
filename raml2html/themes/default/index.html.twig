@@ -12,6 +12,15 @@
             body {
                 font-family: "Maven Pro";
             }
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10000;
+                height: 3rem;
+                box-shadow: 0 0 0.4rem rgba(0,0,0,.1), 0 0.4rem 0.8rem rgba(0,0,0,.2);
+            }
             .sidebar-menu, .search-input  {
                 background-color: #fcfcfc;
             }
@@ -21,6 +30,9 @@
                 top: 0;
                 overflow-y: scroll;
                 height: 100%;
+                z-index: 9999;
+                margin-top: 3rem;
+                padding-bottom: 3rem;
             }
             .sidebar-menu a {
                 color: #2b2b2b;
@@ -32,7 +44,9 @@
                 text-decoration: none;
             }
             .page-wrapper {
+                margin-top: 3em;
                 margin-left: 16.666667%;
+                padding-top: 4rem;
             }
             .text-orange {
                 color: #f15a22!important;
@@ -125,19 +139,29 @@
             .badge--copy {
                 background-color: #26a69a!important;
             }
+            .background--gray {
+                background-color: #fcfcfc;
+                /*color: #ffffff;*/
+            }
+            .section {
+                padding-top: 3rem;
+            }
         </style>
     </head>
 <body>
+<header class="header background--gray">
+    <div class="container text-center">
+        <h1>{{ api.title }}</h1>
+    </div>
+</header>
 <main class="overflow-hidden">
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar-menu col-lg-2 pt-3">
+            <div class="sidebar-menu col-lg-2 pt-5">
                 <div class="container text-left">
-                    <h1 class="text-center">
-                        <a href="{{ api.baseUri }}">
-                            <img class="w-25" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
-                        </a>
-                    </h1>
+                    <a href="{{ api.baseUri }}" class="nav-brand text-center">
+                        <img class="w-25" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
+                    </a>
                     <div class="d-flex justify-content-center mt-3">
                         <i class="material-icons">search</i>
                         <input type="text" id="searchInput" class="search-input w-100 rounded-sm border-top-0 border-left-0 border-right-0 pl-3" placeholder="Search">
