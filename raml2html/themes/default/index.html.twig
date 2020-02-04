@@ -27,6 +27,11 @@
             width: 100%;
             max-width: 40px;
         }
+        .page-title {
+            margin-top: 10px;
+            margin-left: 25px;
+            font-weight: 600;
+        }
         .sidebar-menu, .search-input  {
             background-color: #fcfcfc;
         }
@@ -50,9 +55,7 @@
             text-decoration: none;
         }
         .page-wrapper {
-            margin-top: 3em;
             margin-left: 16.666667%;
-            padding-top: 4rem;
         }
         .text-orange {
             color: #f15a22!important;
@@ -146,7 +149,7 @@
         .badge--options {
             background-color: #616161!important;
         }
-        .badge--copy {
+        .badge--copy, .badge--publish {
             background-color: #26a69a!important;
         }
         .background--gray {
@@ -166,7 +169,7 @@
                 <a href="{{ api.baseUri }}" class="nav-brand text-center">
                     <img class="img-fluid" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
                 </a>
-                <h1>{{ api.title }}</h1>
+                <h1 class="page-title">{{ api.title }}</h1>
             </div>
         </div>
     </div>
@@ -174,7 +177,7 @@
 <main class="overflow-hidden">
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar-menu col-lg-2 pt-5">
+            <div class="sidebar-menu col-lg-2">
                 <div class="container text-left">
                     <div class="d-flex justify-content-center mt-3">
                         <i class="material-icons">search</i>
