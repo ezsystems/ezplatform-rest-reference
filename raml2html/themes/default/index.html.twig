@@ -147,7 +147,7 @@
                         </li>
                         {% for resource in api.resources %}
                             <li class="py-2">
-                                <a href="#">{{ resource.displayName|default(resource.uri) }}</a>
+                                <a href="#{{ resource.displayName|replace({' ': '_'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
                                 <ul class="list-unstyled pl-3">
                                     {% include theme ~ "/sidebar-menu.html.twig" %}
                                 </ul>
@@ -181,7 +181,7 @@
                 <div class="container-fluid">
                     {% for resource in api.resources %}
                         {% set resource_unique_id = uuid() %}
-                        <section class="section">
+                        <section id="{{ resource.displayName|replace({' ': '_'})|lower }}" class="section">
                             <h2 class="heading pb-2 text-orange">{{ resource.displayName|default(resource.uri) }}</h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>
