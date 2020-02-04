@@ -15,11 +15,33 @@
             .sidebar-menu, .search-input  {
                 background-color: #fcfcfc;
             }
+            .sidebar-menu {
+                position: fixed;
+                left: 0;
+                top: 0;
+                overflow-y: scroll;
+                height: 100%;
+            }
+            .sidebar-menu a {
+                color: #2b2b2b;
+                font-size: 15px;
+                display: block;
+            }
+            .sidebar-menu a:hover {
+                color: #f15a22;
+                text-decoration: none;
+            }
+            .page-wrapper {
+                margin-left: 16.666667%;
+            }
+            .text-orange {
+                color: #f15a22!important;
+            }
             h2 {
-                /*font-size: 22px;*/
+                font-size: 34px;
             }
             h3 {
-                font-size: 26px;
+                font-size: 28px;
             }
             h4 {
                 font-size: 22px;
@@ -30,8 +52,13 @@
             h6 {
                 font-size: 18px;
             }
-            table {
+            .text-gray {
+                color: #63605d;
+            }
+            .table-responsive {
                 box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+            }
+            table {
                 max-width: 100%;
                 border-radius: .2rem;
             }
@@ -44,13 +71,64 @@
                 border-top: .1rem solid rgba(0,0,0,.07);
                 vertical-align: top;
             }
+            code {
+                background-color: #ededed;
+                padding: 1px 0px;
+                margin: 0;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+                color: #2b2b2b;
+                font-family: monospace;
+                font-size: 14px;
+            }
+            .badge {
+                text-transform: uppercase;
+                font-weight: 700;
+                align-items: center;
+                justify-content: center;
+                min-width: 85px;
+                color: #ffffff;
+            }
+            .badge i {
+                margin-right: 0.2rem;
+                font-size: 1rem;
+            }
+            .badge--get {
+                background-color: #2196f3!important;
+            }
+
+            .badge--post {
+                background-color: #4caf50!important;
+            }
+
+            .badge--delete {
+                background-color: #f44336!important;
+            }
+
+            .badge--put {
+                background-color: #ff9800!important;
+            }
+
+            .badge--patch {
+                background-color: #673ab7!important;
+            }
+
+            .badge--head {
+                background-color: #222222!important;
+            }
+
+            .badge--options {
+                background-color: #616161!important;
+            }
+            .badge--copy {
+                background-color: #26a69a!important;
+            }
         </style>
     </head>
 <body>
 <main class="overflow-hidden">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 pt-3 sidebar-menu">
+            <div class="sidebar-menu col-lg-2 pt-3">
                 <div class="container text-left">
                     <h1 class="text-center">
                         <a href="{{ api.baseUri }}">
@@ -63,12 +141,14 @@
                     </div>
                     <ul class="list-item list-unstyled test-left mt-3">
                         <li class="py-2">
-                            <a href="{{ api.baseUri }}">{{ api.title }}</a>
+                            <a class="text-orange" href="{{ api.baseUri }}">
+                                <strong>{{ api.title }}</strong>
+                            </a>
                         </li>
                         {% for resource in api.resources %}
                             <li class="py-2">
                                 <a href="#">{{ resource.displayName|default(resource.uri) }}</a>
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled pl-3">
                                     {% include theme ~ "/sidebar-menu.html.twig" %}
                                 </ul>
                             </li>
@@ -76,7 +156,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-10 pt-5">
+            <div class="page-wrapper col-lg-10 pt-5">
 
 {#                {{ dump(api) }}#}
 {#                {% if api.documentationList is not empty %}#}
@@ -102,7 +182,7 @@
                     {% for resource in api.resources %}
                         {% set resource_unique_id = uuid() %}
                         <section class="section">
-                            <h2 class="pb-2">{{ resource.displayName|default(resource.uri) }}</h2>
+                            <h2 class="heading pb-2 text-orange">{{ resource.displayName|default(resource.uri) }}</h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>
                     {% endfor %}
