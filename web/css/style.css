@@ -23,14 +23,36 @@ body {
     line-height: 33px;
     font-weight: 600;
 }
-.sidebar-menu, .search-input  {
+.sidebar-menu, .input--search  {
     background-color: #fcfcfc;
+}
+.sidebar__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: transparent;
+    padding-left: 15px;
+}
+.icon--search {
+    position: absolute;
+    left: 15px;
+}
+.input--search {
+    padding-left: 30px;
+}
+.sidebar__nav {
+    overflow-y: scroll;
+    height: 100%;
+    position: absolute;
+    top: 43px;
+    padding-bottom: 80px;
 }
 .sidebar-menu {
     position: fixed;
     left: 0;
     top: 0;
-    overflow-y: scroll;
     height: 100%;
     z-index: 9999;
     margin-top: 3rem;

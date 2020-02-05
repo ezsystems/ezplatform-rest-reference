@@ -36,28 +36,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="sidebar-menu col-lg-2">
-                <div class="container text-left">
-                    <div class="d-flex justify-content-center mt-3">
-                        <i class="material-icons">search</i>
-                        <input type="text" id="searchInput" class="search-input w-100 rounded-sm border-top-0 border-left-0 border-right-0 pl-3" placeholder="Search">
+                <div class="container text-left px-0">
+                    <div class="sidebar__header">
+                        <div class="d-flex justify-content-center mt-3">
+                            <i class="material-icons icon--search">search</i>
+                            <input type="text" id="searchInput" class="input--search w-100 rounded-sm border-top-0 border-left-0 border-right-0" placeholder="Search">
+                        </div>
                     </div>
-                    <ul class="list-item list-unstyled test-left mt-3">
-                        <li class="py-1">
-                            <h1 class="mb-0">
-                                <a class="text-orange" href="{{ api.baseUri }}">
-                                    <strong>{{ api.title }}</strong>
-                                </a>
-                            </h1>
-                        </li>
-                        {% for resource in api.resources %}
-                            <li class="py-2">
-                                <a href="#{{ resource.displayName|replace({' ': '_'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
-                                <ul class="list-unstyled pl-3">
-                                    {% include theme ~ "/sidebar-menu.html.twig" %}
-                                </ul>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                    <nav class="sidebar__nav">
+                        <ul class="list-item list-unstyled test-left mt-2">
+                            {% for resource in api.resources %}
+                                <li class="py-2">
+                                    <a href="#{{ resource.displayName|replace({' ': '_'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
+                                    <ul class="list-unstyled pl-3">
+                                        {% include theme ~ "/sidebar-menu.html.twig" %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
                 </div>
             </div>
             <div class="page-wrapper col-lg-10 pt-5">
