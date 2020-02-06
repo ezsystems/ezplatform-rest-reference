@@ -1,7 +1,7 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}_response">
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
-            <h6 class="pt-3">Responses</h6>
+            <h5 class="heading text-gray">Responses</h5>
             <div id="{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}">
                 {% if response.headers %}
                     <ul class="collection with-header">
@@ -23,13 +23,13 @@
                             {% if b.examples %}
                                 {% for example in b.examples %}
                                     {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
-                                    <div class="example position-relative">
+                                    <div class="example position-relative border p-3 mb-3">
                                         <p class="mb-0"><strong>{{ mediaType }}</strong></p>
-                                        <p class="icon icon--copy-clipboard"><i class="material-icons-outlined">
+                                        <p class="mb-0 icon icon--copy-clipboard"><i class="material-icons-outlined">
                                                 file_copy
                                             </i>
                                         </p>
-                                        <pre><code class="{{ mediaType }}">{{ example }}</code></pre>
+                                        <pre class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
                                     </div>
                                 {% endfor %}
                             {% endif %}

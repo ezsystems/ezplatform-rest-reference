@@ -86,7 +86,6 @@
             {% set has_securedby = method.securitySchemes is not empty %}
 
             {% if has_request or has_response or has_securedby %}
-                <h5 class="heading text-gray">Examples</h5>
                 {% if has_request %}
                     {% include theme ~ "/resource-request-content.html.twig" %}
                 {% endif %}
