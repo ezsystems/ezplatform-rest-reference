@@ -1,52 +1,47 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}_request">
-
-
     {% if method.bodies %}
-        <ul class="list-unstyled">
-            <li class="collection-header"><h5>Body</h5></li>
-            {% for key, body in method.bodies %}
-                <li class="collection-item">
-                    <table class="table highlight striped">
-                        <tbody>
-                            <tr>
-                                <th>Media type</th>
-                                <td>{{ body.mediaType }}</td>
-                            </tr>
+        <h6 class="pt-3">Request</h6>
+        {% for key, body in method.bodies %}
+            <p><strong>Body</strong></p>
+            <table class="table highlight striped">
+                <tbody>
+                <tr>
+                    <th>Media type</th>
+                    <td>{{ body.mediaType }}</td>
+                </tr>
 
-                            {% if body.description %}
-                            <tr>
-                                <th>Description</th>
-                                <td>{{ body.description }}</td>
-                            </tr>
-                            {% endif %}
+                {% if body.description %}
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ body.description }}</td>
+                    </tr>
+                {% endif %}
 
-                            {% if body.type %}
-                            <tr>
-                                <th>Schema</th>
-                                <td>
-                                    {% include theme ~ "/type.html.twig" with {
-                                        type: body.type
-                                    }%}
-                                </td>
-                            </tr>
-                            {% endif %}
+                {% if body.type %}
+                    <tr>
+                        <th>Schema</th>
+                        <td>
+                            {% include theme ~ "/type.html.twig" with {
+                                type: body.type
+                            }%}
+                        </td>
+                    </tr>
+                {% endif %}
 
-                            {% if body.examples %}
-                            <tr>
-                                <th>Example</th>
-                                <td>
-                                    {% for example in body.examples %}
-                                    <div class="example">
-                                        <pre><code>{{ example }}</code></pre>
-                                    </div>
-                                    {% endfor %}
-                                </td>
-                            </tr>
-                            {% endif %}
-                        </tbody>
-                    </table>
-                </li>
-            {% endfor %}
-        </ul>
+                {% if body.examples %}
+                    <tr>
+                        <th>Example</th>
+                        <td>
+                            {% for example in body.examples %}
+                                <div class="example">
+                                    <pre><code>{{ example }}</code></pre>
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        {% endfor %}
     {% endif %}
 </div>

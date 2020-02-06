@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/fonts/MavenPro.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
     <link href="web/css/style.css" rel="stylesheet">
     <title>{{ api.title }}</title>
 </head>
@@ -43,12 +44,24 @@
                             <input type="text" id="searchInput" class="input--search w-100 rounded-sm border-top-0 border-left-0 border-right-0" placeholder="Search">
                         </div>
                     </div>
-                    <nav class="sidebar__nav">
-                        <ul class="list-item list-unstyled test-left mt-2">
+                    <nav class="sidebar__nav navbar navigation">
+                        <ul class="list-item menu-list list-unstyled test-left mt-2">
+                            {% if api.types is not empty %}
+                                <li class="py-2 menu-list-item menu-list-item--has-sub-items">
+                                    <a href="#types">Types</a>
+                                    <ul class="list-unstyled menu-list pl-3 d-none">
+                                        {% for type in api.types %}
+                                            <li class="py-2">
+                                                <a href="">{{ type.name }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
                             {% for resource in api.resources %}
-                                <li class="py-2">
+                                <li class="py-2 menu-list-item menu-list-item--has-sub-items">
                                     <a href="#{{ resource.displayName|replace({' ': '_'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
-                                    <ul class="list-unstyled pl-3">
+                                    <ul class="list-unstyled menu-list pl-3">
                                         {% include theme ~ "/sidebar-menu.html.twig" %}
                                     </ul>
                                 </li>
@@ -58,45 +71,24 @@
                 </div>
             </div>
             <div class="page-wrapper col-lg-10 pt-5">
-                {#                {{ dump(api) }}#}
-                {#                {% if api.documentationList is not empty %}#}
-                {#                    <div class="container-fluid">#}
-                {#                        <div class="section">#}
-                {#                            {% if api.baseUriParameters %}#}
-                {#                                <ul>#}
-                {#                                    {% for item in api.baseUriParameters %}#}
-                {#                                        #}{#{% include "./templates/item.nunjucks" %} #}
-                {#                                    {% endfor %}#}
-                {#                                </ul>#}
-                {#                            {% endif %}#}
-
-                {#                            {% for documentation in api.documentationList %}#}
-                {#                                <h5>{{ documentation.title }}</h5>#}
-                {#                                {{ documentation.content }}#}
-                {#                            {% endfor %}#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                {% endif %}#}
-
                 <div class="container-fluid">
                     {% for resource in api.resources %}
                         {% set resource_unique_id = uuid() %}
-                        <section id="{{ resource.displayName|replace({' ': '_'})|lower }}" class="section">
+                        <section id="{{ resource.displayName|replace({' ': '_'})|lower }}" class="section page-section">
                             <h2 class="heading pb-2 text-orange">{{ resource.displayName|default(resource.uri) }}</h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>
                     {% endfor %}
-
-                    {#                    {% if api.types is not empty %}#}
-                    {#                        <div class="section">#}
-                    {#                            <h5>Types</h5>#}
-                    {#                            <ul>#}
-                    {#                                {% for type in api.types %}#}
-                    {#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
-                    {#                                {% endfor %}#}
-                    {#                            </ul>#}
-                    {#                        </div>#}
-                    {#                    {% endif %}#}
+                    {% if api.types is not empty %}
+                        <section id="types" class="section page-section">
+                            <h2 class="heading pb-2 text-orange">Types</h2>
+                            <ul class="list-unstyled">
+                                {% for type in api.types %}
+                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -110,6 +102,10 @@
 
 <script src="web/js/jquery.min.js"></script>
 <script src="web/js/bootstrap.bundle.min.js"></script>
+<script src="web/js/clipboard.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="web/js/custom.js"></script>
 <script>
     // $(document).ready(function () {
     //     M.AutoInit();

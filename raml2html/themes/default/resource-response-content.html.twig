@@ -1,83 +1,42 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}_response">
-    <ul class="tabs response">
-        {% for response in method.responses %}
-            <li class="tab">
-                <a href="#{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}" {% if loop.first %}class="active"{% endif %}>
-                    {{ response.statusCode }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-
     {% for response in method.responses %}
-        <div id="{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}">
-            {% if response.description %}
-                <ul class="collection with-header">
-                    <li class="collection-item">
-                        {{ response.description }}
-                    </li>
-                </ul>
-            {% endif %}
-
-            {% if response.headers %}
-                <ul class="collection with-header">
-                    <li class="collection-header"><h5>Headers</h5></li>
-                    <li class="collection-item">
-                        <ul class="browser-default">
-                            {% for item in response.headers %}
-                                {% include theme ~ "/named-parameter.html.twig" %}
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-            {% endif %}
-
-            {% if response.bodies %}
-                <ul class="collection with-header">
-                    <li class="collection-header"><h5>Body</h5></li>
-
-                    {% for b in response.bodies %}
+        {% if response.headers or response.bodies %}
+            <h6 class="pt-3">Responses</h6>
+            <div id="{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}">
+                {% if response.headers %}
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h5>Headers</h5></li>
                         <li class="collection-item">
-                            <table class="table highlight striped">
-                                <tbody>
-                                    <tr>
-                                        <th>Content type</th>
-                                        <td><code>{{ b.mediaType }}</code></td>
-                                    </tr>
-                                    {% if b.description %}
-                                        <tr>
-                                            <th>Description</th>
-                                            <td>{{ b.description }}</td>
-                                        </tr>
-                                    {% endif %}
-                                    {% if b.type %}
-                                    <tr>
-                                        <th>Schema</th>
-                                        <td>
-                                            {% include theme ~ "/type.html.twig" with {
-                                                type: b.type
-                                            }%}
-                                        </td>
-                                    </tr>
-                                    {% endif %}
-                                    {% if b.examples %}
-                                        <tr>
-                                            <th>Example</th>
-                                            <td>
-                                                {% for example in b.examples %}
-                                                <div class="example">
-                                                    <pre><code>{{ example }}</code></pre>
-                                                </div>
-                                                {% endfor %}
-                                            </td>
-                                        </tr>
-                                    {% endif %}
-                                </tbody>
-                            </table>
+                            <ul class="browser-default">
+                                {% for item in response.headers %}
+                                    {% include theme ~ "/named-parameter.html.twig" %}
+                                {% endfor %}
+                            </ul>
                         </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
+                    </ul>
+                {% endif %}
+                {% if response.bodies %}
+                    <div class="pb-3">
+                        <p class="mb-0"><strong>Body</strong></p>
+                        <p><code>Code: {{ response.statusCode }}</code></p>
+                        {% for b in response.bodies %}
+                            {% if b.examples %}
+                                {% for example in b.examples %}
+                                    {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
+                                    <div class="example position-relative">
+                                        <p class="mb-0"><strong>{{ mediaType }}</strong></p>
+                                        <p class="icon icon--copy-clipboard"><i class="material-icons-outlined">
+                                                file_copy
+                                            </i>
+                                        </p>
+                                        <pre><code class="{{ mediaType }}">{{ example }}</code></pre>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
     {% endfor %}
 </div>

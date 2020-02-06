@@ -1,9 +1,8 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <div class="row px-3 pb-3 border-top">
-        <div id="{{ method.displayName|replace({' ': '_'})|lower }}"  class="col-lg-6 py-5">
+    <div class="row px-3 border-top pr-lg-0">
+        <div id="{{ method.displayName|replace({' ': '_'})|lower }}"  class="page-section col-lg-6 py-5">
             <h5 class="heading text-gray">{{ method.displayName}}</h5>
             <p><span class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span> {{ resource.uri }}</p>
-{#            <p><code>{{ method.type }}: {{ resource.uri }}</code></p>#}
             <p>{{ method.description }}</p>
             {% if method.headers %}
                 <div class="py-3">
@@ -66,7 +65,7 @@
                                 <tr>
                                     <td>
                                         <a href="#{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}"
-                                           {% if loop.first %}class="active"{% endif %}>
+                                           class="text-ocean-blue {% if loop.first %}{% endif %}">
                                             {{ response.statusCode }}
                                         </a>
                                     </td>
@@ -81,54 +80,25 @@
                 </div>
             {% endif %}
         </div>
-        <div class="col-lg-6 py-5 example">
-            {% set has_request_tab = method.queryParameters or method.headers or method.bodies %}
-            {% set has_respose_tab = method.responses is not empty %}
-            {% set has_securedby_tab = method.securitySchemes is not empty %}
+        <div class="col-lg-6 py-5 px-3 examples">
+            {% set has_request = method.queryParameters or method.headers or method.bodies %}
+            {% set has_response = method.responses is not empty %}
+            {% set has_securedby = method.securitySchemes is not empty %}
 
-            {% if has_request_tab %}
-                <h5>Request</h5>
-                {% include theme ~ "/resource-request-content.html.twig" %}
+            {% if has_request or has_response or has_securedby %}
+                <h5 class="heading text-gray">Examples</h5>
+                {% if has_request %}
+                    {% include theme ~ "/resource-request-content.html.twig" %}
+                {% endif %}
+                {% if has_securedby %}
+                    <h6>Security</h6>
+                    {% include theme ~ "/resource-securedby-content.html.twig" %}
+                {% endif %}
+                {% if has_response %}
+                    {% include theme ~ "/resource-response-content.html.twig" %}
+                {% endif %}
             {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div >
-
-
-{#                {% if has_securedby_tab %}#}
-{#                    <h4>Security</h4>#}
-{#                    {% include theme ~ "/resource-securedby-content.html.twig" %}#}
-{#                {% endif %}#}
-            </div>
         </div>
-{#        <div class="col-12">#}
-{#            {% if has_respose_tab %}#}
-{#                <h4>Responses</h4>#}
-{#                {% include theme ~ "/resource-response-content.html.twig" %}#}
-{#            {% endif %}#}
-{#        </div>#}
     </div>
 
     {#    <code class="bold">#}
