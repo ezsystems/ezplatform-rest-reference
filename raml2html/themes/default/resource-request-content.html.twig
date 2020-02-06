@@ -1,6 +1,6 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}_request">
+<div id="{{ resource_unique_id }}_{{ method.type }}_request" class="mb-5">
     {% if method.bodies %}
-        <h5 class="heading text-gray pt-3">Request</h5>
+        <h5 class="heading text-gray">Request</h5>
         {% for key, body in method.bodies %}
             <p><strong>Body</strong></p>
             <table class="table highlight striped">
