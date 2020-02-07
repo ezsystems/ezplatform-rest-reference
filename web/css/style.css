@@ -119,12 +119,15 @@ h6 {
 .table {
     max-width: 100%;
     border-radius: .2rem;
+    margin-bottom: 0;
 }
 .table th {
-    background-color: rgba(0,0,0,.54);
-    color: #fff;
+    background-color: #f9f9fa;
+    color: #808080;
     vertical-align: top;
-    padding: .5rem;
+}
+.table td, .table th {
+    padding: .25rem;
 }
 .table:not([class]) td {
     border-top: .1rem solid rgba(0,0,0,.07);
@@ -163,7 +166,7 @@ code {
 }
 
 .badge--delete {
-    background-color: #f44336!important;
+    background-color: #bd2c00!important;
 }
 
 .badge--put {
@@ -181,11 +184,20 @@ code {
 .badge--options {
     background-color: #616161!important;
 }
-.badge--copy, .badge--publish, .badge--swap {
+.badge--copy {
     background-color: #26a69a!important;
 }
 .background--gray {
     background-color: #fcfcfc;
+}
+.badge--publish {
+    background-color: #df5000;
+}
+.badge--swap {
+    background-color: #005cc5;
+}
+.badge--move {
+    background-color: #032f62;
 }
 .section {
     padding-top: 3rem;
@@ -193,8 +205,11 @@ code {
 .example {
     border-radius: 10px;
 }
-
 .examples code {
     background-color: transparent;
     box-shadow: none;
+}
+.hljs-section,
+.hljs-name {
+    color: #0086b3;
 }

@@ -1,34 +1,36 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}_request" class="mb-5">
+<div id="{{ resource_unique_id }}_{{ method.type }}_request" class="mb-4">
     {% if method.bodies %}
         <h5 class="heading text-gray">Request</h5>
         {% for key, body in method.bodies %}
             <p><strong>Body</strong></p>
-            <table class="table highlight striped">
-                <tbody>
-                <tr>
-                    <th>Media type</th>
-                    <td>{{ body.mediaType }}</td>
-                </tr>
-
-                {% if body.description %}
+            <div class="table-responsive mb-3">
+                <table class="table highlight striped">
+                    <tbody>
                     <tr>
-                        <th>Description</th>
-                        <td>{{ body.description }}</td>
+                        <th>Media type</th>
+                        <td>{{ body.mediaType }}</td>
                     </tr>
-                {% endif %}
 
-                {% if body.type %}
-                    <tr>
-                        <th>Schema</th>
-                        <td>
-                            {% include theme ~ "/type.html.twig" with {
-                                type: body.type
-                            }%}
-                        </td>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
+                    {% if body.description %}
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ body.description }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if body.type %}
+                        <tr>
+                            <th>Schema</th>
+                            <td>
+                                {% include theme ~ "/type.html.twig" with {
+                                    type: body.type
+                                }%}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
             {% if body.examples %}
                 {% for example in body.examples %}
                     <div class="example">
