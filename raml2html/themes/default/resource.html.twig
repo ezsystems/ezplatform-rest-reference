@@ -1,7 +1,9 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <div class="row px-3 border-top pr-lg-0">
-        <div id="{{ method.displayName|replace({' ': '_'})|lower }}"  class="page-section col-lg-6 py-5">
+    <div class="row px-3 py-5 border-top pr-lg-0">
+        <div class="col-12">
             <h5 class="heading text-gray">{{ method.displayName}}</h5>
+        </div>
+        <div id="{{ method.displayName|replace({' ': '_'})|lower }}"  class="page-section col-lg-6">
             <p><span class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span> {{ resource.uri }}</p>
             <p>{{ method.description }}</p>
             {% if method.headers %}
@@ -9,7 +11,7 @@
                     <h6 class="heading text-gray">Header parameters</h6>
                     {% for item in method.headers %}
                         <div class="mb-2">
-                            <p class="mt-3 mb-0"><strong>{{ item.key }}</strong></p>
+                            <p class="mt-3 mb-0 font-weight-medium">{{ item.key }}</p>
                             <p>{{ item.description }}</p>
                             <div class="table-responsive mb-2">
                                 <table class="table">
@@ -80,7 +82,7 @@
                 </div>
             {% endif %}
         </div>
-        <div class="col-lg-6 py-5 px-3 examples">
+        <div class="col-lg-6 px-3 examples">
             {% set has_request = method.queryParameters or method.headers or method.bodies %}
             {% set has_response = method.responses is not empty %}
             {% set has_securedby = method.securitySchemes is not empty %}

@@ -1,8 +1,8 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}_request" class="mb-4">
+<div id="{{ resource_unique_id }}_{{ method.type }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
     {% if method.bodies %}
-        <h5 class="heading text-gray">Request</h5>
+        <h6 class="heading text-gray">Request</h6>
         {% for key, body in method.bodies %}
-            <p><strong>Body</strong></p>
+            <p class="font-weight-medium">Body</p>
             <div class="table-responsive mb-3">
                 <table class="table highlight striped">
                     <tbody>
@@ -10,14 +10,12 @@
                         <th>Media type</th>
                         <td>{{ body.mediaType }}</td>
                     </tr>
-
                     {% if body.description %}
                         <tr>
                             <th>Description</th>
                             <td>{{ body.description }}</td>
                         </tr>
                     {% endif %}
-
                     {% if body.type %}
                         <tr>
                             <th>Schema</th>
@@ -37,7 +35,7 @@
                         {% set mediaTypeFormat = body.mediaType|split('.')|last %}
                         {% set mediaType = mediaTypeFormat ?? '' %}
                         <div class="example position-relative border p-3 mb-3">
-                            <p class="mb-0"><strong>{{ mediaType }}</strong></p>
+                            <p class="mb-0">{{ mediaType }}</p>
                             <p class="mb-0 icon icon--copy-clipboard"><i class="material-icons-outlined">
                                     file_copy
                                 </i>
