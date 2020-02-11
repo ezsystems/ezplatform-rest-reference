@@ -1,9 +1,9 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
-    <div class="row px-3 py-5 border-top pr-lg-0">
-        <div class="col-12">
+    <div id="{{ method.displayName|replace({' ': '_'})|lower }}" class="row px-3 border-top pr-lg-0">
+        <div class="col-12 pt-5">
             <h5 class="heading text-gray">{{ method.displayName}}</h5>
         </div>
-        <div id="{{ method.displayName|replace({' ': '_'})|lower }}"  class="page-section col-lg-6">
+        <div class="page-section col-lg-6">
             <p><span class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span> {{ resource.uri }}</p>
             <p>{{ method.description }}</p>
             {% if method.headers %}
@@ -111,14 +111,14 @@
 
 
 
-{#    <div class="section">#}
-{#        <!--#}
+    {#    <div class="section">#}
+    {#        <!--#}
 
 
-{#        -->#}
-{#        <div >#}
+    {#        -->#}
+    {#        <div >#}
 
 
-{#        </div>#}
-{#    </div>#}
+    {#        </div>#}
+    {#    </div>#}
 </div>
