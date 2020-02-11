@@ -1,6 +1,6 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
     {% if method.bodies %}
-        <h6 class="heading text-gray">Request</h6>
+        <h6 class="heading text-gray background--gray-light d-inline-block">Request</h6>
         {% for key, body in method.bodies %}
             <p class="font-weight-medium">Body</p>
             <div class="table-responsive mb-3">
@@ -36,7 +36,8 @@
                         {% set mediaType = mediaTypeFormat ?? '' %}
                         <div class="example position-relative border p-3 mb-3">
                             <p class="mb-0">{{ mediaType }}</p>
-                            <p class="mb-0 icon icon--copy-clipboard"><i class="material-icons-outlined">
+                            <p class="mb-0 icon icon--copy-clipboard">
+                                <i class="material-icons-outlined" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">
                                     file_copy
                                 </i>
                             </p>

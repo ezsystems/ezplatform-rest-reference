@@ -8,7 +8,7 @@
             <p>{{ method.description }}</p>
             {% if method.headers %}
                 <div class="py-3">
-                    <h6 class="heading text-gray">Header parameters</h6>
+                    <h6 class="heading text-gray background--gray-light d-inline-block">Header parameters</h6>
                     {% for item in method.headers %}
                         <div class="mb-2">
                             <p class="mt-3 mb-0 font-weight-medium">{{ item.key }}</p>
@@ -53,7 +53,7 @@
             {% endif %}
             {% if method.responses %}
                 <div class="py-3">
-                    <h6 class="heading text-gray">Possible responses</h6>
+                    <h6 class="heading text-gray background--gray-light d-inline-block">Possible responses</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

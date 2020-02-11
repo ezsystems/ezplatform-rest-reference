@@ -1,7 +1,7 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}_response">
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
-            <h6 class="heading text-gray">Responses</h6>
+            <h6 class="heading text-gray background--gray-light d-inline-block">Responses</h6>
             <div id="{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}">
                 {% if response.headers %}
                     <ul class="collection with-header">
@@ -25,9 +25,8 @@
                                     {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
                                     <div class="example position-relative border p-3 mb-3">
                                         <p class="mb-0 font-weight-medium">{{ mediaType }}</p>
-                                        <p class="mb-0 icon icon--copy-clipboard"><i class="material-icons-outlined">
-                                                file_copy
-                                            </i>
+                                        <p class="mb-0 icon icon--copy-clipboard">
+                                            <i class="material-icons-outlined" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">file_copy</i>
                                         </p>
                                         <pre class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
                                     </div>
