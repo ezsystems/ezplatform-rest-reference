@@ -1,14 +1,14 @@
 <div id="{{ resource_unique_id }}_{{ method.type }}">
     <div id="{{ method.displayName|replace({' ': '_'})|lower }}" class="row px-3 border-top pr-lg-0">
         <div class="col-12 pt-5">
-            <h5 class="heading text-gray">{{ method.displayName}}</h5>
+            <h5 class="heading text-gray font-weight-medium">{{ method.displayName}}</h5>
         </div>
         <div class="page-section col-lg-6">
             <p><span class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span> {{ resource.uri }}</p>
             <p>{{ method.description }}</p>
             {% if method.headers %}
                 <div class="py-3">
-                    <h6 class="heading text-gray background--gray-light d-inline-block">Header parameters</h6>
+                    <h6 class="heading text-gray border-bottom pb-2">Header parameters</h6>
                     {% for item in method.headers %}
                         <div class="mb-2">
                             <p class="mt-3 mb-0 font-weight-medium">{{ item.key }}</p>
@@ -32,7 +32,7 @@
             {% endif %}
             {% if method.queryParameters %}
                 <div class="py-3">
-                    <h6 class="heading text-gray">Query parameters</h6>
+                    <h6 class="heading text-gray border-bottom pb-2">Query parameters</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -53,7 +53,7 @@
             {% endif %}
             {% if method.responses %}
                 <div class="py-3">
-                    <h6 class="heading text-gray background--gray-light d-inline-block">Possible responses</h6>
+                    <h6 class="heading text-gray border-bottom pb-2">Possible responses</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

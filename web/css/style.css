@@ -83,7 +83,7 @@ body {
     left: 0;
     top: 0;
     height: 100%;
-    z-index: 9999;
+    z-index: 1;
     margin-top: 3rem;
     padding-bottom: 3rem;
 }
@@ -211,9 +211,6 @@ code {
 }
 .background--gray {
     background-color: #fcfcfc;
-}
-.background--gray-light {
-    background-color: #eef1f3;
 }
 .badge--publish {
     background-color: #df5000;
