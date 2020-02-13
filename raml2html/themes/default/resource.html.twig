@@ -1,4 +1,4 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}">
+<div id="{{ method.type }}">
     <div id="{{ method.displayName|replace({' ': '_'})|lower }}" class="row px-3 border-top pr-lg-0">
         <div class="col-12 pt-5">
             <h5 class="heading text-gray font-weight-medium">{{ method.displayName}}</h5>
@@ -66,7 +66,7 @@
                             {% for response in method.responses %}
                                 <tr>
                                     <td>
-                                        <a href="#{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}"
+                                        <a href="#{{ method.type }}_response_{{ response.statusCode }}"
                                            class="text-ocean-blue {% if loop.first %}{% endif %}">
                                             {{ response.statusCode }}
                                         </a>

@@ -73,7 +73,6 @@
             <div class="page-wrapper col-lg-10 pt-5">
                 <div class="container-fluid">
                     {% for resource in api.resources %}
-                        {% set resource_unique_id = uuid() %}
                         <section id="{{ resource.displayName|replace({' ': '_'})|lower }}" class="section page-section">
                             <h2 class="heading pb-2 text-orange">{{ resource.displayName|default(resource.uri) }}</h2>
                             {% include theme ~ "/resource-group.html.twig" %}
@@ -107,7 +106,20 @@
 <script>
     $('[data-toggle="tooltip"]').tooltip();
     hljs.initHighlightingOnLoad();
-    new ClipboardJS('.clipboard');
+
+    const clipboard = new ClipboardJS('.clipboard');
+    clipboard.on('success', (e) => {
+        e.clearSelection();
+        const trigger = e.trigger;
+        const originalTitle = trigger.dataset.originalTitle;
+        trigger.dataset.originalTitle = 'Copied';
+        $(trigger).tooltip('show');
+        $(trigger).on('hidden.bs.tooltip', (setOriginalTitle(trigger, originalTitle)));
+    });
+
+    function setOriginalTitle(element, title) {
+        element.dataset.originalTitle = title;
+    }
 </script>
 <script src="web/js/custom.js"></script>
 <script>

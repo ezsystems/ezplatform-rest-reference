@@ -1,4 +1,4 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
+<div id="{{ method.type }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
     {% if method.bodies %}
         <h6 class="heading text-gray border-bottom pb-2">Request</h6>
         {% for key, body in method.bodies %}
@@ -33,14 +33,18 @@
                     <div class="example">
                         {% set mediaTypeFormat = body.mediaType|split('.')|last %}
                         {% set mediaType = mediaTypeFormat ?? '' %}
+                        {% set clipboardId = mediaType ~ '_' ~ uuid() %}
                         <div class="example position-relative border p-3 mb-3">
                             <p class="mb-0">{{ mediaType }}</p>
                             <p class="mb-0 icon icon--copy-clipboard">
-                                <i class="material-icons-outlined" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">
-                                    file_copy
+                                <i class="material-icons-outlined clipboard"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   data-clipboard-target="#{{ clipboardId }}"
+                                   title="Copy to clipboard">file_copy
                                 </i>
                             </p>
-                            <pre class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
+                            <pre id="{{ clipboardId }}" class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
                         </div>
                     </div>
                 {% endfor %}

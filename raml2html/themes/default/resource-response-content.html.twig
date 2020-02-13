@@ -1,8 +1,8 @@
-<div id="{{ resource_unique_id }}_{{ method.type }}_response">
+<div id="{{ method.type }}_response">
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
             <h6 class="heading text-gray border-bottom pb-2">Responses</h6>
-            <div id="{{ resource_unique_id }}_{{ method.type }}_response_{{ response.statusCode }}">
+            <div id="{{ method.type }}_response_{{ response.statusCode }}">
                 {% if response.headers %}
                     <ul class="collection with-header">
                         <li class="collection-item">
@@ -21,12 +21,15 @@
                             {% if b.examples %}
                                 {% for example in b.examples %}
                                     {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
+                                    {% set clipboardId = mediaType ~ '_' ~ uuid() %}
                                     <div class="example position-relative border p-3 mb-3">
                                         <p class="mb-0 font-weight-medium">{{ mediaType }}</p>
-                                        <p class="mb-0 icon icon--copy-clipboard">
-                                            <i class="material-icons-outlined clipboard" data-toggle="tooltip" data-placement="top" data-clipboard-target="#foo" title="Copy to clipboard">file_copy</i>
-                                        </p>
-                                        <pre id="" class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
+                                        <a class="mb-0 icon icon--copy-clipboard clipboard" data-toggle="tooltip" data-placement="top" data-clipboard-target="#{{ clipboardId }}" title="Copy to clipboard">
+                                            <i class="material-icons-outlined">file_copy</i>
+                                        </a>
+                                        <pre class="border-top">
+                                            <code id="{{ clipboardId }}" class="{{ mediaType }}">{{ example }}</code>
+                                        </pre>
                                     </div>
                                 {% endfor %}
                             {% endif %}
