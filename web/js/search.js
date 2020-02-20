@@ -62,7 +62,6 @@ function search(event) {
     }
     if (this.value.length > 0 && this.value.trim()) {
         searchResults.classList.remove('d-none');
-        console.log(validateSearchValue(this.value));
         let results = index.search(`${validateSearchValue(this.value)}*`);
         showResults(results.slice(0,10));
     } else {
@@ -71,11 +70,7 @@ function search(event) {
 }
 
 function validateSearchValue(value) {
-    if (isEndpointUrl(value) && value.charAt(0) !== '/') {
-        return `/${value}`;
-    }
-
-    return value;
+    return isEndpointUrl(value) && value.charAt(0) !== '/' ? `/${value}` : value;
 }
 
 function isEndpointUrl(value) {
