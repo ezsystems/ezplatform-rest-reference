@@ -25,8 +25,6 @@ dropdownMenu.addEventListener('click', event => {
     hideResultsBlock();
 });
 
-console.log(index);
-
 function configureIndexBuilder() {
     builder.ref('id');
     builder.field('name', { boost: 10 });
