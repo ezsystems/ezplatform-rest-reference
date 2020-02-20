@@ -25,6 +25,8 @@ dropdownMenu.addEventListener('click', event => {
     hideResultsBlock();
 });
 
+console.log(index);
+
 function configureIndexBuilder() {
     builder.ref('id');
     builder.field('name', { boost: 10 });
@@ -33,7 +35,6 @@ function configureIndexBuilder() {
     builder.field('root');
 
     builder.pipeline.add(
-        lunr.trimmer,
         lunr.stopWordFilter
     );
 }
@@ -56,37 +57,35 @@ function addIndexes() {
 
 function search(event) {
     if (event.keyCode === 27) {
-        hideResults();
+        hideResultsBlock();
         this.value = '';
     }
     if (this.value.length > 0 && this.value.trim()) {
         searchResults.classList.remove('d-none');
-        let results = index.search(`${removeSpecialCharacters(this.value)}*`);
+        console.log(validateSearchValue(this.value));
+        let results = index.search(`${validateSearchValue(this.value)}*`);
         showResults(results.slice(0,10));
     } else {
         hideResultsBlock();
     }
 }
 
-function removeSpecialCharacters(str) {
-    const firstChar = str.charAt(0);
-
-    if (!hasSpecialCharacters(firstChar)) {
-        return  str;
+function validateSearchValue(value) {
+    if (isEndpointUrl(value) && value.charAt(0) !== '/') {
+        return `/${value}`;
     }
 
-    return str.slice(1);
+    return value;
 }
 
-function hasSpecialCharacters(str) {
-    const regex = '[/]';
-
-    return str.match(regex);
+function isEndpointUrl(value) {
+    return value.split('/').length > 1;
 }
 
 function showResults(results) {
+    searchResults.innerHTML = '<span class="search-result__close"><i class="material-icons">close</i></span>';
+
     if (results.length > 0) {
-        searchResults.innerHTML = '';
 
         results.forEach(result => {
             const endpointSection = document.getElementById(`${result.ref}-section`);
@@ -116,7 +115,7 @@ function showResults(results) {
             });
         });
     } else {
-        searchResults.innerHTML = '<p>No results</p>';
+        searchResults.innerHTML += '<p>No results</p>';
     }
 }
 

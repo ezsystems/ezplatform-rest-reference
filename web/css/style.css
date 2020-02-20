@@ -80,6 +80,9 @@ body {
     height: 100%;
     overflow-y: scroll;
 }
+.search-result__close {
+    cursor: pointer;
+}
 .search__link {
     color: #212529;
 }
