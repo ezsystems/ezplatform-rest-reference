@@ -1,7 +1,7 @@
 {% if (resource.methods or (resource.description and resource.parentUrl)) %}
     {% for method in resource.methods %}
         <li class="py-2">
-            <a href="#{{ method.displayName|replace({' ': '_'})|lower }}" class="navigation__link">
+            <a href="#{{ method.displayName|replace({' ': '-'})|lower }}" class="navigation__link">
                 {{ method.displayName }}
             </a>
         </li>

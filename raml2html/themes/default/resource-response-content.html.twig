@@ -2,7 +2,7 @@
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
             <h6 class="heading text-gray border-bottom pb-2">Responses</h6>
-            <div id="{{ method.type }}_response_{{ response.statusCode }}">
+            <div id="{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}">
                 {% if response.headers %}
                     <ul class="collection with-header">
                         <li class="collection-item">

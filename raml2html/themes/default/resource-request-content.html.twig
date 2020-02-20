@@ -1,4 +1,4 @@
-<div id="{{ method.type }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
+<div id="{{ sectionId }}_{{ method.type|lower }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
     {% if method.bodies %}
         <h6 class="heading text-gray border-bottom pb-2">Request</h6>
         {% for key, body in method.bodies %}

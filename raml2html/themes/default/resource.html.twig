@@ -1,11 +1,17 @@
-<div id="{{ method.type }}">
-    <div id="{{ method.displayName|replace({' ': '_'})|lower }}" class="row px-3 border-top pr-lg-0">
-        <div class="col-12 pt-5">
-            <h5 class="heading text-gray font-weight-medium">{{ method.displayName}}</h5>
+{% set methodNameId = method.displayName|replace({' ': '-'})|lower %}
+<div id="{{ methodNameId }}-section" class="page-section" data-parent="{{ rootParentName }}">
+    <div class="row px-3 border-top pr-lg-0">
+        <div class="col-12">
+            <h5 id="{{ methodNameId }}" class="heading text-gray font-weight-medium pt-5" data-field="name">
+                {{ method.displayName }}
+            </h5>
         </div>
-        <div class="page-section col-lg-6">
-            <p><span class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span> {{ resource.uri }}</p>
-            <p>{{ method.description }}</p>
+        <div class="col-lg-6">
+            <p>
+                <span data-field="method" class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span>
+                <span data-field="url">{{ resource.uri }}</span>
+            </p>
+            <p data-field="body">{{ method.description }}</p>
             {% if method.headers %}
                 <div class="py-3">
                     <h6 class="heading text-gray border-bottom pb-2">Header parameters</h6>
@@ -66,7 +72,7 @@
                             {% for response in method.responses %}
                                 <tr>
                                     <td>
-                                        <a href="#{{ method.type }}_response_{{ response.statusCode }}"
+                                        <a href="#{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}"
                                            class="text-ocean-blue {% if loop.first %}{% endif %}">
                                             {{ response.statusCode }}
                                         </a>
@@ -101,24 +107,4 @@
             {% endif %}
         </div>
     </div>
-
-    {#    <code class="bold">#}
-    {#        {% if resource.parentResource %}#}
-    {#            <span class="parent">#}{# {{ resource.parentResource.uri }} #}{#</span>#}
-    {#        {% endif %}#}
-    {#        {{ resource.uri }}#}
-    {#    </code>#}
-
-
-
-    {#    <div class="section">#}
-    {#        <!--#}
-
-
-    {#        -->#}
-    {#        <div >#}
-
-
-    {#        </div>#}
-    {#    </div>#}
 </div>

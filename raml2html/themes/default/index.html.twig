@@ -19,8 +19,8 @@
                 <a href="{{ api.baseUri }}" class="nav-brand text-center">
                     <img class="img-fluid" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
                 </a>
-                <div class="dropdown show">
-                    <a class="page-title text-orange btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown">
+                    <a class="page-title text-orange btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ api.title }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -36,12 +36,12 @@
 <main class="overflow-hidden">
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar-menu col-lg-2">
+            <div class="sidebar-menu pl-0 col-lg-2">
                 <div class="container text-left px-0">
                     <div class="sidebar__header">
                         <div class="d-flex justify-content-center mt-3">
                             <i class="material-icons icon--search">search</i>
-                            <input type="text" id="searchInput" class="input--search w-100 rounded-sm border-top-0 border-left-0 border-right-0" placeholder="Search">
+                            <input type="text" id="search-input" class="input--search w-100 rounded-sm border-top-0 border-left-0 border-right-0" placeholder="Search">
                         </div>
                     </div>
                     <nav class="sidebar__nav navbar navigation">
@@ -60,7 +60,7 @@
                             {% endif %}
                             {% for resource in api.resources %}
                                 <li class="py-2 menu-list-item menu-list-item--has-sub-items">
-                                    <a href="#{{ resource.displayName|replace({' ': '_'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
+                                    <a href="#{{ resource.displayName|replace({' ': '-'})|lower }}">{{ resource.displayName|default(resource.uri) }}</a>
                                     <ul class="list-unstyled menu-list pl-3">
                                         {% include theme ~ "/sidebar-menu.html.twig" %}
                                     </ul>
@@ -70,17 +70,21 @@
                     </nav>
                 </div>
             </div>
-            <div class="page-wrapper col-lg-10 pt-5">
+            <div id="search-results" class="py-5 px-3 d-none col-lg-10"></div>
+            <div class="page-wrapper col-lg-10">
                 <div class="container-fluid">
                     {% for resource in api.resources %}
-                        <section id="{{ resource.displayName|replace({' ': '_'})|lower }}" class="section page-section">
-                            <h2 class="heading pb-2 text-orange">{{ resource.displayName|default(resource.uri) }}</h2>
+                        <section class="section search-container">
+                            {% set rootParentName = resource.displayName|default(resource.uri) %}
+                            <h2 id="{{ resource.displayName|replace({' ': '-'})|lower }}" class="heading pt-5 pb-2 text-orange" data-field="name">
+                                {{ rootParentName }}
+                            </h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>
                     {% endfor %}
                     {% if api.types is not empty %}
-                        <section id="types" class="section page-section">
-                            <h2 class="heading pb-2 text-orange">Types</h2>
+                        <section class="section search-container">
+                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>
                             <ul class="list-unstyled">
                                 {% for type in api.types %}
                                     <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>
@@ -100,58 +104,17 @@
 </footer>
 
 <script src="web/js/jquery.min.js"></script>
+<script src="web/js/highlight.js"></script>
 <script src="web/js/bootstrap.bundle.min.js"></script>
 <script src="web/js/clipboard.min.js"></script>
+<script src="web/js/lunr.js"></script>
+<script src="web/js/search.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>
+    $('.dropdown-toggle').dropdown();
     $('[data-toggle="tooltip"]').tooltip();
     hljs.initHighlightingOnLoad();
-
-    const clipboard = new ClipboardJS('.clipboard');
-    clipboard.on('success', (e) => {
-        e.clearSelection();
-        const trigger = e.trigger;
-        const originalTitle = trigger.dataset.originalTitle;
-        trigger.dataset.originalTitle = 'Copied';
-        $(trigger).tooltip('show');
-        $(trigger).on('hidden.bs.tooltip', (setOriginalTitle(trigger, originalTitle)));
-    });
-
-    function setOriginalTitle(element, title) {
-        element.dataset.originalTitle = title;
-    }
 </script>
 <script src="web/js/custom.js"></script>
-<script>
-    // $(document).ready(function () {
-    //     M.AutoInit();
-    //     $('pre code').each(function (i, block) {
-    //         hljs.highlightBlock(block);
-    //     });
-    //
-    //     $('.collapsible').collapsible({
-    //         accordion: false
-    //     });
-    // });
-    //
-    // $("#searchInput").keyup(function () {
-    //     var searchValue = $('#searchInput').val();
-    //     searchValue = searchValue === "" ? '.' : searchValue;
-    //     var regex = new RegExp(searchValue, "i");
-    //     $('.search-filter').each(function (i, e) {
-    //         var value = $(e).children('.search-filter-value')[0].innerHTML;
-    //         if (regex.test(value)) {
-    //             $(e).show();
-    //         } else {
-    //             $(e).hide();
-    //         }
-    //     });
-    // });
-    //
-    // function copyToClipboard(selector) {
-    //     $(selector).select();
-    //     document.execCommand("copy");
-    // }
-</script>
 </body>
 </html>
