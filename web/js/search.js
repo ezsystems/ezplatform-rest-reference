@@ -25,12 +25,14 @@ dropdownMenu.addEventListener('click', event => {
     hideResultsBlock();
 });
 
+console.log(index);
+
 function configureIndexBuilder() {
     builder.ref('id');
-    builder.field('name', { boost: 10 });
+    builder.field('name');
     builder.field('body');
-    builder.field('url');
     builder.field('root');
+    builder.field('url');
 
     builder.pipeline.add(
         lunr.stopWordFilter
@@ -39,17 +41,30 @@ function configureIndexBuilder() {
 
 function addIndexes() {
     searchSections.forEach(searchSection => {
-        let name = getEndpointName(searchSection);
-        let body = getEndpointBody(searchSection);
-        let url = getEndpointUrl(searchSection);
+        const name = getEndpointName(searchSection);
+        const body = getEndpointBody(searchSection);
+        const url = getEndpointUrl(searchSection);
+        const urlParts = url.textContent.split('/').slice(1);
 
-        builder.add({
-            id: name.id,
-            name: name.textContent.trim(),
-            body: body ? body.textContent : '',
-            url: url.textContent,
-            root: searchSection.dataset.parent
+        urlParts.forEach(urlPart => {
+            addIndex(
+                name.id,
+                name.textContent.trim(),
+                body ? body.textContent : '',
+                searchSection.dataset.parent,
+                `/${urlPart}`
+            );
         });
+    });
+}
+
+function addIndex(id, name, body, root, url) {
+    builder.add({
+        id: id,
+        name: name,
+        body: body,
+        root: root,
+        url: url
     });
 }
 
@@ -60,26 +75,54 @@ function search(event) {
     }
     if (this.value.length > 0 && this.value.trim()) {
         searchResults.classList.remove('d-none');
-        let results = index.search(`${validateSearchValue(this.value)}*`);
+        let results = getResults(this.value)
         showResults(results.slice(0,10));
     } else {
         hideResultsBlock();
     }
 }
 
-function validateSearchValue(value) {
-    return isEndpointUrl(value) && value.charAt(0) !== '/' ? `/${value}` : value;
+function getResults(searchValue) {
+    return index.search(`${parseSearchValue(searchValue)}`);
 }
 
-function isEndpointUrl(value) {
-    return value.split('/').length > 1;
+function parseSearchValue(searchValue) {
+    if (isLogicalAnd(searchValue)) {
+        return buildLogicalAnd(searchValue);
+    } else if (isEndpointUrl(searchValue)) {
+        return `${parseEndpointUrl(searchValue)}*`;
+    }
+
+    return `${searchValue}*`;
+}
+
+function isLogicalAnd(searchValue) {
+    return searchValue.charAt(0) === '"'
+        && searchValue.charAt(searchValue.length-1) === '"';
+}
+
+function isEndpointUrl(searchValue) {
+    return searchValue.split('/').length > 1;
+}
+
+function parseEndpointUrl(url) {
+    return url.charAt(0) !== '/' ? `/${url}` : url;
+}
+
+function buildLogicalAnd(searchValue) {
+    let value = searchValue.split(' ').join(' +').slice(1,-1);
+
+    if (value.charAt(value.length-1) === '+') {
+        value = value.slice(0, -1);
+    }
+
+    return value.length > 0 && value.charAt(0) !== '+' ? `+${value}` : value;
 }
 
 function showResults(results) {
-    searchResults.innerHTML = '<span class="search-result__close"><i class="material-icons">close</i></span>';
+    searchResults.innerHTML = '<span class="search-result__close text-gray"><i class="material-icons">close</i></span>';
 
     if (results.length > 0) {
-
         results.forEach(result => {
             const endpointSection = document.getElementById(`${result.ref}-section`);
             let resultRow = document.createElement('div');
@@ -108,7 +151,7 @@ function showResults(results) {
             });
         });
     } else {
-        searchResults.innerHTML += '<p>No results</p>';
+        searchResults.innerHTML += '<p class="text-gray">No results</p>';
     }
 }
 
