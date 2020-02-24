@@ -12,6 +12,14 @@ addIndexes();
 index = builder.build();
 
 searchInput.addEventListener('keyup', search);
+
+document.addEventListener('keyup', event => {
+    if (event.keyCode === 27) {
+        hideResultsBlock();
+        this.value = '';
+    }
+});
+
 document.addEventListener('click', event => {
     if (event.target !== searchResults) {
         hideResultsBlock();
@@ -21,11 +29,10 @@ document.addEventListener('click', event => {
         showResultsBlock();
     }
 });
+
 dropdownMenu.addEventListener('click', event => {
     hideResultsBlock();
 });
-
-console.log(index);
 
 function configureIndexBuilder() {
     builder.ref('id');
@@ -33,10 +40,6 @@ function configureIndexBuilder() {
     builder.field('body');
     builder.field('root');
     builder.field('url');
-
-    builder.pipeline.add(
-        lunr.stopWordFilter
-    );
 }
 
 function addIndexes() {
@@ -72,11 +75,6 @@ function addIndex(id, name, body, root, url) {
 }
 
 function search(event) {
-    if (event.keyCode === 27) {
-        hideResultsBlock();
-        this.value = '';
-    }
-
     if (this.value.length > 0 && this.value.trim()) {
         showResultsBlock();
         showResults(
@@ -87,18 +85,18 @@ function search(event) {
     }
 }
 
-function getResults(searchValue, limit = 100) {
+function getResults(searchValue) {
     const results = executeQuery(searchValue, buildQuery(searchValue));
 
     if (results.length === 0 && isLogicalAnd(searchValue)) {
-        return executeQuery(searchValue, getLogicalAndQueryWithLeadingAndTrailingWildcards()).slice(0,limit);
+        return executeQuery(searchValue, getLogicalAndQueryWithLeadingAndTrailingWildcards());
     }
 
     if (results.length === 0 && !isLogicalAnd(searchValue)) {
-        return executeQuery(searchValue, getQueryWithLeadingAndTrailingWildcards()).slice(0,limit);
+        return executeQuery(searchValue, getQueryWithLeadingAndTrailingWildcards());
     }
 
-    return results.slice(0,limit);
+    return results;
 }
 
 function executeQuery(searchValue, options) {
@@ -163,8 +161,11 @@ function showResults(results) {
 
             resultRow.innerHTML = `<a href="#${result.ref }" class="search__link py-3 d-block">
                         <p class="font-weight-medium">
-                            ${getEndpointMethod(endpointSection).outerHTML}
                             ${name.textContent} - <span class="text-orange">${endpointSection.dataset.parent}</span>
+                        </p>
+                        <p>
+                            ${getEndpointMethod(endpointSection).outerHTML}
+                            ${getEndpointUrl(endpointSection).outerHTML}
                         </p>
                         <p class="mb-0">${body.textContent.trim()}</p>
                     </a>`;

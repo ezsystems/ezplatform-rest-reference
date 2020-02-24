@@ -7,12 +7,12 @@
             </h5>
         </div>
         <div class="col-lg-6">
-            <div data-field="body">
+            <div>
                 <p>
                     <span data-field="method" class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span>
                     <span data-field="url">{{ resource.uri }}</span>
                 </p>
-                <p>{{ method.description }}</p>
+                <p data-field="body">{{ method.description }}</p>
             </div>
             {% if method.headers %}
                 <div class="py-3">
