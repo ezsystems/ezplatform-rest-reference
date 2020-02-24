@@ -2,41 +2,41 @@
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
             <h6 class="heading text-gray border-bottom pb-2">Responses</h6>
-            <div id="{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}">
-                {% if response.headers %}
-                    <ul class="collection with-header">
-                        <li class="collection-item">
-                            <ul class="browser-default">
-                                {% for item in response.headers %}
-                                    {% include theme ~ "/named-parameter.html.twig" %}
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    </ul>
-                {% endif %}
-                {% if response.bodies %}
-                    <div class="pb-3">
-                        <p><code>Code: {{ response.statusCode }}</code></p>
-                        {% for b in response.bodies %}
-                            {% if b.examples %}
-                                {% for example in b.examples %}
-                                    {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
-                                    {% set clipboardId = mediaType ~ '_' ~ uuid() %}
-                                    <div class="example position-relative border p-3 mb-3">
-                                        <p class="mb-0 font-weight-medium">{{ mediaType }}</p>
-                                        <a class="mb-0 icon icon--copy-clipboard clipboard" data-toggle="tooltip" data-placement="top" data-clipboard-target="#{{ clipboardId }}" title="Copy to clipboard">
-                                            <i class="material-icons-outlined">file_copy</i>
-                                        </a>
-                                        <pre class="border-top">
+            {% if response.headers %}
+                <ul class="collection with-header">
+                    <li class="collection-item">
+                        <ul class="browser-default">
+                            {% for item in response.headers %}
+                                {% include theme ~ "/named-parameter.html.twig" %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            {% endif %}
+            {% if response.bodies %}
+                <div class="pb-3">
+                    <p id="{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}">
+                        <code>Code: {{ response.statusCode }}</code>
+                    </p>
+                    {% for b in response.bodies %}
+                        {% if b.examples %}
+                            {% for example in b.examples %}
+                                {% set mediaType = b.mediaType|split('+')[1] is defined ? b.mediaType|split('+')[1] : '' %}
+                                {% set clipboardId = mediaType ~ '_' ~ uuid() %}
+                                <div class="example position-relative border p-3 mb-3">
+                                    <p class="mb-0 font-weight-medium">{{ mediaType }}</p>
+                                    <a class="mb-0 icon icon--copy-clipboard clipboard" data-toggle="tooltip" data-placement="top" data-clipboard-target="#{{ clipboardId }}" title="Copy to clipboard">
+                                        <i class="material-icons-outlined">file_copy</i>
+                                    </a>
+                                    <pre class="border-top">
                                             <code id="{{ clipboardId }}" class="{{ mediaType }}">{{ example }}</code>
                                         </pre>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
 </div>

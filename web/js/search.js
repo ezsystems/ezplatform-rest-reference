@@ -79,8 +79,6 @@ function search(event) {
     }
 }
 
-console.log(index);
-
 function getResults(searchValue) {
     const results = executeQuery(searchValue, buildQuery(searchValue));
 
@@ -101,29 +99,6 @@ function executeQuery(searchValue, options) {
     });
 }
 
-function buildQuery(searchValue) {
-    if (isLogicalAnd(searchValue)) {
-        return buildLogicalAndQuery();
-    }
-
-    return {
-        wildcard: lunr.Query.wildcard.LEADING
-    }
-}
-
-function getQueryWithLeadingAndTrailingWildcards() {
-    return {
-        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
-    }
-}
-
-function getLogicalAndQueryWithLeadingAndTrailingWildcards() {
-    return {
-        presence: lunr.Query.presence.REQUIRED,
-        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
-    }
-}
-
 function parseSearchValue(searchValue) {
     if (!isLogicalAnd(searchValue)) {
         return searchValue;
@@ -141,6 +116,29 @@ function buildLogicalAndQuery() {
     return {
         presence: lunr.Query.presence.REQUIRED
     };
+}
+
+function buildQuery(searchValue) {
+    if (isLogicalAnd(searchValue)) {
+        return buildLogicalAndQuery();
+    }
+
+    return {
+        wildcard: lunr.Query.wildcard.TRAILING
+    }
+}
+
+function getQueryWithLeadingAndTrailingWildcards() {
+    return {
+        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+    }
+}
+
+function getLogicalAndQueryWithLeadingAndTrailingWildcards() {
+    return {
+        presence: lunr.Query.presence.REQUIRED,
+        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+    }
 }
 
 function showResults(results) {
@@ -183,7 +181,7 @@ function showResults(results) {
 }
 
 function highlight() {
-    const words = searchInput.value.split(' ');
+    let words = searchInput.value.replace(/[.*"]/g, '').split(' ');
 
     $(searchResults).highlight(words);
 }
