@@ -45,8 +45,11 @@ function addIndexes() {
         const body = getEndpointBody(searchSection);
         const url = getEndpointUrl(searchSection);
         const urlParts = url.textContent.split('/').slice(1);
+        let urlString = '';
 
         urlParts.forEach(urlPart => {
+            urlString += `/${urlPart}`;
+
             addIndex(
                 name.id,
                 name.textContent.trim(),
@@ -73,27 +76,66 @@ function search(event) {
         hideResultsBlock();
         this.value = '';
     }
+
     if (this.value.length > 0 && this.value.trim()) {
-        searchResults.classList.remove('d-none');
-        let results = getResults(this.value)
-        showResults(results.slice(0,10));
+        showResultsBlock();
+        showResults(
+            getResults(this.value)
+        );
     } else {
         hideResultsBlock();
     }
 }
 
-function getResults(searchValue) {
-    return index.search(`${parseSearchValue(searchValue)}`);
+function getResults(searchValue, limit = 100) {
+    const results = executeQuery(searchValue, buildQuery(searchValue));
+
+    if (results.length === 0 && isLogicalAnd(searchValue)) {
+        return executeQuery(searchValue, getLogicalAndQueryWithLeadingAndTrailingWildcards()).slice(0,limit);
+    }
+
+    if (results.length === 0 && !isLogicalAnd(searchValue)) {
+        return executeQuery(searchValue, getQueryWithLeadingAndTrailingWildcards()).slice(0,limit);
+    }
+
+    return results.slice(0,limit);
+}
+
+function executeQuery(searchValue, options) {
+    return index.query(query => {
+        query.term(lunr.tokenizer(parseSearchValue(searchValue)), options);
+    });
+}
+
+function buildQuery(searchValue) {
+    if (isLogicalAnd(searchValue)) {
+        return buildLogicalAndQuery();
+    }
+
+    return {
+        wildcard: lunr.Query.wildcard.LEADING
+    }
+}
+
+function getQueryWithLeadingAndTrailingWildcards() {
+    return {
+        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+    }
+}
+
+function getLogicalAndQueryWithLeadingAndTrailingWildcards() {
+    return {
+        presence: lunr.Query.presence.REQUIRED,
+        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+    }
 }
 
 function parseSearchValue(searchValue) {
-    if (isLogicalAnd(searchValue)) {
-        return buildLogicalAnd(searchValue);
-    } else if (isEndpointUrl(searchValue)) {
-        return `${parseEndpointUrl(searchValue)}*`;
+    if (!isLogicalAnd(searchValue)) {
+        return searchValue;
     }
 
-    return `${searchValue}*`;
+    return searchValue.slice(1,-1);
 }
 
 function isLogicalAnd(searchValue) {
@@ -101,22 +143,10 @@ function isLogicalAnd(searchValue) {
         && searchValue.charAt(searchValue.length-1) === '"';
 }
 
-function isEndpointUrl(searchValue) {
-    return searchValue.split('/').length > 1;
-}
-
-function parseEndpointUrl(url) {
-    return url.charAt(0) !== '/' ? `/${url}` : url;
-}
-
-function buildLogicalAnd(searchValue) {
-    let value = searchValue.split(' ').join(' +').slice(1,-1);
-
-    if (value.charAt(value.length-1) === '+') {
-        value = value.slice(0, -1);
-    }
-
-    return value.length > 0 && value.charAt(0) !== '+' ? `+${value}` : value;
+function buildLogicalAndQuery() {
+    return {
+        presence: lunr.Query.presence.REQUIRED
+    };
 }
 
 function showResults(results) {
@@ -159,6 +189,7 @@ function highlight() {
     let words = searchInput.value.split(' ');
 
     words.forEach(word => {
+        word = word.replace(/[.*"]/g, '');
         $(searchResults).highlight(word);
     });
 }
