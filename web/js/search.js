@@ -47,20 +47,14 @@ function addIndexes() {
         const name = getEndpointName(searchSection);
         const body = getEndpointBody(searchSection);
         const url = getEndpointUrl(searchSection);
-        const urlParts = url.textContent.split('/').slice(1);
-        let urlString = '';
 
-        urlParts.forEach(urlPart => {
-            urlString += `/${urlPart}`;
-
-            addIndex(
-                name.id,
-                name.textContent.trim(),
-                body ? body.textContent : '',
-                searchSection.dataset.parent,
-                `/${urlPart}`
-            );
-        });
+        addIndex(
+            name.id,
+            name.textContent.trim(),
+            body ? body.textContent : '',
+            searchSection.dataset.parent,
+            `/${url.textContent.slice(1)}`
+        );
     });
 }
 
@@ -84,6 +78,8 @@ function search(event) {
         hideResultsBlock();
     }
 }
+
+console.log(index);
 
 function getResults(searchValue) {
     const results = executeQuery(searchValue, buildQuery(searchValue));
@@ -187,12 +183,9 @@ function showResults(results) {
 }
 
 function highlight() {
-    let words = searchInput.value.split(' ');
+    const words = searchInput.value.split(' ');
 
-    words.forEach(word => {
-        word = word.replace(/[.*"]/g, '');
-        $(searchResults).highlight(word);
-    });
+    $(searchResults).highlight(words);
 }
 
 function showResultsBlock() {
