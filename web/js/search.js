@@ -2,7 +2,7 @@
 
 let index = lunr.Index;
 const builder = new lunr.Builder;
-const searchSections = document.querySelectorAll('.page-section');
+const searchSections = document.querySelectorAll('.search-container');
 const searchResults = document.getElementById('search-results');
 const searchInput = document.getElementById('search-input');
 const dropdownMenu = document.getElementById('dropdownMenuLink');

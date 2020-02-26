@@ -1,30 +1,25 @@
 {% if (resource.methods or (resource.description and resource.parentUrl)) %}
     {% set sectionId = resource.displayName|replace({' ': '-'})|lower %}
-    <div class="row border-bottom border-top pt-3">
-        <div class="col-12 d-flex flex-column pl-4">
-            <h4 id="{{ sectionId }}" class="heading text-gray mr-4">{{ resource.uri }}</h4>
-            <ul class="list-unstyled d-inline-flex">
-                {% for method in resource.methods %}
-                    <li class="{{ loop.index > 1 ? 'px-3' : 'pr-3' }} ">
-                        <a href="#{{ method.displayName|replace({' ': '-'})|lower }}">
+    <div class="sticky-container">
+    <div class="border-bottom border-top pt-3 sticky">
+        <h4 id="{{ sectionId }}" class="heading text-gray mr-4">{{ resource.uri }}</h4>
+        <ul class="list-unstyled d-inline-flex">
+            {% for method in resource.methods %}
+                <li class="{{ loop.index > 1 ? 'px-3' : 'pr-3' }} ">
+                    <a href="#{{ method.displayName|replace({' ': '-'})|lower }}">
                            <span class="pl-0 new badge badge--{{ method.type|lower }}" data-badge-caption="{{ method.type }}">
                                 {{ method.type }}
                            </span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
     {% for method in resource.methods %}
-        <div class="row">
-            <div class="col-12">
-                {% include theme ~ "/resource.html.twig" %}
-            </div>
-        </div>
+        {% include theme ~ "/resource.html.twig" %}
     {% endfor %}
 {% endif %}
-
+    </div>
 {% for resource in resource.resources %}
     {% include theme ~ "/resource-endpoints.html.twig" %}
 {% endfor %}
