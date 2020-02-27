@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
-    <link href="web/css/bootstrap-toc.min.css" rel="stylesheet">
     <link href="web/fonts/MavenPro.css" rel="stylesheet">
     <link href="web/css/github-gist.css" rel="stylesheet">
     <link href="web/css/style.css" rel="stylesheet">
@@ -54,8 +53,10 @@
                     {% for resource in api.resources %}
                         <section class="section">
                             {% set rootParentName = resource.displayName|default(resource.uri) %}
-                            <h2 id="{{ resource.displayName|replace({' ': '-'})|lower }}" class="heading pt-5 pb-2 text-orange" data-field="name">
+                            {% set elemId = resource.displayName|replace({' ': '-'})|lower %}
+                            <h2 id="{{ elemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
                                 {{ rootParentName }}
+                                <a href="#{{ elemId }}" class="heading__link">¶</a>
                             </h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>

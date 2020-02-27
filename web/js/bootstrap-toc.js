@@ -80,7 +80,7 @@
       generateNavEl: function(anchor, text) {
         var $a = $('<a class="nav-link"></a>');
         $a.attr("href", "#" + anchor);
-        $a.text(text);
+        $a.text(text.replace(/[.¶]/g, ''));
         var $li = $("<li></li>");
         $li.append($a);
         return $li;
@@ -164,6 +164,8 @@
       opts.$nav.attr("data-toggle", "toc");
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
+      console.log($topContext);
+
       var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);

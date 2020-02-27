@@ -187,10 +187,12 @@ function highlight() {
 }
 
 function showResultsBlock() {
+    document.body.classList.add('overflow-hidden');
     searchResults.classList.remove('d-none');
 }
 
 function hideResultsBlock() {
+    document.body.classList.remove('overflow-hidden');
     searchResults.classList.add('d-none');
 }
 

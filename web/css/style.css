@@ -21,7 +21,18 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #f15a22;
 }
-/*.background--gray*/
+.heading:hover .heading__link {
+    display: inline-block;
+    color: #00000042;
+    text-decoration: none;
+}
+.heading:hover .heading__link:hover {
+    color: #f15a22;
+}
+.heading__link {
+    display: none;
+    text-decoration: none;
+}
 .header {
     height: 3rem;
 }
