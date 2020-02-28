@@ -146,6 +146,7 @@ function showResults(results) {
 
     if (results.length > 0) {
         results.forEach(result => {
+            console.log(result);
             const endpointSection = document.getElementById(`${result.ref}-section`);
             let resultRow = document.createElement('div');
             resultRow.classList.add('border-bottom');

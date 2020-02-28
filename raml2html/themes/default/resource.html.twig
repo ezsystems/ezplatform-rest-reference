@@ -1,8 +1,11 @@
 {% set methodNameId = method.displayName|replace({' ': '-'})|lower %}
-<div id="{{ methodNameId }}-section" class="search-container" data-parent="{{ rootParentName }}">
+<div id="{{ rootElemId ~ '-' ~ methodNameId }}-section" class="search-container" data-parent="{{ rootParentName }}">
     <div class="row px-3 pr-lg-0">
         <div class="col-12">
-            <h5 id="{{ methodNameId }}" class="heading text-gray font-weight-medium pt-5" data-field="name">
+            <h5 id="{{ rootElemId ~ '-' ~ methodNameId }}"
+                class="heading text-gray font-weight-medium pt-5"
+                data-field="name"
+                data-search="{{ methodNameId }}">
                 {{ method.displayName }}
                 <a href="#{{ methodNameId }}" class="heading__link">¶</a>
             </h5>
