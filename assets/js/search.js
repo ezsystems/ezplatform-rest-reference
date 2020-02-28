@@ -155,7 +155,7 @@ function showResults(results) {
 
             resultRow.innerHTML = `<a href="#${result.ref }" class="search__link py-3 d-block">
                         <p class="font-weight-medium">
-                            ${name.textContent} - <span class="text-orange">${endpointSection.dataset.parent}</span>
+                            ${name.textContent.replace(/[.¶]/g, '')} - <span class="text-orange">${endpointSection.dataset.parent}</span>
                         </p>
                         <p>
                             ${getEndpointMethod(endpointSection).outerHTML}
