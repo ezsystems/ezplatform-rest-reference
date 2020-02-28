@@ -6,7 +6,7 @@
         <ul class="list-unstyled d-inline-flex">
             {% for method in resource.methods %}
                 <li class="{{ loop.index > 1 ? 'px-3' : 'pr-3' }} ">
-                    <a href="#{{ method.displayName|replace({' ': '-'})|lower }}">
+                    <a href="#{{ rootElemId ~ '-' ~ method.displayName|replace({' ': '-'})|lower }}">
                            <span class="pl-0 new badge badge--{{ method.type|lower }}" data-badge-caption="{{ method.type }}">
                                 {{ method.type }}
                            </span>

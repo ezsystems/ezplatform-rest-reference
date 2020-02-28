@@ -4,93 +4,9 @@ title: eZ Platform REST API
 baseUri: http://localhost/
 #version: 2.5
 
-/:
-    displayName: Root resources
-    get:
-        displayName: List Root Resources
-        description: List the Root Resources of the eZ Platform installation.
-        headers:
-            Accept:
-                description: If set the list is return in XML or JSON format
-                type: string
-                example: |
-                    application/vnd.ez.api.Root+xml
-                    application/vnd.ez.api.Root+json
-        responses:
-            200:
-                body:
-                    application/vnd.ez.api.Root+xml:
-                        type: Root
-                        example: !include examples/GET/Root.xml.example
-                    application/vnd.ez.api.Root+json:
-                        type: Root
-                        example: !include examples/GET/Root.json.example
+/: !include ez-root.raml
 
-/bookmark:
-    displayName: Managing bookmarks
-    get:
-        displayName: List bookmarks
-        description: Lists bookmarked locations for the current user
-        queryParameters:
-            offset:
-                description: The offset of the result set
-                type: integer
-                default: 0
-            limit:
-                description: The number of bookmarks returned
-                type: integer
-                default: 25
-        headers:
-            Accept:
-                description: If set the list is returned in XML or JSON format
-                example: |
-                    application/vnd.ez.api.BookmarkList+xml
-                    application/vnd.ez.api.BookmarkList+json
-        responses:
-            200:
-                body:
-                    application/vnd.ez.api.BookmarkList+xml:
-                        type: BookmarkList
-                        example: !include examples/bookmark/GET/BookmarkList.xml.example
-                    application/vnd.ez.api.BookmarkList+json:
-                        type: BookmarkList
-                        example: !include examples/bookmark/GET/BookmarkList.json.example
-            401:
-                description: Error - the user is not authorized to list bookmarks
-    /{locationId}:
-        post:
-            displayName: Create bookmark
-            description: Add given Location to bookmarks of current user
-            responses:
-                201:
-                    description: Created
-                401:
-                    description: Error - the user is not authorized to given location
-                404:
-                    description: Error - a given Location not exists
-                409:
-                    description: Error - Location is already bookmarked
-        head:
-            displayName: Check if location is bookmarked
-            description: Check if given Location is bookmarked by current user
-            responses:
-                200:
-                    description: OK - bookmarked
-                401:
-                    description: Error - the user is not authorized to given location
-                404:
-                    description: Error - a given Location not exists / is not bookmarked
-
-        delete:
-            displayName: Delete bookmark
-            description: Delete given Location from bookmarks of current user
-            responses:
-                204:
-                    description: Deleted - no content
-                401:
-                    description: Error - the user is not authorized to given location
-                404:
-                    description: Error - a given Location not exists / is not bookmarked
+/bookmark: !include ez-bookmark.raml
 
 /content:
     displayName: Managing content
@@ -105,38 +21,8 @@ baseUri: http://localhost/
     /typegroups: !include ez-content-typegroups.raml
     /types: !include ez-content-types.raml
 
-/views:
-    displayName: Views
-    post:
-        displayName: Create View
-        description: Executes a query and returns view including the results the View input reflects the criteria model of the public API
-        headers:
-            Accept:
-                description: The view in XML or JSON format
-                example:  |
-                    application/vnd.ez.api.View+xml
-                    application/vnd.ez.api.View+json
-                    application/vnd.ez.api.View+xml; version=1.1
-                    application/vnd.ez.api.View+json; version=1.1
-            Content-Type:
-                description: The view input in XML or JSON format
-                example:  |
-                    application/vnd.ez.api.ViewInput+xml
-                    application/vnd.ez.api.ViewInput+json
-                    application/vnd.ez.api.ViewInput+xml; version=1.1
-                    application/vnd.ez.api.ViewInput+json; version=1.1
-        body:
-            application/vnd.ez.api.ViewInput+xml:
-                type: ViewInput
-                example: !include examples/views/POST/ViewInput.xml.example
-        responses:
-            200:
-                body:
-                    application/vnd.ez.api.View+xml; version=1.1:
-                        type: View
-                        example: !include examples/views/POST/View.xml.v11.example
-            400:
-              description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+/views: !include ez-views.raml
+
 /user:
     displayName: Managing users
     /groups: !include ez-user-groups.raml
@@ -145,23 +31,6 @@ baseUri: http://localhost/
     /policies: !include ez-user-policies.raml
     /sessions: !include ez-user-sessions.raml
 
-/services:
-    displayName: Services
-    /countries:
-        get:
-            displayName: Countries list
-            description: Countries list is a REST service that gives access to an ISO-3166 formatted list of world countries. It is useful when presenting a country options list from any application.
-            headers:
-                Accept:
-                    description: If set the country list is returned in XML or JSON format
-                    example:  |
-                        application/vnd.ez.api.CountriesLis+xml
-                        application/vnd.ez.api.CountriesLis+json
-            responses:
-                200:
-                    body:
-                        application/vnd.ez.api.CountriesList+xml:
-                            type: CountryList
-                            example: !include examples/services/countries/GET/CountriesList.xml.example
+/services: !include ez-services.raml
 
 types: !include ez-types.raml

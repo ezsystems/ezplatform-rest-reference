@@ -1,23 +1,17 @@
 body {
     font-family: "Maven Pro";
 }
-/* width */
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
     background: #dee2e6;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #c0c0c0;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #f15a22;
 }
@@ -118,8 +112,11 @@ body {
     position: absolute;
     top: 43px;
     left: 0;
-    padding-bottom: 80px;
+    padding-bottom: 100px;
     align-items: start;
+}
+.navbar-nav {
+    width: 100%;
 }
 .sidebar__nav .nav .nav {
     padding-left: 1rem;
@@ -129,13 +126,21 @@ body {
     padding: .5rem 0;
     color: #2b2b2b;
     font-size: 15px;
-    display: block;
+    display: flex;
 }
 .sidebar__nav .nav > li > .nav-link.active,
 .sidebar__nav .nav .nav > li > .nav-link.active {
     color: #f15a22;
     border-left: none;
     padding-left: 0;
+}
+.sidebar__nav .nav > li > .nav-link.active .nav__link--toggler,
+.toggler--rotated {
+    transform: rotate(180deg);
+}
+.sidebar__nav .nav > li > .nav-link.active .nav__link--toggler.toggler--rotated-0,
+.toggler--rotated-0 {
+    transform: rotate(0deg);
 }
 .sidebar__nav .nav > li > .nav-link:hover,
 .sidebar__nav .nav .nav > li > .nav-link:hover,

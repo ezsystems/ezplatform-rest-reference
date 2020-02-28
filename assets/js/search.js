@@ -49,7 +49,7 @@ function addIndexes() {
         const url = getEndpointUrl(searchSection);
 
         addIndex(
-            name.id,
+            name.dataset.search,
             name.textContent.trim(),
             body ? body.textContent : '',
             searchSection.dataset.parent,

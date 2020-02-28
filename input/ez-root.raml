@@ -1,0 +1,20 @@
+displayName: Root resources
+get:
+    displayName: List Root Resources
+    description: List the Root Resources of the eZ Platform installation.
+    headers:
+        Accept:
+            description: If set the list is return in XML or JSON format
+            type: string
+            example: |
+                application/vnd.ez.api.Root+xml
+                application/vnd.ez.api.Root+json
+    responses:
+        200:
+            body:
+                application/vnd.ez.api.Root+xml:
+                    type: Root
+                    example: !include examples/GET/Root.xml.example
+                application/vnd.ez.api.Root+json:
+                    type: Root
+                    example: !include examples/GET/Root.json.example

@@ -5,11 +5,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-    <link href="web/css/bootstrap.min.css" rel="stylesheet">
-    <link href="web/css/bootstrap-toc.min.css" rel="stylesheet">
-    <link href="web/fonts/MavenPro.css" rel="stylesheet">
-    <link href="web/css/github-gist.css" rel="stylesheet">
-    <link href="web/css/style.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-toc.min.css" rel="stylesheet">
+    <link href="assets/fonts/MavenPro.css" rel="stylesheet">
+    <link href="assets/css/github-gist.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <title>{{ api.title }}</title>
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -54,24 +54,24 @@
                     {% for resource in api.resources %}
                         <section class="section">
                             {% set rootParentName = resource.displayName|default(resource.uri) %}
-                            {% set elemId = resource.displayName|replace({' ': '-'})|lower %}
-                            <h2 id="{{ elemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
+                            {% set rootElemId = resource.displayName|replace({' ': '-'})|lower %}
+                            <h2 id="{{ rootElemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
                                 {{ rootParentName }}
-                                <a href="#{{ elemId }}" class="heading__link">¶</a>
+                                <a href="#{{ rootElemId }}" class="heading__link">¶</a>
                             </h2>
                             {% include theme ~ "/resource-group.html.twig" %}
                         </section>
                     {% endfor %}
-                    {% if api.types is not empty %}
-                        <section class="section">
-                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>
-                            <ul class="list-unstyled">
-                                {% for type in api.types %}
-                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>
-                                {% endfor %}
-                            </ul>
-                        </section>
-                    {% endif %}
+{#                    {% if api.types is not empty %}#}
+{#                        <section class="section">#}
+{#                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>#}
+{#                            <ul class="list-unstyled">#}
+{#                                {% for type in api.types %}#}
+{#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
+{#                                {% endfor %}#}
+{#                            </ul>#}
+{#                        </section>#}
+{#                    {% endif %}#}
                 </div>
             </div>
         </div>
@@ -79,23 +79,23 @@
 </main>
 <footer>
     <div class="container text-center">
-        <p class="white-text">Copyright 1999-2020 eZ Systems AS and others.</p>
+        <p class="white-text">Copyright 1999-<span class="current-year"></span> eZ Systems AS and others.</p>
     </div>
 </footer>
 
-<script src="web/js/jquery.min.js"></script>
-<script src="web/js/highlight.js"></script>
-<script src="web/js/bootstrap.bundle.min.js"></script>
-<script src="web/js/clipboard.min.js"></script>
-<script src="web/js/lunr.js"></script>
-<script src="web/js/search.js"></script>
-<script src="web/js/bootstrap-toc.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/highlight.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap-toc.js"></script>
+<script src="assets/js/clipboard.min.js"></script>
+<script src="assets/js/lunr.js"></script>
+<script src="assets/js/search.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>
     $('.dropdown-toggle').dropdown();
     $('[data-toggle="tooltip"]').tooltip();
     hljs.initHighlightingOnLoad();
 </script>
-<script src="web/js/custom.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

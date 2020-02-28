@@ -76,7 +76,6 @@
         $parent.append($childList);
         return $childList;
       },
-
       generateNavEl: function(anchor, text) {
         var $a = $('<a class="nav-link"></a>');
         $a.attr("href", "#" + anchor);
