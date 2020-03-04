@@ -146,7 +146,6 @@ function showResults(results) {
 
     if (results.length > 0) {
         results.forEach(result => {
-            console.log(result);
             const endpointSection = document.getElementById(`${result.ref}-section`);
             let resultRow = document.createElement('div');
             resultRow.classList.add('border-bottom');
@@ -183,7 +182,6 @@ function showResults(results) {
 
 function highlight() {
     let words = searchInput.value.replace(/[.*"]/g, '').split(' ');
-
     $(searchResults).highlight(words);
 }
 

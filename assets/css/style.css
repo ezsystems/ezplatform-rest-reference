@@ -292,22 +292,15 @@ code {
 .highlight {
     background-color: #ededed;
 }
-
-.sticky--active {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #fff;
-    z-index: 1000000000;
-}
-
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    /*the following is how far from the top of the screen you want your element to stick if you change it to 20px it will start to stick 20px from the top of the screen*/
-    top: 15px;
-    heigth: 100%;
+    top: 48px;
+    background-color: #ffffff;
+    z-index: 10;
 }
-.sticky-container {
-    /*height: 2000px;*/
+.sticky:before,
+.sticky:after {
+    content: '';
+    display: table;
 }

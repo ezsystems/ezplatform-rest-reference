@@ -34,7 +34,7 @@
         </div>
     </div>
 </header>
-<main class="overflow-hidden">
+<main>
     <div class="container-fluid">
         <div class="row">
             <div class="sidebar-menu pl-0 col-lg-2">
@@ -49,30 +49,28 @@
                 </div>
             </div>
             <div id="search-results" class="py-5 px-3 d-none col-lg-10"></div>
-            <div class="page-wrapper col-lg-10">
-                <div class="container-fluid">
-                    {% for resource in api.resources %}
-                        <section class="section">
-                            {% set rootParentName = resource.displayName|default(resource.uri) %}
-                            {% set rootElemId = resource.displayName|replace({' ': '-'})|lower %}
-                            <h2 id="{{ rootElemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
-                                {{ rootParentName }}
-                                <a href="#{{ rootElemId }}" class="heading__link">¶</a>
-                            </h2>
-                            {% include theme ~ "/resource-group.html.twig" %}
-                        </section>
-                    {% endfor %}
-{#                    {% if api.types is not empty %}#}
-{#                        <section class="section">#}
-{#                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>#}
-{#                            <ul class="list-unstyled">#}
-{#                                {% for type in api.types %}#}
-{#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
-{#                                {% endfor %}#}
-{#                            </ul>#}
-{#                        </section>#}
-{#                    {% endif %}#}
-                </div>
+            <div class="page-wrapper px-0 col-lg-10">
+                {% for resource in api.resources %}
+                    <section class="section px-3">
+                        {% set rootParentName = resource.displayName|default(resource.uri) %}
+                        {% set rootElemId = resource.displayName|replace({' ': '-'})|lower %}
+                        <h2 id="{{ rootElemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
+                            {{ rootParentName }}
+                            <a href="#{{ rootElemId }}" class="heading__link">¶</a>
+                        </h2>
+                        {% include theme ~ "/resource-group.html.twig" %}
+                    </section>
+                {% endfor %}
+                {#                    {% if api.types is not empty %}#}
+                {#                        <section class="section">#}
+                {#                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>#}
+                {#                            <ul class="list-unstyled">#}
+                {#                                {% for type in api.types %}#}
+                {#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
+                {#                                {% endfor %}#}
+                {#                            </ul>#}
+                {#                        </section>#}
+                {#                    {% endif %}#}
             </div>
         </div>
     </div>
@@ -90,6 +88,7 @@
 <script src="assets/js/clipboard.min.js"></script>
 <script src="assets/js/lunr.js"></script>
 <script src="assets/js/search.js"></script>
+<script src="assets/js/stickyfill.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>
     $('.dropdown-toggle').dropdown();

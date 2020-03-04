@@ -163,8 +163,6 @@
       opts.$nav.attr("data-toggle", "toc");
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
-      console.log($topContext);
-
       var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
