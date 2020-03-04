@@ -49,20 +49,16 @@ window.addEventListener('load', event => {
             }
         });
     });
+
+    const anchors = document.querySelectorAll('a');
+    anchors.forEach(anchor => {
+        anchor.addEventListener('click', anchorEvent => {
+            anchorEvent.preventDefault();
+
+            scrollToAnchorWithOffset(anchor);
+        });
+    });
 });
 
 const elements = document.querySelectorAll('.sticky');
 Stickyfill.add(elements);
-
-const anchors = document.querySelectorAll('a');
-anchors.forEach(anchor => {
-    anchor.addEventListener('click', event => {
-        event.preventDefault();
-        const element = document.getElementById(anchor.href.split('#')[1]);
-        element.scrollIntoView({
-            block: "center"
-        });
-
-        console.log(element.offsetTop);
-    });
-});

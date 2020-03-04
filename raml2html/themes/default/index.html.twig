@@ -54,7 +54,7 @@
                     <section class="section px-3">
                         {% set rootParentName = resource.displayName|default(resource.uri) %}
                         {% set rootElemId = resource.displayName|replace({' ': '-'})|lower %}
-                        <h2 id="{{ rootElemId }}" class="heading pt-5 pb-2 text-orange" data-field="name">
+                        <h2 id="{{ rootElemId }}" class="heading pt-5 pb-1 text-orange" data-field="name">
                             {{ rootParentName }}
                             <a href="#{{ rootElemId }}" class="heading__link">¶</a>
                         </h2>
@@ -86,6 +86,7 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/bootstrap-toc.js"></script>
 <script src="assets/js/clipboard.min.js"></script>
+<script src="assets/js/functions.js"></script>
 <script src="assets/js/lunr.js"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/stickyfill.js"></script>

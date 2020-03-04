@@ -172,6 +172,8 @@ function showResults(results) {
 
         searchLinks.forEach(link => {
             link.addEventListener('click', event =>{
+                event.preventDefault();
+                scrollToAnchorWithOffset(link);
                 hideResultsBlock();
             });
         });
