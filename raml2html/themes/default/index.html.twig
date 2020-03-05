@@ -51,10 +51,10 @@
             <div id="search-results" class="py-5 px-3 d-none col-lg-10"></div>
             <div class="page-wrapper px-0 col-lg-10">
                 {% for resource in api.resources %}
-                    <section class="section px-3">
+                    <section class="section">
                         {% set rootParentName = resource.displayName|default(resource.uri) %}
                         {% set rootElemId = resource.displayName|replace({' ': '-'})|lower %}
-                        <h2 id="{{ rootElemId }}" class="heading pt-5 pb-1 text-orange" data-field="name">
+                        <h2 id="{{ rootElemId }}" class="heading pt-5 px-3 pb-1 text-orange" data-field="name">
                             {{ rootParentName }}
                             <a href="#{{ rootElemId }}" class="heading__link">¶</a>
                         </h2>
