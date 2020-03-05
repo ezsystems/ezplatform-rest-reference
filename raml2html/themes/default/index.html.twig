@@ -13,6 +13,16 @@
     <title>{{ api.title }}</title>
 </head>
 <body data-spy="scroll" data-target="#toc">
+<div class="dropdown dropdown--menu">
+    <a class="page-title text-orange btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ api.title }}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="https://doc.ezplatform.com/">eZ Platform Developer Documentation</a>
+        <a class="dropdown-item" href="https://doc.ezplatform.com/projects/userguide">eZ Platform User Documentation</a>
+        <a class="dropdown-item" href="https://doc.ezplatform.com/projects/ezpersonalization">eZ Personalization Documentation</a>
+    </div>
+</div>
 <header class="header fixed-top background--gray">
     <div class="container-fluid">
         <div class="row">
@@ -20,16 +30,6 @@
                 <a href="{{ api.baseUri }}" class="nav-brand text-center">
                     <img class="img-fluid" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
                 </a>
-                <div class="dropdown">
-                    <a class="page-title text-orange btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ api.title }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="https://doc.ezplatform.com/">eZ Platform Developer Documentation</a>
-                        <a class="dropdown-item" href="https://doc.ezplatform.com/projects/userguide">eZ Platform User Documentation</a>
-                        <a class="dropdown-item" href="https://doc.ezplatform.com/projects/ezpersonalization">eZ Personalization Documentation</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -86,7 +86,6 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/bootstrap-toc.js"></script>
 <script src="assets/js/clipboard.min.js"></script>
-<script src="assets/js/functions.js"></script>
 <script src="assets/js/lunr.js"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/stickyfill.js"></script>

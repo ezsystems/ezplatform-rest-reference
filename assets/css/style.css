@@ -44,6 +44,12 @@ body {
     line-height: 33px;
     font-weight: 600;
 }
+.dropdown--menu {
+    z-index: 1031;
+    position: fixed;
+    top: 0;
+    left: 50px;
+}
 .sidebar-menu, .input--search  {
     background-color: #fcfcfc;
 }
