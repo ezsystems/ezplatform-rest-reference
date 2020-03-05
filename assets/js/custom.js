@@ -49,16 +49,8 @@ window.addEventListener('load', event => {
             }
         });
     });
-
-    const anchors = document.querySelectorAll('a');
-    anchors.forEach(anchor => {
-        anchor.addEventListener('click', anchorEvent => {
-            anchorEvent.preventDefault();
-
-            scrollToAnchorWithOffset(anchor);
-        });
-    });
 });
+
 
 const elements = document.querySelectorAll('.sticky');
 Stickyfill.add(elements);

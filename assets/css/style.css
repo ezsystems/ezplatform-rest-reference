@@ -304,3 +304,9 @@ code {
     content: '';
     display: table;
 }
+h5[data-field="name"]:before {
+    display: block;
+    margin-top: -5.9rem;
+    padding-top: 6.9rem;
+    content: "";
+}
