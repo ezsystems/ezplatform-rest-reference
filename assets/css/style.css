@@ -310,3 +310,6 @@ h5[data-field="name"]:before {
     padding-top: 6.9rem;
     content: "";
 }
+.search-container {
+    margin-bottom: 50px;
+}
