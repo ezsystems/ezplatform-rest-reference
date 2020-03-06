@@ -1,4 +1,4 @@
-<div id="{{ method.type }}_response">
+<div class="response">
     {% for response in method.responses %}
         {% if response.headers or response.bodies %}
             <h6 class="heading text-gray border-bottom pb-2">Responses</h6>
@@ -15,7 +15,7 @@
             {% endif %}
             {% if response.bodies %}
                 <div class="pb-3">
-                    <p id="{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}">
+                    <p id="{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}" class="response__code">
                         <code>Code: {{ response.statusCode }}</code>
                     </p>
                     {% for b in response.bodies %}

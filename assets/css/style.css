@@ -281,9 +281,6 @@ code {
 .badge--move {
     background-color: #032f62;
 }
-.section {
-    /*padding-top: 3rem;*/
-}
 .example {
     border-radius: 10px;
 }
@@ -307,10 +304,11 @@ code {
 }
 .sticky:before,
 .sticky:after {
-    content: '';
+    content: "";
     display: table;
 }
-h5[data-field="name"]:before {
+h5[data-field="name"]:before,
+.response__code:before {
     display: block;
     margin-top: -5.9rem;
     padding-top: 6.9rem;
