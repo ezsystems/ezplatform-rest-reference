@@ -18,81 +18,12 @@
                 </p>
                 <p data-field="body">{{ method.description }}</p>
             </div>
-            {% if method.headers %}
-                <div class="py-3">
-                    <h6 class="heading text-gray border-bottom pb-2">Header parameters</h6>
-                    {% for item in method.headers %}
-                        <div class="mb-2">
-                            <p class="mt-3 mb-0 font-weight-medium">{{ item.key }}</p>
-                            <p>{{ item.description }}</p>
-                            <div class="table-responsive mb-2">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Property</th>
-                                        <th scope="col">Value</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% include theme ~ "/header-parameters.html.twig" %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            {% if method.queryParameters %}
-                <div class="py-3">
-                    <h6 class="heading text-gray border-bottom pb-2">Query parameters</h6>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">Property</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Value</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for item in method.queryParameters %}
-                                {% include theme ~ "/named-parameter.html.twig" %}
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            {% endif %}
-            {% if method.responses %}
-                <div class="py-3">
-                    <h6 class="heading text-gray border-bottom pb-2">Possible responses</h6>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">Code</th>
-                                <th scope="col">Description</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for response in method.responses %}
-                                <tr>
-                                    <td>
-                                        <a href="#{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}"
-                                           class="text-ocean-blue {% if loop.first %}{% endif %}">
-                                            {{ response.statusCode }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <p>{{ response.description }}</p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            {% endif %}
+            {% include theme ~ "/method-headers.html.twig" %}
+
+            {% include theme ~ "/method-query-parameters.html.twig" %}
+
+            {% include theme ~ "/method-responses.html.twig" %}
+
             {% include theme ~ "/types.html.twig" %}
         </div>
         <div class="col-lg-6 px-3 examples">

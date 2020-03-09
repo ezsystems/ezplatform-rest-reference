@@ -310,10 +310,10 @@ code {
 h5[data-field="name"]:before,
 .response__code:before {
     display: block;
-    margin-top: -8.9rem;
-    padding-top: 9.9rem;
+    margin-top: -6.9rem;
+    padding-top: 7.9rem;
     content: "";
 }
 .search-container {
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
