@@ -93,6 +93,7 @@
                     </div>
                 </div>
             {% endif %}
+            {% include theme ~ "/types.html.twig" %}
         </div>
         <div class="col-lg-6 px-3 examples">
             {% set has_request = method.queryParameters or method.headers or method.bodies %}

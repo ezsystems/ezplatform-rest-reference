@@ -31,21 +31,9 @@
             {% if body.examples %}
                 {% for example in body.examples %}
                     <div class="example">
-                        {% set mediaTypeFormat = body.mediaType|split('.')|last %}
-                        {% set mediaType = mediaTypeFormat ?? '' %}
+                        {% set mediaType = body.type.name %}
                         {% set clipboardId = mediaType ~ '_' ~ uuid() %}
-                        <div class="example position-relative border p-3 mb-3">
-                            <p class="mb-0">{{ mediaType }}</p>
-                            <p class="mb-0 icon icon--copy-clipboard">
-                                <i class="material-icons-outlined clipboard"
-                                   data-toggle="tooltip"
-                                   data-placement="top"
-                                   data-clipboard-target="#{{ clipboardId }}"
-                                   title="Copy to clipboard">file_copy
-                                </i>
-                            </p>
-                            <pre id="{{ clipboardId }}" class="border-top"><code class="{{ mediaType }}">{{ example }}</code></pre>
-                        </div>
+                        {% include theme ~ "/example.html.twig" %}
                     </div>
                 {% endfor %}
             {% endif %}

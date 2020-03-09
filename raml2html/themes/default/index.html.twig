@@ -61,16 +61,25 @@
                         {% include theme ~ "/resource-group.html.twig" %}
                     </section>
                 {% endfor %}
-                {#                    {% if api.types is not empty %}#}
-                {#                        <section class="section">#}
-                {#                            <h2 id="types" class="heading pb-2 pt-5 text-orange" data-field="name">Types</h2>#}
-                {#                            <ul class="list-unstyled">#}
-                {#                                {% for type in api.types %}#}
-                {#                                    <li>{% include theme ~ "/type.html.twig" with { type: type} %}</li>#}
-                {#                                {% endfor %}#}
-                {#                            </ul>#}
-                {#                        </section>#}
-                {#                    {% endif %}#}
+                {% if api.types is not empty %}
+                    {% for type in api.types %}
+                        <div class="modal fade" id="{{ type.name }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">{{ type.name }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {% include theme ~ "/type.html.twig" %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
