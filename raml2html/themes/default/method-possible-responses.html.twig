@@ -13,10 +13,14 @@
                 {% for response in method.responses %}
                     <tr>
                         <td>
+                            {% if response.bodies|length > 0%}
                             <a href="#{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}"
                                class="text-ocean-blue {% if loop.first %}{% endif %}">
                                 {{ response.statusCode }}
                             </a>
+                            {% else %}
+                                {{ response.statusCode }}
+                            {% endif %}
                         </td>
                         <td>
                             <p>{{ response.description }}</p>
