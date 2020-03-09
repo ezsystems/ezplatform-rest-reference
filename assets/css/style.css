@@ -298,7 +298,7 @@ code {
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 48px;
     background-color: #ffffff;
     z-index: 1030;
 }
@@ -310,8 +310,8 @@ code {
 h5[data-field="name"]:before,
 .response__code:before {
     display: block;
-    margin-top: -5.9rem;
-    padding-top: 6.9rem;
+    margin-top: -8.9rem;
+    padding-top: 9.9rem;
     content: "";
 }
 .search-container {
