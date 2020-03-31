@@ -140,6 +140,15 @@ body {
     border-left: none;
     padding-left: 0;
 }
+.nav__link--toggler {
+    font-size: 16px!important;
+    padding-top: 4px;
+    padding-left: 5px;
+}
+.nav-link.active  .nav__link--toggler, .toggler--rotated {
+    padding-top: 3px;
+    padding-right: 5px;
+}
 .sidebar__nav .nav > li > .nav-link.active .nav__link--toggler,
 .toggler--rotated {
     transform: rotate(180deg);
