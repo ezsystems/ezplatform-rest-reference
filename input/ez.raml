@@ -60,46 +60,46 @@ version: 2.5
     /{locationId}:
         post:
             displayName: Create bookmark
-            description: Add given Location to bookmarks of a current user.
+            description: Add given Location to bookmarks of the current user.
             responses:
                 201:
                     description: Created.
                 401:
                     description: Error - the user is not authorized to given Location.
                 404:
-                    description: Error - a given Location does not exist.
+                    description: Error - the given Location does not exist.
                 409:
                     description: Error - Location is already bookmarked.
         head:
             displayName: Check if Location is bookmarked
-            description: Checks if a given Location is bookmarked by a current user.
+            description: Checks if the given Location is bookmarked by the current user.
             responses:
                 200:
                     description: OK - bookmarked.
                 401:
-                    description: Error - the user is not authorized to given Location.
+                    description: Error - the user is not authorized for the given Location.
                 404:
-                    description: Error - a given Location does not exist / is not bookmarked.
+                    description: Error - the given Location does not exist / is not bookmarked.
         delete:
             displayName: Delete bookmark
-            description: Deletes given Location from bookmarks of a current user.
+            description: Deletes the given Location from bookmarks of the current user.
             responses:
                 204:
                     description: Deleted - no content.
                 401:
-                    description: Error - the user is not authorized to given Location.
+                    description: Error - the user is not authorized for the given Location.
                 404:
-                    description: Error - a given Location does not exist / is not bookmarked.
+                    description: Error - the given Location does not exist / is not bookmarked.
 
 /content:
     displayName: Managing content
     /objects:
         post:
-            displayName: Creat Content item
-            description: Creates a draft assigned to the authenticated user. If a different user ID is given in the input, draft is assigned to the given user but this action requires special permissions for the authenticated user (this is useful for content staging where the transfer process does not have to authenticate with the user, which created the Content item in the source server). The user needs to publish the Content item if it should be visible.
+            displayName: Create Content item
+            description: Creates a draft assigned to the authenticated user. If a different user ID is given in the input, the draft is assigned to the given user but this action requires special permissions for the authenticated user (this is useful for content staging where the transfer process does not have to authenticate with the user who created the Content item in the source server). The user needs to publish the Content item if it should be visible.
             headers:
                 Accept:
-                    description: Content - If set, all information for the Content item including the embedded current version are returned in XML or JSON format. ContentInfo - If set, all information for the Content item (excluding the current version) are returned in XML or JSON format.
+                    description: Content - If set, all information for the Content item including the embedded current version is returned in XML or JSON format. ContentInfo - If set, all information for the Content item (excluding the current version) is returned in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.Content+xml
                         application/vnd.ez.api.Content+json
@@ -128,13 +128,13 @@ version: 2.5
                 401:
                     description: Error - the user is not authorized to create this Object in this Location.
                 404:
-                    description: Error - a parent Location specified in the request body does not exist.
+                    description: Error - the parent Location specified in the request body does not exist.
         get:
             displayName: Load content by remote ID
             description: Loads Content item for a given remote ID.
             queryParameters:
                 remoteId:
-                    description: The remote ID of the Content item. If present the Content item with the given remote ID is returned.
+                    description: The remote ID of the Content item. If present, the Content item with the given remote ID is returned.
             responses:
                 307:
                     description: Temporary redirect.
@@ -150,7 +150,7 @@ version: 2.5
                         type: string
                 headers:
                     Accept:
-                        description: Content -	If set, all information for the Content item including the embedded current version are returned in XML or JSON format. ContentInfo - If set, all information for the Content item (excluding the current version) are returned in XML or JSON format.
+                        description: Content -	If set, all information for the Content item including the embedded current version is returned in XML or JSON format. ContentInfo - If set, all information for the Content item (excluding the current version) is returned in XML or JSON format.
                         example:  |
                             application/vnd.ez.api.Content+xml
                             application/vnd.ez.api.Content+json
@@ -177,7 +177,7 @@ version: 2.5
                 description: This method updates the content metadata which is independent from a version. PATCH or POST with header X-HTTP-Method-Override PATCH.
                 headers:
                      Accept:
-                        description: If set, all information for the Content item (excluding the current version) are returned in XML or JSON format.
+                        description: If set, all information for the Content item (excluding the current version) is returned in XML or JSON format.
                         example:  |
                             application/vnd.ez.api.ContentInfo+xml
                             application/vnd.ez.api.ContentInfo+json
@@ -206,7 +206,7 @@ version: 2.5
                     404:
                         description: Error - the content ID does not exist.
                     412:
-                        description: Error - the current ETag does not match with the provided one in the If-Match header.
+                        description: Error - the current ETag does not match with the one provided in the If-Match header.
                     415:
                         description: Error - the media-type is not one of those specified in headers.
             delete:
@@ -350,7 +350,7 @@ version: 2.5
                                     application/vnd.ez.api.Version+xml
                                     application/vnd.ez.api.Version+json
                             If-match:
-                                description: Causes to patch only if the specified ETag is the current one.
+                                description: Performs the patch only if the specified ETag is the current one.
                             Content-Type:
                                 description: The VersionUpdate schema encoded in XML or JSON format.
                                 example:  |
@@ -375,7 +375,7 @@ version: 2.5
                             404:
                                 description: Error - the content ID or version ID does not exist.
                             412:
-                                description: Error - the current ETag does not match with the provided one in the If-Match header.
+                                description: Error - the current ETag does not match with the one provided in the If-Match header.
                     copy:
                         displayName: Create a draft from a version
                         description: The system creates a new draft as a copy of the given version. COPY or POST with header X-HTTP-Method-Override COPY.
@@ -430,7 +430,7 @@ version: 2.5
                                 401:
                                     description: Error - the user is not authorized to delete this translation.
                                 403:
-                                    description: Error - the version is in not in draft state.
+                                    description: Error - the version is not in draft state.
                                 404:
                                     description: Error - the Content item or version number were not found.
                                 406:
@@ -520,7 +520,7 @@ version: 2.5
                                     403:
                                         description: Error - the Relation is not of type COMMON or the given version is not a draft.
                                     404:
-                                        description: Error - Content item  or the Rrelation were not found in the given version.
+                                        description: Error - Content item  or the Relation were not found in the given version.
             /relations:
                 get:
                     displayName: Load Relations of Content item
@@ -568,7 +568,7 @@ version: 2.5
                         description: Loads all Locations for the given Content item.
                         headers:
                             Accept:
-                                description: If set, the new Location is returned in XML or JSON format.
+                                description: If set, the Location list is returned in XML or JSON format.
                                 example:  |
                                     application/vnd.ez.api.LocationList+xml
                                     application/vnd.ez.api.LocationList+json
@@ -590,7 +590,7 @@ version: 2.5
                     description: Returns the Object states of a Content item
                     headers:
                         Accept:
-                            description: If set, the Object state is returned in XML or JSON format.
+                            description: If set, the Object states are returned in XML or JSON format.
                             example: |
                                 application/vnd.ez.api.ContentObjectStates+xml
                                 application/vnd.ez.api.ContentObjectStates+json
@@ -695,7 +695,7 @@ version: 2.5
                 401:
                     description: Error - The user is not authorized to create an Object state group.
                 403:
-                    description: Error - An Object state group with same identifier already exists.
+                    description: Error - An Object state group with the same identifier already exists.
         /{objectStateGroupId}:
             get:
                 displayName: Get Object state group
@@ -719,7 +719,7 @@ version: 2.5
                                 type: ObjectStateGroup
                                 # example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.xml.example
                     401:
-                        description: Error - The user is not authorized to read Object state group.
+                        description: Error - The user is not authorized to read this Object state group.
                     404:
                         description: Error - The Object state group does not exist.
             patch:
@@ -839,7 +839,7 @@ version: 2.5
                                         type: ObjectState
                                         example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/GET/ObjectState.xml.example
                             401:
-                                description: Error - The user is not authorized to read Object state.
+                                description: Error - The user is not authorized to read this Object state.
                             404:
                                 description: Error - The Object state does not exist.
                     patch:
@@ -917,7 +917,7 @@ version: 2.5
                 remoteId:
                     description: The remote ID of the Location. If present, the Location with the given remote ID is returned.
                 urlAlias:
-                    description: One of the URL  aliases of the Location. If present the Location with given URL  Alias is returned.
+                    description: One of the URL aliases of the Location. If present, the Location with given URL Alias is returned.
             responses:
                 307:
                     description: Temporary redirect to the main resource URL.
@@ -952,13 +952,13 @@ version: 2.5
                         description: Error - the Location with the given path does not exist.
             move:
                 displayName: Move subtree
-                description: Moves Location to a different parent. The destination can also be '/content/trash' where the Location is put into the trash. (NOTE - Be aware that the user might loose access to the item after it has been moved, for example when read access is limited by a subtree). MOVE or POST with header X-HTTP-Method-Override MOVE.
+                description: Moves Location to a different parent. The destination can also be '/content/trash' where the Location is put into the trash. (NOTE - Be aware that the user might lose access to the item after it has been moved, for example when read access is limited by a subtree). MOVE or POST with header X-HTTP-Method-Override MOVE.
                 headers:
                     Destination:
                         description: A parent Location resource to which the Location is moved e.g. '/api/ezp/v2/content/locations/1/63'.
                 responses:
                     201:
-                        description: Created. If destination is '/api/ezp/v2/content/trash' and content only has one Location (NOTE - Like on normal subtree moves, be aware that the user might loose access to the item after it has been moved to trash.)
+                        description: Created. If destination is '/api/ezp/v2/content/trash' and content only has one Location (NOTE - Like on normal subtree moves, be aware that the user might lose access to the item after it has been moved to Trash.)
                     204:
                         description: No Content. If destination is '/api/ezp/v2/content/trash' and content still has other Locations (no trash item is created).
                     401:
@@ -980,7 +980,7 @@ version: 2.5
                         description: Error - the Location with the given ID does not exist.
             delete:
                 displayName: Delete subtree
-                description: Deletes the complete subtree for the given path. Every Content item, which does not have any other Location is deleted. Otherwise the deleted Location is removed from the Content item. The children are recursively deleted.
+                description: Deletes the complete subtree for the given path. Every Content item which does not have any other Location is deleted. Otherwise the deleted Location is removed from the Content item. The children are recursively deleted.
                 responses:
                     204:
                         description: No Content - deleted.
@@ -997,7 +997,7 @@ version: 2.5
                             description: The offset of the result set.
                             type: integer
                         limit:
-                            description: The number of bookmarks returned.
+                            description: The number of Locations returned.
                             type: integer
                     headers:
                         Accept:
@@ -1043,7 +1043,7 @@ version: 2.5
         /{locationId}:
             patch:
                 displayName: Update Location
-                description: Updates the Location. This method can also be used to hide/unhide a Location via the hidden field in the LocationUpdate. PATCH or POST with header X-HTTP-Method-Override PATCH.
+                description: Updates the Location. This method can also be used to hide/reveal a Location via the hidden field in the LocationUpdate. PATCH or POST with header X-HTTP-Method-Override PATCH.
                 headers:
                     Accept:
                         description: If set, the Location is returned in XML or JSON format.
@@ -1263,7 +1263,7 @@ version: 2.5
                     403:
                        description: Error - a Section with the given identifier already exists.
                     412:
-                       description: Error - the current ETag does not match with the provided one in the If-Match header.
+                       description: Error - the current ETag does not match with the one provided in the If-Match header.
             delete:
                 displayName: Delete Section
                 description: The given Section is deleted.
@@ -1820,7 +1820,7 @@ version: 2.5
             /{fieldDefinitionId}:
                 get:
                     displayName: Get Field definition
-                    description: Returns the Field definition by given ID.
+                    description: Returns the Field definition by the given ID.
                     headers:
                         Accept:
                             description: If set, the Field definition is returned in XML or JSON format.
@@ -1930,7 +1930,7 @@ version: 2.5
                             401:
                                 description: Error - The user is not authorized to add a Field definition.
                             403:
-                                description: Error - A Field definition with same identifier already exists in the given Content Type. The Field definition is of singular type, already existing in the given Content Type. The Field definition you want to add is of a type that can't be added to a Content Type that already has content instances.
+                                description: Error - A Field definition with the same identifier already exists in the given Content Type. The Field definition is of singular type, already existing in the given Content Type. The Field definition you want to add is of a type that can't be added to a Content Type that already has content instances.
                     /{fieldDefinitionId}:
                         get:
                             displayName: Get Field definition
@@ -2099,7 +2099,7 @@ version: 2.5
             displayName: Load User Groups
             description: Loads User Groups for either an an ID or a remote ID or a Role.
             queryParameters:
-                RoleId:
+                roleId:
                     description: Lists User Groups assigned to the given Role.
                 id:
                     description: Retrieves the User Groups for the given ID.
@@ -2167,7 +2167,7 @@ version: 2.5
                             application/vnd.ez.api.UserGroupUpdate+json
                             application/vnd.ez.api.UserGroupUpdate+xml
                     If-Match:
-                        description: Causes to PATCH only if the specified ETag is the current one. Otherwise a 412 is returned.
+                        description: Performs the PATCH only if the specified ETag is the current one. Otherwise a 412 is returned.
                         example: ETag
                 body:
                     application/vnd.ez.api.UserGroupUpdate+xml:
@@ -2185,7 +2185,7 @@ version: 2.5
                     401:
                        description: Error - the user is not authorized to update the User Group.
                     412:
-                       description: Error -	if the current ETag does not match with the provided one in the If-Match header.
+                       description: Error -	if the current ETag does not match with the one provided in the If-Match header.
             delete:
                 displayName: Delete User Group
                 description: The given User Group is deleted.
@@ -2319,7 +2319,7 @@ version: 2.5
                             description: Error - validation of limitation in RoleAssignInput fails.
                         401:
                             description: Error - the user is not authorized to assign this Role.
-                /{RoleId}:
+                /{roleId}:
                     get:
                         displayName: Load Assignment
                         description: Returns a Role assignment of the given User Group.
@@ -2335,7 +2335,7 @@ version: 2.5
                                 body:
                                     application/vnd.ez.api.RoleAssignment+xml:
                                         type: RoleAssignment
-                                        example: !include examples/user/groups/path/roles/Role_id/GET/RoleAssignment.xml.example
+                                        example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.xml.example
                             401:
                                 description: Error - the user has no permission to read Roles.
                     delete:
@@ -2352,7 +2352,7 @@ version: 2.5
                                 body:
                                     application/vnd.ez.api.RoleAssignmentList+xml:
                                         type: RoleAssignmentList
-                                        example: !include examples/user/groups/path/roles/Role_id/DELETE/RoleAssignmentList.xml.example
+                                        example: !include examples/user/groups/path/roles/role_id/DELETE/RoleAssignmentList.xml.example
                             401:
                                 description: Error - the user is not authorized to delete this Role assignment.
         /{id}/users:
@@ -2416,8 +2416,8 @@ version: 2.5
             displayName: List Users
             description: Load Users either for a given remote ID or Role.
             queryParameters:
-                RoleId:
-                    description: Lists Users assigned to the given Role (e.g. GET /user/users?RoleId=/user/roles/1).
+                roleId:
+                    description: Lists Users assigned to the given Role (e.g. GET /user/users?roleId=/user/roles/1).
                 remoteId:
                     description: Retrieves the User for the given remote ID (e.g. GET /user/users?remoteId=55dd9713db75145f374bbd0b4f60ad29).
                 login:
@@ -2448,8 +2448,8 @@ version: 2.5
             displayName: Verify Users
             description: Verifies if there are Users matching given filter.
             queryParameters:
-                RoleId:
-                    description: Lists Users assigned to the given Role (e.g. GET /user/users?RoleId=/user/roles/1).
+                roleId:
+                    description: Lists Users assigned to the given Role (e.g. GET /user/users?roleId=/user/roles/1).
                 remoteId:
                     description: Retrieves the User for the given remote ID (e.g. GET /user/users?remoteId=55dd9713db75145f374bbd0b4f60ad29).
                 login:
@@ -2499,7 +2499,7 @@ version: 2.5
                             application/vnd.ez.api.UserUpdate+json
                             application/vnd.ez.api.UserUpdate+xml
                     If-Match:
-                        description: Causes to PATCH only if the specified ETag is the current one.
+                        description: Performs a PATCH only if the specified ETag is the current one.
                         example: ETag
                 body:
                     application/vnd.ez.api.UserUpdate+xml:
@@ -2651,7 +2651,7 @@ version: 2.5
                             description: Error - validation of limitation in RoleAssignInput fails.
                         401:
                             description: Error - the user is not authorized to assign this Role.
-                /{RoleId}:
+                /{roleId}:
                     get:
                         displayName: Load assignment
                         description: Returns a Role assignment to the given User Group.
@@ -2667,7 +2667,7 @@ version: 2.5
                                 body:
                                     application/vnd.ez.api.RoleAssignment+xml:
                                         type: RoleAssignment
-                                        example: !include examples/user/users/user_id/roles/Role_id/GET/RoleAssignment.xml.example
+                                        example: !include examples/user/users/user_id/roles/role_id/GET/RoleAssignment.xml.example
                             401:
                                 description: Error - the user has no permission to read Roles
                     delete:
@@ -2684,10 +2684,10 @@ version: 2.5
                                 body:
                                     application/vnd.ez.api.RoleAssignmentList+xml:
                                         type: RoleAssignmentList
-                                        example: !include examples/user/users/user_id/roles/Role_id/DELETE/RoleAssignmentList.xml.example
+                                        example: !include examples/user/users/user_id/roles/role_id/DELETE/RoleAssignmentList.xml.example
                             401:
                                 description: Error - the user is not authorized to delete this Content Type
-    /Roles:
+    /roles:
         get:
             displayName: Load Roles
             description: Returns a list of all Roles
@@ -2874,7 +2874,7 @@ version: 2.5
                                 application/vnd.ez.api.RoleInput+json
                                 application/vnd.ez.api.RoleInput+xml
                         If-Match:
-                            description: Causes to PATCH only if the specified ETag is the current one. Otherwise a 412 is returned.
+                            description: Performs a PATCH only if the specified ETag is the current one. Otherwise a 412 is returned.
                     body:
                         application/vnd.ez.api.RoleInput+xml:
                             type: RoleInput
@@ -2893,7 +2893,7 @@ version: 2.5
                         404:
                             description: Error - there is no draft or Role with the given ID.
                         412:
-                            description: Error - the current ETag does not match with the provided one in the If-Match header.
+                            description: Error - the current ETag does not match with the one provided in the If-Match header.
                 publish:
                     displayName: Publish Role draft
                     description: Publishes a Role draft. PUBLISH or POST with header X-HTTP-Method-Override PUBLISH.
@@ -3009,7 +3009,7 @@ version: 2.5
                             404:
                                 description: Error - the Role does not exist.
                             412:
-                                description: Error - the current ETag does not match with the provided one in the If-Match header.
+                                description: Error - the current ETag does not match with the one provided in the If-Match header.
                     get:
                         displayName: Load Policy
                         description: Loads a Policy for the given module and function.
