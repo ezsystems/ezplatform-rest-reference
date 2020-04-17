@@ -3121,7 +3121,7 @@ version: 2.5
                 description: The user session is removed i.e. the user is logged out.
                 headers:
                     Cookie:
-                        description: {sessionName}={essionID}
+                        description: "{sessionName}={sessionID}"
                     X-CSRF-Token:
                         description: The {csrfToken} needed on all unsafe http methods with session.
                 responses:
@@ -3135,7 +3135,7 @@ version: 2.5
                     description: Get the session's User information.
                     headers:
                         Cookie:
-                            description: {sessionName}={sessionID}
+                            description: "{sessionName}={sessionID}"
                         X-CSRF-Token:
                             description: The {csrfToken} needed on all unsafe http methods with session.
                     responses:
