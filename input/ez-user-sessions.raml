@@ -1,19 +1,19 @@
 post:
     displayName: Create session (login a User)
-    description: Performs a login for the user or check if session exists and returns the session and session cookie. The client will need to remember both session name/ID and CSRF token as this is for security reasons not exposed via GET.
+    description: Performs a login for the user or checks if session exists and returns the session and session cookie. The client will need to remember both session name/ID and CSRF token as this is for security reasons not exposed via GET.
     headers:
         Accept:
-            description: If set the Session is returned in XML or JSON format
+            description: If set, the session is returned in XML or JSON format.
             example:  |
                 application/vnd.ez.api.Session+xml
                 application/vnd.ez.api.Session+json
         Content-Type:
-            description: The SessionInput schema encoded in XML or JSON
+            description: The SessionInput schema encoded in XML or JSON format.
             example:  |
                 application/vnd.ez.api.SessionInput+xml
                 application/vnd.ez.api.SessionInput+json
         Cookie:
-            description: Only needed for session's checking {sessionName}={sessionID}
+            description: Only needed for session's checking {sessionName}={sessionID}.
         X-CSRF-Token:
             description: Only needed for session's checking. The {csrfToken} needed on all unsafe http methods with session.
     body:
@@ -25,7 +25,7 @@ post:
             example: !include examples/user/sessions/POST/SessionInput.json.example
     responses:
         200:
-            description: If session already exists
+            description: Session already exists.
             body:
                 application/vnd.ez.api.Session+xml:
                     type: Session
@@ -34,7 +34,7 @@ post:
                     type: Session
                     example: !include examples/user/sessions/POST/Session.json.example
         201:
-            description: If session is created
+            description: Session is created.
             body:
                 application/vnd.ez.api.Session+xml:
                     type: Session
@@ -43,33 +43,32 @@ post:
                     type: Session
                     example: !include examples/user/sessions/POST/Session.json.example
         400:
-            description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+            description: Error - the input does not match the input schema definition.
         401:
-            description: Error - the authorization failed
+            description: Error - the authorization failed.
         409:
-            description: Error - header contained a session cookie but different user was authorized
-
+            description: Error - header contained a session cookie but different user was authorized.
 /{sessionId}:
     delete:
         displayName: Delete session (logout a User)
         description: The user session is removed i.e. the user is logged out.
         headers:
             Cookie:
-                description: '{sessionName}={essionID}'
+                description: {sessionName}={essionID}
             X-CSRF-Token:
                 description: The {csrfToken} needed on all unsafe http methods with session.
         responses:
             204:
-                description: OK - Session deleted
+                description: OK - session deleted.
             404:
-                description: Error - the session does not exist
+                description: Error - the session does not exist.
     /refresh:
         post:
-            displayName: Refresh session (get session's User information)
-            description: Give the session's User information
+            displayName: Refresh session
+            description: Get the session's User information.
             headers:
                 Cookie:
-                    description: '{sessionName}={sessionID}'
+                    description: {sessionName}={sessionID}
                 X-CSRF-Token:
                     description: The {csrfToken} needed on all unsafe http methods with session.
             responses:
@@ -82,4 +81,4 @@ post:
                             type: Session
                             example: !include examples/user/sessions/session_id/refresh/POST/Session.json.example
                 404:
-                    description: Error - the session does not exist
+                    description: Error - the session does not exist.

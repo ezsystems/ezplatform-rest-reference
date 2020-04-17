@@ -2,10 +2,10 @@ displayName: content/binary/name
 /binary/images/{imageId}/variations/{variationIdentifier}:
     get:
         displayName: Load an image variation
-        description: Loads an image variation
+        description: Loads an image variation.
         headers:
             Accept:
-                description: If set the image is returned in XML or JSON format
+                description: If set, the image is returned in XML or JSON format.
                 example:  |
                     application/vnd.ez.api.ImageVariation+xml
                     application/vnd.ez.api.ImageVariation+json
@@ -16,6 +16,6 @@ displayName: content/binary/name
                         type: ContentImageVariation
                         example: !include examples/content/binary/images/image_id/variations/variation_identifier/GET/ImageVariation.xml.example
             401:
-                description: Error - the user is not authorized to read this object
+                description: Error - the user is not authorized to read this Content item.
             404:
-                description: Error - imageId doesn't match any image OR variationIdentifier doesn't match any known variation
+                description: Error - image ID doesn't match any image or variationIdentifier doesn't match any known variation.
