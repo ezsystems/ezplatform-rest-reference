@@ -52,9 +52,9 @@ get:
                         type: UserGroup
                         example: !include examples/user/groups/path/GET/UserGroup.xml.example
             401:
-               description: Error - the user has no permission to read User Groups.
+                description: Error - the user has no permission to read User Groups.
             404:
-               description: Error -	the User Group does not exist.
+                description: Error -	the User Group does not exist.
     patch:
         displayName: Update User Group
         description: Updates a User Group. PATCH or POST with header X-HTTP-Method-Override PATCH.
@@ -78,27 +78,27 @@ get:
                 example: !include examples/user/groups/path/PATCH/UserGroupUpdate.xml.example
         responses:
             200:
-               description: OK - updated User Group.
+                description: OK - updated User Group.
                 body:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/PATCH/UserGroup.xml.example
             400:
-               description: Error - the input does not match the input schema definition.
+                description: Error - the input does not match the input schema definition.
             401:
-               description: Error - the user is not authorized to update the User Group.
+                description: Error - the user is not authorized to update the User Group.
             412:
-               description: Error -	if the current ETag does not match with the one provided in the If-Match header.
+                description: Error -	if the current ETag does not match with the one provided in the If-Match header.
     delete:
         displayName: Delete User Group
         description: The given User Group is deleted.
         responses:
             204:
-               description: No content - the given User Group is deleted.
+                description: No content - the given User Group is deleted.
             401:
-               description: Error - the user is not authorized to delete this Content Type.
+                description: Error - the user is not authorized to delete this Content Type.
             403:
-               description: Error - the User Group is not empty.
+                description: Error - the User Group is not empty.
     move:
         displayName: Move User Group
         description: Moves the User Group to another parent. MOVE or POST with header X-HTTP-Method-Override MOVE.
@@ -107,13 +107,13 @@ get:
                 description: A parent group resource to which the Location is moved.
         responses:
             201:
-               description: Created - moves the User Group to another parent.
+                description: Created - moves the User Group to another parent.
             401:
-               description: Error - the user is not authorized to update the User Group.
+                description: Error - the user is not authorized to update the User Group.
             403:
-               description: Error - the new parent does not exist.
+                description: Error - the new parent does not exist.
             404:
-               description: Error - the User Group does not exist.
+                description: Error - the User Group does not exist.
     /users:
         post:
             displayName: Create User
@@ -176,7 +176,7 @@ get:
                     description: Error - the input does not match the input schema definition.
                 401:
                     description: Error - the user is not authorized to create this User Group.
-    /Roles:
+    /roles:
         get:
             displayName: Load Roles for User Group
             description: Returns a list of all Roles assigned to the given User Group.
@@ -283,9 +283,9 @@ get:
                         type: UserRefList
                         example: !include examples/user/groups/id/users/GET/UserRefList.xml.example
             401:
-               description: Error - the user has no permission to read User Groups.
+                description: Error - the user has no permission to read User Groups.
             404:
-               description: Error - the User Group does not exist.
+                description: Error - the User Group does not exist.
 /{id}/subgroups:
     get:
         displayName: Load subgroups
@@ -311,6 +311,6 @@ get:
                         type: UserGroupRefList
                         example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.xml.example
             401:
-               description: Error - the user has no permission to read User Groups.
+                description: Error - the user has no permission to read User Groups.
             404:
-               description: Error - the User Group does not exist.
+                description: Error - the User Group does not exist.
