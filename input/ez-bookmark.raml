@@ -1,22 +1,22 @@
 displayName: Managing bookmarks
 get:
-    displayName: List bookmarks
-    description: Lists bookmarked locations for the current user
+    displayName: List of bookmarks
+    description: Lists bookmarked Locations for the current user.
     queryParameters:
         offset:
-            description: The offset of the result set
+            description: The offset of the result set.
             type: integer
             default: 0
         limit:
-            description: The number of bookmarks returned
+            description: The number of returned bookmarks.
             type: integer
             default: 25
     headers:
         Accept:
-            description: If set the list is returned in XML or JSON format
-            example: |
-                application/vnd.ez.api.BookmarkList+xml
-                application/vnd.ez.api.BookmarkList+json
+            description: If set, the list is returned in XML or JSON format.
+            example:
+                - application/vnd.ez.api.BookmarkList+xml
+                - application/vnd.ez.api.BookmarkList+json
     responses:
         200:
             body:
@@ -27,38 +27,37 @@ get:
                     type: BookmarkList
                     example: !include examples/bookmark/GET/BookmarkList.json.example
         401:
-            description: Error - the user is not authorized to list bookmarks
+            description: Error - the user is not authorized to list bookmarks.
 /{locationId}:
     post:
         displayName: Create bookmark
-        description: Add given Location to bookmarks of current user
+        description: Add given Location to bookmarks of the current user.
         responses:
             201:
-                description: Created
+                description: Created.
             401:
-                description: Error - the user is not authorized to given location
+                description: Error - the user is not authorized to given Location.
             404:
-                description: Error - a given Location not exists
+                description: Error - the given Location does not exist.
             409:
-                description: Error - Location is already bookmarked
+                description: Error - Location is already bookmarked.
     head:
-        displayName: Check if location is bookmarked
-        description: Check if given Location is bookmarked by current user
+        displayName: Check if Location is bookmarked
+        description: Checks if the given Location is bookmarked by the current user.
         responses:
             200:
-                description: OK - bookmarked
+                description: OK - bookmarked.
             401:
-                description: Error - the user is not authorized to given location
+                description: Error - the user is not authorized for the given Location.
             404:
-                description: Error - a given Location not exists / is not bookmarked
-
+                description: Error - the given Location does not exist / is not bookmarked.
     delete:
         displayName: Delete bookmark
-        description: Delete given Location from bookmarks of current user
+        description: Deletes the given Location from bookmarks of the current user.
         responses:
             204:
-                description: Deleted - no content
+                description: Deleted - no content.
             401:
-                description: Error - the user is not authorized to given location
+                description: Error - the user is not authorized for the given Location.
             404:
-                description: Error - a given Location not exists / is not bookmarked
+                description: Error - the given Location does not exist / is not bookmarked.

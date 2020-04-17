@@ -1,21 +1,21 @@
 get:
-    displayName: List Policies for user
-    description: Search all policies which are applied to a given user
+    displayName: List Policies for User
+    description: Search all Policies which are applied to a given User.
     queryParameters:
         userId:
-            description: The user ID
+            description: The User ID.
     headers:
         Accept:
-            description: If set the Policy list is returned in XML or JSON format
+            description: If set, the Policy list is returned in XML or JSON format.
             example:  |
                 application/vnd.ez.api.PolicyList+xml
                 application/vnd.ez.api.PolicyList+json
     responses:
         200:
-            description: OK - policies which are applied to a given user
+            description: OK - Policies which are applied to a given User.
             body:
                 application/vnd.ez.api.PolicyList+xml:
                     type: PolicyList
                     example: !include examples/user/policies/GET/PolicyList.xml.example
         401:
-            description: Error - the user has no permission to read roles
+            description: Error - the user has no permission to read Roles.

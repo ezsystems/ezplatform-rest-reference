@@ -1,16 +1,16 @@
 get:
     displayName: Load User Groups
-    description: Load user groups for either an ID or remoteId or role.
+    description: Loads User Groups for either an an ID or a remote ID or a Role.
     queryParameters:
         roleId:
-            description: Lists user groups assigned to the given role
+            description: Lists User Groups assigned to the given Role.
         id:
-            description: Retrieves the user group for the given ID
+            description: Retrieves the User Groups for the given ID.
         remoteID:
-            description: Retrieves the user group for the given remoteId
+            description: Retrieves the User Groups for the given remote ID.
     headers:
         Accept:
-            description: UserGroupList - if set the user group list is returned in XML or JSON format. UserGroupRefList - if set the link list of user groups is returned in XML or JSON format
+            description: UserGroupList - If set, the User Group List is returned in XML or JSON format. UserGroupRefList - If set, the link list of User Group is returned in XML or JSON format.
             example: |
                 application/vnd.ez.api.UserGroupList+xml
                 application/vnd.ez.api.UserGroupList+json
@@ -23,23 +23,22 @@ get:
                     type: UserGroupList
                     example: !include examples/user/groups/GET/UserGroupList.xml.example
         401:
-            description: Error - the user has no permission to read user groups
+            description: Error - the user has no permission to read User Groups.
 /root:
     get:
         # Currently does not work
-        displayName: Get Root User Group
-        description: Redirects to the root user group
+        displayName: Get root User Group
+        description: Redirects to the root User Group.
         responses:
             301:
                 description: Moved permanently.
-
 /{path}:
     get:
         displayName: Load User Group
-        description: Loads user groups for the given {path}
+        description: Loads User Groups for the given {path}.
         headers:
             Accept:
-                description: If set the new user group is returned in XML or JSON format
+                description: If set, the new User Group is returned in XML or JSON format.
                 example: |
                     application/vnd.ez.api.UserGroup+xml
                     application/vnd.ez.api.UserGroup+json
@@ -47,31 +46,31 @@ get:
                 description: ETag
         responses:
             200:
-                description: OK - loads user groups
+                description: OK - loads User Groups.
                 body:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/GET/UserGroup.xml.example
             401:
-                description: Error - the user has no permission to read user groups
+               description: Error - the user has no permission to read User Groups.
             404:
-                description: Error -	if the user group does not exist
+               description: Error -	the User Group does not exist.
     patch:
         displayName: Update User Group
-        description: Updates a user group - PATCH or POST with header X-HTTP-Method-Override PATCH
+        description: Updates a User Group. PATCH or POST with header X-HTTP-Method-Override PATCH.
         headers:
             Accept:
-                description: If set the new user group is returned in XML or JSON forma
+                description: If set, the new User Group is returned in XML or JSON format.
                 example:  |
                     application/vnd.ez.api.UserGroup+xml
                     application/vnd.ez.api.UserGroup+json
             Content-Type:
-                description: The UserGroupUpdate schema encoded in XML or JSON
+                description: The UserGroupUpdate schema encoded in XML or JSON format.
                 example:  |
                     application/vnd.ez.api.UserGroupUpdate+json
                     application/vnd.ez.api.UserGroupUpdate+xml
             If-Match:
-                description: Causes to patch only if the specified ETag is the current one. Otherwise a 412 is returned.
+                description: Performs the PATCH only if the specified ETag is the current one. Otherwise a 412 is returned.
                 example: ETag
         body:
             application/vnd.ez.api.UserGroupUpdate+xml:
@@ -79,54 +78,54 @@ get:
                 example: !include examples/user/groups/path/PATCH/UserGroupUpdate.xml.example
         responses:
             200:
-                description: OK - updated user group
+               description: OK - updated User Group.
                 body:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/PATCH/UserGroup.xml.example
             400:
-                description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+               description: Error - the input does not match the input schema definition.
             401:
-                description: Error - the user is not authorized to update the user group
+               description: Error - the user is not authorized to update the User Group.
             412:
-                description: Error -	if the current ETag does not match with the provided one in the If-Match header
+               description: Error -	if the current ETag does not match with the one provided in the If-Match header.
     delete:
         displayName: Delete User Group
-        description: The given user group is deleted
+        description: The given User Group is deleted.
         responses:
             204:
-                description: No content - the given user group is deleted
+               description: No content - the given User Group is deleted.
             401:
-                description: Error - the user is not authorized to delete this Content Type
+               description: Error - the user is not authorized to delete this Content Type.
             403:
-                description: Error - the user group is not empty
+               description: Error - the User Group is not empty.
     move:
-        displayName: Move user Group
-        description: Moves the user group to another parent. MOVE or POST with header X-HTTP-Method-Override MOVE
+        displayName: Move User Group
+        description: Moves the User Group to another parent. MOVE or POST with header X-HTTP-Method-Override MOVE.
         headers:
             Destination:
-                description: A parent group resource to which the Location is moved
+                description: A parent group resource to which the Location is moved.
         responses:
             201:
-                description: Created - moves the user group to another parent
+               description: Created - moves the User Group to another parent.
             401:
-                description: Error - the user is not authorized to update the user group
+               description: Error - the user is not authorized to update the User Group.
             403:
-                description: Error - the new parent does not exist
+               description: Error - the new parent does not exist.
             404:
-                description: Error - the user group does not exist
+               description: Error - the User Group does not exist.
     /users:
         post:
             displayName: Create User
-            description: Creates a new user in the given group
+            description: Creates a new User in the given Group.
             headers:
                 Accept:
-                    description: If set the new user is returned in XML or JSON format
+                    description: If set, the new User is returned in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.User+xml
                         application/vnd.ez.api.User+json
                 Content-Type:
-                    description: The UserCreate schema encoded in XML or JSON
+                    description: The UserCreate schema encoded in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.UserCreate+json
                         application/vnd.ez.api.UserCreate+xml
@@ -141,25 +140,25 @@ get:
                             type: User
                             example: !include examples/user/groups/path/users/POST/User.xml.example
                 400:
-                    description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+                    description: Error - the input does not match the input schema definition.
                 401:
-                    description: Error - the user is not authorized to create this user
+                    description: Error - the user is not authorized to create this User.
                 403:
-                    description: Error - a user with the same login already exists
+                    description: Error - a User with the same login already exists.
                 404:
-                    description: Error - the group with the given ID does not exist
+                    description: Error - the Group with the given ID does not exist.
     /subgroups:
         post:
             displayName: Create User Group
-            description: Creates a new user group under the given parent. To create a top level group use /user/groups/subgroups
+            description: Creates a new User Group under the given parent. To create a top level group use '/user/groups/subgroups'.
             headers:
                 Accept:
-                    description: If set the new user group is returned in XML or JSON format
+                    description: If set, the new User Group is returned in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.UserGroup+xml
                         application/vnd.ez.api.UserGroup+json
                 Content-Type:
-                    description: The UserGroupCreate schema encoded in XML or JSON
+                    description: The UserGroupCreate schema encoded in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.UserGroupCreate+json
                         application/vnd.ez.api.UserGroupCreate+xml
@@ -174,16 +173,16 @@ get:
                             type: UserGroup
                             example: !include examples/user/groups/path/subgroups/POST/UserGroup.xml.example
                 400:
-                    description: Error - the Input does not match the input schema definition, In this case the response contains an ErrorMessage
+                    description: Error - the input does not match the input schema definition.
                 401:
-                    description: Error - the user is not authorized to create this user group
-    /roles:
+                    description: Error - the user is not authorized to create this User Group.
+    /Roles:
         get:
             displayName: Load Roles for User Group
-            description: Returns a list of all roles assigned to the given user group
+            description: Returns a list of all Roles assigned to the given User Group.
             headers:
                 Accept:
-                    description: If set the Role assignment list is returned in XML or JSON format
+                    description: If set, the Role assignment list is returned in XML or JSON format.
                     example: |
                         application/vnd.ez.api.RoleAssignmentList+xml
                         application/vnd.ez.api.RoleAssignmentList+json
@@ -194,18 +193,18 @@ get:
                             type: RoleAssignmentList
                             example: !include examples/user/groups/path/roles/GET/RoleAssignmentList.xml.example
                 400:
-                    description: Error - the user has no permission to read roles
+                    description: Error - the user has no permission to read Roles.
         post:
-            displayName: Assigns a Role to a user group.
-            description: Assigns a Role to a user group.
+            displayName: Assign Role to User Group
+            description: Assigns a Role to a User Group.
             headers:
                 Accept:
-                    description: If set the updated Role assignment list is returned in XML or JSON format
+                    description: If set, the updated Role assignment list is returned in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.RoleAssignmentList+xml
                         application/vnd.ez.api.RoleAssignmentList+json
                 Content-Type:
-                    description: The RoleAssignInput schema encoded in XML or JSON
+                    description: The RoleAssignInput schema encoded in XML or JSON format.
                     example:  |
                         application/vnd.ez.api.RoleAssignInput+json
                         application/vnd.ez.api.RoleAssignInput+xml
@@ -220,34 +219,34 @@ get:
                             type: RoleAssignmentList
                             example: !include examples/user/groups/path/roles/POST/RoleAssignmentList.xml.example
                 400:
-                    description: Error - validation of limitation in RoleAssignInput fails
+                    description: Error - validation of limitation in RoleAssignInput fails.
                 401:
-                    description: Error - the user is not authorized to assign this role
+                    description: Error - the user is not authorized to assign this Role.
         /{roleId}:
             get:
                 displayName: Load Assignment
-                description: Returns a Role assignment of the given user group
+                description: Returns a Role assignment of the given User Group.
                 headers:
                     Accept:
-                        description: If set the Role assignment list is returned in XML or JSON format
+                        description: If set, the Role assignment list is returned in XML or JSON format.
                         example: |
                             application/vnd.ez.api.RoleAssignment+xml
                             application/vnd.ez.api.RoleAssignment+json
                 responses:
                     200:
-                        description: OK - returns a roleassignment of the given user group
+                        description: OK - returns a Role assignment of the given User Group.
                         body:
                             application/vnd.ez.api.RoleAssignment+xml:
                                 type: RoleAssignment
                                 example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.xml.example
                     401:
-                        description: Error - the user has no permission to read roles
+                        description: Error - the user has no permission to read Roles.
             delete:
                 displayName: Unassign Role from User Group
-                description: The given Role is removed from the user or user group
+                description: The given Role is removed from the User or User Group.
                 headers:
                     Accept:
-                        description: If set the updated Role assignment list is returned in XML or JSON format
+                        description: If set, the updated Role assignment list is returned in XML or JSON format.
                         example: |
                             application/vnd.ez.api.RoleAssignmentList+xml
                             application/vnd.ez.api.RoleAssignmentList+json
@@ -258,19 +257,19 @@ get:
                                 type: RoleAssignmentList
                                 example: !include examples/user/groups/path/roles/role_id/DELETE/RoleAssignmentList.xml.example
                     401:
-                        description: Error - the user is not authorized to delete this Role assignment
+                        description: Error - the user is not authorized to delete this Role assignment.
 /{id}/users:
     get:
         displayName: Load Users of Group
-        description: Loads the users of the group with the given ID
+        description: Loads the Users of the Group with the given ID.
         queryParameters:
             limit:
-                description: Only 'limit' items will be returned started by offset
+                description: Only 'limit' items will be returned started by offset.
             offset:
-                description: Offset of the result set
+                description: Offset of the result set.
         headers:
             Accept:
-                description: UserList - if set the user list returned in XML or JSON format. UserRefList - if set the link list of users returned in XML or JSON format
+                description: UserList - If set, the User list returned in XML or JSON format. UserRefList - If set, the link list of Users returned in XML or JSON format.
                 example: |
                     application/vnd.ez.api.UserList+xml
                     application/vnd.ez.api.UserList+json
@@ -278,28 +277,27 @@ get:
                     application/vnd.ez.api.UserRefList+json
         responses:
             200:
-                description: OK - the users of the group with the given ID
+                description: OK - the Users of the Group with the given ID.
                 body:
                     application/vnd.ez.api.UserRefList+xml:
                         type: UserRefList
                         example: !include examples/user/groups/id/users/GET/UserRefList.xml.example
             401:
-                description: Error - the user has no permission to read user groups
+               description: Error - the user has no permission to read User Groups.
             404:
-                description: Error - the user group does not exist
-
+               description: Error - the User Group does not exist.
 /{id}/subgroups:
     get:
-        displayName: Load Subgroups
-        description: Returns a list of the sub groups
+        displayName: Load subgroups
+        description: Returns a list of the subgroups.
         queryParameters:
             limit:
-                description: The number of locations returned
+                description: The number of Locations returned.
             offset:
-                description: The offset of the result set
+                description: The offset of the result set.
         headers:
             Accept:
-                description: UserGroupList - if set the user group list returned in XML or JSON format. UserGroupRefList - if set the link list of user groups is returned in XML or JSON format
+                description: UserGroupList - If set, the User Group list is returned in XML or JSON format. UserGroupRefList - If set, the link list of User Groups is returned in XML or JSON format.
                 example: |
                     application/vnd.ez.api.UserGroupList+xml
                     application/vnd.ez.api.UserGroupList+json
@@ -307,12 +305,12 @@ get:
                     application/vnd.ez.api.UserGroupRefList+json
         responses:
             200:
-                description: OK - list of the sub groups
+                description: OK - list of the subgroups.
                 body:
                     application/vnd.ez.api.UserGroupRefList+xml:
                         type: UserGroupRefList
                         example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.xml.example
             401:
-                description: Error - the user has no permission to read user groups
+               description: Error - the user has no permission to read User Groups.
             404:
-                description: Error - the user group does not exist
+               description: Error - the User Group does not exist.
