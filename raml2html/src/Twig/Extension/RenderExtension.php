@@ -12,18 +12,18 @@ use Raml\Types\LazyProxyType;
 use Raml\Types\ObjectType;
 use Ramsey\Uuid\Uuid;
 use Twig\Extension\AbstractExtension;
-use Twig_SimpleFunction;
-use Twig_SimpleTest;
+use Twig\TwigFunction;
+use Twig\TwigTest;
 
 class RenderExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {
         return [
-            new Twig_SimpleFunction('uuid', function () {
+            new TwigFunction('uuid', function () {
                 return Uuid::uuid1()->toString();
             }),
-            new Twig_SimpleFunction('dump', function ($var, ...$moreVars) {
+            new TwigFunction('dump', function ($var, ...$moreVars) {
                 ob_start();
                 dump($var, ...$moreVars);
                 $output = ob_get_contents();
@@ -31,10 +31,10 @@ class RenderExtension extends AbstractExtension
 
                 return $output;
             }),
-            new Twig_SimpleFunction('schema_format', function (string $mediaType) {
+            new TwigFunction('schema_format', function (string $mediaType) {
                 return explode('+', $mediaType)[1] ?? '';
             }),
-            new Twig_SimpleFunction('method_types', function (TypeCollection $typeCollection, Method $method) {
+            new TwigFunction('method_types', function (TypeCollection $typeCollection, Method $method) {
                 $types = [];
                 $methodTypes = $this->getTypes($method);
 
@@ -44,22 +44,31 @@ class RenderExtension extends AbstractExtension
 
                 return $types;
             }),
+            new TwigFunction('method_name_id', [$this, 'prepareMethodNameId'])
         ];
+    }
+
+    public function prepareMethodNameId(string $methodName): string
+    {
+        $methodName = strtolower($methodName);
+        $methodNameNoWhitespaces = preg_replace('/[\s\/]/', '-', $methodName);
+
+        return preg_replace('/[()]/', '', $methodNameNoWhitespaces);
     }
 
     public function getTests(): array
     {
         return [
-            new Twig_SimpleTest('scalar type', function ($type) {
+            new TwigTest('scalar type', function ($type) {
                 return $this->isScalarType($type);
             }),
-            new Twig_SimpleTest('array type', function (TypeInterface $type) {
+            new TwigTest('array type', function (TypeInterface $type) {
                 return $this->isArrayType($type);
             }),
-            new Twig_SimpleTest('object type', function (TypeInterface $type) {
+            new TwigTest('object type', function (TypeInterface $type) {
                 return $this->isObjectType($type);
             }),
-            new Twig_SimpleTest('standard type', function ($type) {
+            new TwigTest('standard type', function ($type) {
                 return $this->isStandardType((string)$type);
             }),
         ];

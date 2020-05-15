@@ -1,4 +1,4 @@
-{% set methodNameId = method.displayName|replace({' ': '-'})|lower %}
+{% set methodNameId = method_name_id(method.displayName) %}
 <div id="{{ rootElemId ~ '-' ~ methodNameId }}-section" class="search-container px-3" data-parent="{{ rootParentName }}">
     <div class="row px-1 pr-lg-0">
         <div class="col-12">

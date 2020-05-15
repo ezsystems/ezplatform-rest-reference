@@ -1,8 +1,4 @@
 $(function () {
-    $('[data-spy="scroll"]').each(function () {
-        var $spy = $(this).scrollspy('refresh')
-    })
-
     const tocRootPositions = document.querySelectorAll('#toc > .navbar-nav > li > .nav-link');
 
     tocRootPositions.forEach(rootPosition => {
@@ -38,11 +34,9 @@ $(function () {
     });
 
     $('[data-spy="scroll"]').each(function(i, el) {
-        var $spy = $(this).scrollspy('refresh')
+        $(this).scrollspy('refresh');
 
         const posY = document.documentElement.scrollTop;
         window.scrollTo(0, posY + 1);
-
-
     });
 })
