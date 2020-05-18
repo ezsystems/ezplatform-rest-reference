@@ -129,7 +129,7 @@ get:
                     description: Error - The Content Type does not exist.
     /draft:
         patch:
-            displayName: Update draft
+            displayName: Update Content Type draft
             description: Updates metadata of a draft. This method does not handle Field definitions. PATCH or POST with header X-HTTP-Method-Override PATCH.
             headers:
                 Accept:
@@ -163,7 +163,7 @@ get:
                 404:
                     description: Error - There is no draft for this Content Type.
         publish:
-            displayName: Publish Content Type
+            displayName: Publish Content Type draft
             description: Publishes a Content Type draft. PUBLISH or POST with header X-HTTP-Method-Override PUBLISH.
             responses:
                 200:
@@ -190,7 +190,7 @@ get:
                     description: Error - The Content Type draft does not exist.
         /fieldDefinitions:
             post:
-                displayName: Add Field definition
+                displayName: Add Content Type Draft Field definition
                 description: Creates a new Field definition for the given Content Type.
                 headers:
                     Accept:
@@ -222,7 +222,7 @@ get:
                         description: Error - A Field definition with the same identifier already exists in the given Content Type. The Field definition is of singular type, already existing in the given Content Type. The Field definition you want to add is of a type that can't be added to a Content Type that already has content instances.
             /{fieldDefinitionId}:
                 get:
-                    displayName: Get Field definition
+                    displayName: Get Content Type Draft Field definition
                     description: Returns the Field definition by the given ID.
                     headers:
                         Accept:
@@ -242,7 +242,7 @@ get:
                         404:
                             description: Error - The Content Type or draft does not exist.
                 patch:
-                    displayName: Update Field definition
+                    displayName: Update Content Type Draft Field definition
                     description: Updates the attributes of a Field definition.
                     headers:
                         Accept:
@@ -273,7 +273,7 @@ get:
                         403:
                             description: Error - A Field definition with the given identifier already exists in the given Content Type.
                 delete:
-                    displayName: Delete Field definition
+                    displayName: Delete Content Type Draft Field definition
                     description: Deletes the provided Field definition.
                     responses:
                         204:
