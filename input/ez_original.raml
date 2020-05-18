@@ -769,7 +769,7 @@ version: 2.5
                         description: Error - The Object state group does not exist.
             /objectstates:
                 get:
-                    displayName: List Object states.
+                    displayName: List Object states
                     description: Returns a list of all Object states of the given group.
                     headers:
                         Accept:
@@ -789,7 +789,7 @@ version: 2.5
                         401:
                             description: Error - The user has no permission to read Object states.
                 post:
-                    displayName: Create Object state.
+                    displayName: Create Object state
                     description: Creates a new Object state.
                     headers:
                         Accept:
@@ -821,7 +821,7 @@ version: 2.5
                             description: Error - An Object state with the same identifier already exists in the given group.
                 /{objectStateId}:
                     get:
-                        displayName: Get Object state.
+                        displayName: Get Object state
                         description: Returns the Object state.
                         headers:
                             Accept:
@@ -843,7 +843,7 @@ version: 2.5
                             404:
                                 description: Error - The Object state does not exist.
                     patch:
-                        displayName: Update Object state.
+                        displayName: Update Object state
                         description: Updates an Object state. PATCH or POST with header X-HTTP-Method-Override PATCH.
                         headers:
                             Accept:
@@ -1109,7 +1109,7 @@ version: 2.5
                 400:
                     description: Error - the input does not match the input schema definition.
         get:
-            displayName: List Views.
+            displayName: List Views
             description: Returns a list of View URIs. The list includes a public View and a private View of the authenticated user. - DEPRECATED
             headers:
                 Accept:
@@ -1549,7 +1549,7 @@ version: 2.5
                 404:
                     description: Error - The Content Type group with the given identifier does not exist.
         post:
-            displayName: Create Content Type group.
+            displayName: Create Content Type group
             description: Creates a new Content Type group.
             headers:
                 Accept:
@@ -2534,7 +2534,7 @@ version: 2.5
                         description: Error - the User does not exist.
             /groups:
                 get:
-                    displayName: Load Groups of User.
+                    displayName: Load Groups of User
                     description: Returns a list of User Groups the User belongs to. The returned list includes the resources for unassigning a User Group if the User is in multiple groups.
                     queryParameters:
                        offset:

@@ -129,7 +129,7 @@ post:
                 description: Error - The Object state group does not exist.
 /objectstates:
     get:
-        displayName: List Object states.
+        displayName: List Object states
         description: Returns a list of all Object states of the given group.
         headers:
             Accept:
@@ -149,7 +149,7 @@ post:
             401:
                 description: Error - The user has no permission to read Object states.
     post:
-        displayName: Create Object state.
+        displayName: Create Object state
         description: Creates a new Object state.
         headers:
             Accept:
@@ -181,7 +181,7 @@ post:
                 description: Error - An Object state with the same identifier already exists in the given group.
     /{objectStateId}:
         get:
-            displayName: Get Object state.
+            displayName: Get Object state
             description: Returns the Object state.
             headers:
                 Accept:
@@ -203,7 +203,7 @@ post:
                 404:
                     description: Error - The Object state does not exist.
         patch:
-            displayName: Update Object state.
+            displayName: Update Object state
             description: Updates an Object state. PATCH or POST with header X-HTTP-Method-Override PATCH.
             headers:
                 Accept:
