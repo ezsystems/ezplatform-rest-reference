@@ -33,6 +33,13 @@ $(function () {
         });
     });
 
+    $(window).on('activate.bs.scrollspy', function (e, obj) {
+        const link = document.querySelector(`.nav-link[href="${obj.relatedTarget}"]`);
+        const navBar = document.querySelector('.sidebar__nav');
+
+        navBar.scrollTop = link.offsetTop;
+    });
+
     $('[data-spy="scroll"]').each(function(i, el) {
         $(this).scrollspy('refresh');
 
