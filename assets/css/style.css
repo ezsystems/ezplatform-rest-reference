@@ -90,6 +90,7 @@ body {
     background-color: #f9f9fa;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .search-result__close {
     cursor: pointer;
