@@ -12,7 +12,6 @@ body {
 ::-webkit-scrollbar-thumb {
     background: #c0c0c0;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: #f15a22;
 }
@@ -326,4 +325,7 @@ h5[data-field="name"]:before,
 }
 .search-container {
     margin-bottom: 80px;
+}
+.modal-title {
+    font-size: 20px;
 }
