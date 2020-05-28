@@ -32,7 +32,6 @@ $(function () {
             if (parentAnchor.classList.contains('active')) {
                 subMenu.classList.remove('d-block');
                 subMenu.classList.toggle('d-none');
-
             } else {
                 subMenu.classList.remove('d-none');
                 subMenu.classList.toggle('d-block');
@@ -46,8 +45,6 @@ $(function () {
         const activeRootNode = navBar.querySelector('.nav-link.active');
 
         activeRootNode.childNodes.forEach(childNode => {
-            console.log(childNode.classList);
-
             if (typeof childNode.classList !== "undefined"
                 && childNode.classList.contains('nav__link--toggler')) {
                 childNode.classList.remove('toggler--rotated-0');
