@@ -18,9 +18,16 @@ currentYearElement.textContent = date.getFullYear();
 
 const mobileNavbarBtn = document.querySelector('.navbar-toggler-icon');
 mobileNavbarBtn.addEventListener('click', event => {
+    document.body.classList.add('overflow-hidden');
     document.body.classList.toggle('mobile-menu-expanded');
 
-    const menuItems = document.querySelectorAll('.sidebar-menu .nav-link');
+    const menu = document.querySelector('.sidebar__nav');
+    const menuItems = menu.querySelectorAll('.nav-link');
+    const activeItems = menu.querySelectorAll('.nav-link.active');
+    const activeItem = activeItems[activeItems.length - 1];
+
+    menu.scrollTop = activeItem.offsetTop;
+
     menuItems.forEach(item => {
         item.addEventListener('click', itemEvent => {
             if (!itemEvent.target.classList.contains('nav__link--toggler')
