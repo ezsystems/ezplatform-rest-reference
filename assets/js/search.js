@@ -172,6 +172,10 @@ function showResults(results) {
 
         searchLinks.forEach(link => {
             link.addEventListener('click', event =>{
+                if (document.body.classList.contains('mobile-menu-expanded')) {
+                    document.body.classList.remove('mobile-menu-expanded')
+                }
+
                 hideResultsBlock();
             });
         });

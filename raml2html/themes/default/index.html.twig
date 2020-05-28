@@ -30,6 +30,9 @@
                 <a href="{{ api.baseUri }}" class="nav-brand text-center">
                     <img class="img-fluid" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1MC40IDg1MC40IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEwNS41IiB5PSIxMDYuMyIgd2lkdGg9IjU0MC40IiBoZWlnaHQ9IjU0MC40Ii8+PHJlY3QgeD0iMTU3LjkiIHk9IjE1OC43IiB3aWR0aD0iNDM1LjciIGhlaWdodD0iNDM1LjciIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzMjkuMiIgeT0iMzI4LjQiIHdpZHRoPSI0MTUuNyIgaGVpZ2h0PSI0MTUuNyIvPjxyZWN0IHg9IjM3OC45IiB5PSIzNzguMSIgd2lkdGg9IjMxNi4xIiBoZWlnaHQ9IjMxNi4yIiBmaWxsPSIjRjA1QTIyIi8+PC9zdmc+DQo=" alt="ez-logo" />
                 </a>
+                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </div>
     </div>
@@ -37,7 +40,7 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar-menu pl-0 col-lg-2">
+            <div class="sidebar-menu pl-lg-0 col-lg-2">
                 <div class="container text-left px-0">
                     <div class="sidebar__header">
                         <div class="d-flex justify-content-center mt-4">
@@ -48,7 +51,7 @@
                     <nav id="toc" data-spy="affix" data-toggle="toc" class="sidebar__nav navbar navigation"></nav>
                 </div>
             </div>
-            <div id="search-results" class="py-5 px-3 d-none col-lg-10"></div>
+            <div id="search-results" class="py-lg-5 py-3 px-3 d-none col-lg-10"></div>
             <div class="page-wrapper px-0 col-lg-10">
                 {% for resource in api.resources %}
                     <section class="section">
