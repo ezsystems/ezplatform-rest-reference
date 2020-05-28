@@ -171,9 +171,6 @@ body {
 .menu-list-item__link.current {
     color: darkred;
 }
-.page-wrapper {
-    margin-left: 16.666667%;
-}
 .text-orange {
     color: #f15a22!important;
 }
@@ -328,4 +325,19 @@ h5[data-field="name"]:before,
 }
 .modal-title {
     font-size: 20px;
+}
+
+@media (max-width: 991px) {
+    .sidebar-menu {
+        display: none;
+    }
+    .sticky__body {
+        overflow-x: scroll;
+    }
+}
+
+@media (min-width: 992px) {
+    .page-wrapper {
+        margin-left: 16.666667%;
+    }
 }
