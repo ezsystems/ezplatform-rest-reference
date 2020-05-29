@@ -342,6 +342,9 @@ h5[data-field="name"]:before,
     #search-results {
         top: 100px;
     }
+    .hljs {
+        overflow-x: scroll;
+    }
 }
 
 @media (min-width: 992px) {
