@@ -119,8 +119,10 @@ body {
     position: absolute;
     top: 43px;
     left: 0;
-    padding-bottom: 100px;
     align-items: start;
+}
+.sidebar__nav > .navbar-nav {
+    padding-bottom: 100px;
 }
 .navbar-nav {
     width: 100%;
