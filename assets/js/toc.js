@@ -58,10 +58,5 @@ $(function () {
         navBar.scrollTop = link.offsetTop;
     });
 
-    $('[data-spy="scroll"]').each(function(i, el) {
-        $(this).scrollspy('refresh');
-
-        const posY = document.documentElement.scrollTop;
-        window.scrollTo(0, posY + 1);
-    });
+    $('body').scrollspy({ target: '#toc' });
 })

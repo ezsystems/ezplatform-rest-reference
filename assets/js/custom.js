@@ -37,4 +37,3 @@ mobileNavbarBtn.addEventListener('click', event => {
         });
     });
 });
-

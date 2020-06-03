@@ -44,7 +44,7 @@ delete:
                 body:
                     application/vnd.ez.api.TrashItem+xml:
                         type: TrashItem
-                        example: examples/content/trash/trash_itemid/GET/TrashItem.xml.example
+                        example: !include examples/content/trash/trash_itemid/GET/TrashItem.xml.example
             401:
                 description: Error - The user has no permission to read the item in Trash.
             404:
