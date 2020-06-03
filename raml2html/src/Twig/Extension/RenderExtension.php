@@ -53,7 +53,13 @@ class RenderExtension extends AbstractExtension
         $methodName = strtolower($methodName);
         $methodNameNoWhitespaces = preg_replace('/[\s\/]/', '-', $methodName);
 
-        return preg_replace('/[(){}]/', '', $methodNameNoWhitespaces);
+        $methodId = preg_replace('/[(){}]/', '', $methodNameNoWhitespaces);
+
+        if (preg_match('/\\W/', substr($methodId, 0, 1))) {
+            $methodId = substr($methodId, 1);
+        }
+
+        return $methodId;
     }
 
     public function getResponseMediaTypes(array $responseBodies): array
