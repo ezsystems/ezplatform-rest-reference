@@ -11,13 +11,11 @@
             </h5>
         </div>
         <div class="col-lg-6">
-            <div>
-                <p>
-                    <span data-field="method" class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span>
-                    <span data-field="url">{{ resource.uri }}</span>
-                </p>
-                <p data-field="body">{{ method.description }}</p>
-            </div>
+            <p class="text-break">
+                <span data-field="method" class="badge badge--sm badge--{{ method.type|lower }}">{{ method.type }}</span>
+                <span data-field="url">{{ resource.uri }}</span>
+            </p>
+            <p data-field="body">{{ method.description }}</p>
             {% include theme ~ "/method-headers.html.twig" %}
 
             {% include theme ~ "/method-query-parameters.html.twig" %}

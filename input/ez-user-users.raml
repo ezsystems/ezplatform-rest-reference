@@ -138,7 +138,7 @@ head:
             responses:
                 200:
                     body:
-                        application/vnd.ez.api.UserGroupRefList:
+                        application/vnd.ez.api.UserGroupRefList+xml:
                             type: UserGroupRefList
                             example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.xml.example
                 401:
@@ -160,7 +160,7 @@ head:
             responses:
                 200:
                     body:
-                        application/vnd.ez.api.UserGroupRefList:
+                        application/vnd.ez.api.UserGroupRefList+xml:
                             type: UserGroupRefList
                             example: !include examples/user/users/user_id/groups/POST/UserGroupRefList.xml.example
                 401:
@@ -182,7 +182,7 @@ head:
                 responses:
                     200:
                         body:
-                            application/vnd.ez.api.UserGroupRefList:
+                            application/vnd.ez.api.UserGroupRefList+xml:
                                 type: UserGroupRefList
                                 example: !include examples/user/users/user_id/groups/group_id/DELETE/UserGroupRefList.xml.example
                     401:

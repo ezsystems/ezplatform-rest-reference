@@ -31,9 +31,6 @@ class RenderExtension extends AbstractExtension
 
                 return $output;
             }),
-            new TwigFunction('schema_format', function (string $mediaType) {
-                return explode('+', $mediaType)[1] ?? '';
-            }),
             new TwigFunction('method_types', function (TypeCollection $typeCollection, Method $method) {
                 $types = [];
                 $methodTypes = $this->getTypes($method);
@@ -44,7 +41,10 @@ class RenderExtension extends AbstractExtension
 
                 return $types;
             }),
-            new TwigFunction('method_name_id', [$this, 'prepareMethodNameId'])
+            new TwigFunction('schema_format', [$this, 'getSchemaFormat']),
+            new TwigFunction('method_name_id', [$this, 'prepareMethodNameId']),
+            new TwigFunction('response_tabs', [$this, 'getResponseMediaTypes']),
+            new TwigFunction('response_examples', [$this, 'getResponseExamples']),
         ];
     }
 
@@ -53,7 +53,57 @@ class RenderExtension extends AbstractExtension
         $methodName = strtolower($methodName);
         $methodNameNoWhitespaces = preg_replace('/[\s\/]/', '-', $methodName);
 
-        return preg_replace('/[()]/', '', $methodNameNoWhitespaces);
+        $methodId = preg_replace('/[(){}]/', '', $methodNameNoWhitespaces);
+
+        if (preg_match('/\\W/', substr($methodId, 0, 1))) {
+            $methodId = substr($methodId, 1);
+        }
+
+        return $methodId;
+    }
+
+    public function getResponseMediaTypes(array $responseBodies): array
+    {
+        $tabs = [];
+
+        /** @var \Raml\Body $body */
+        foreach ($responseBodies as $body) {
+
+            if (!empty($body->getExample())) {
+                $tabs[] = $this->getSchemaFormat($body->getMediaType());
+            }
+        }
+
+        return array_unique($tabs);
+    }
+
+    public function getResponseExamples(array $responseBodies): array
+    {
+        $examples = [];
+
+        /** @var \Raml\Body $body */
+        foreach ($responseBodies as $body) {
+            $schemaFormat = $this->getSchemaFormat($body->getMediaType());
+
+            if (!empty($body->getExample())) {
+                $examples[$schemaFormat][] = $body->getExample();
+            }
+        }
+
+        return $examples;
+    }
+
+    public function getSchemaFormat(string $mediaType): string
+    {
+        $format = explode('+', $mediaType)[1] ?? '';
+
+        if (1 === preg_match('/[\W]/', $format, $matches)) {
+            $splittedFormat = str_split($format, strpos($format, ';'));
+
+            return current($splittedFormat);
+        }
+
+        return $format;
     }
 
     public function getTests(): array

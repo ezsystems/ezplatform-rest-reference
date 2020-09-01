@@ -343,7 +343,7 @@ get:
                             description: Error - the specified translation is the only one the version has or is the main translation.
             /relations:
                 get:
-                    displayName: Load Relations of Content item
+                    displayName: Load Relations of Content item version
                     description: Loads the Relations of the given version.
                     queryParameters:
                         offset:
@@ -369,7 +369,7 @@ get:
                         404:
                             description: Error - the Content item was not found.
                 post:
-                    displayName: Create new Relation.
+                    displayName: Create new Relation
                     description: Creates a new Relation of type COMMON for the given draft.
                     headers:
                         Accept:

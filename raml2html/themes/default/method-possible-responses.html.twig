@@ -14,7 +14,7 @@
                     <tr>
                         <td>
                             {% if response.bodies|length > 0%}
-                            <a href="#{{ sectionId }}_{{ method.type|lower }}_response_{{ response.statusCode }}"
+                            <a href="#{{ method_name_id(sectionId) }}-{{ method.type|lower }}-response-{{ response.statusCode }}"
                                class="text-ocean-blue {% if loop.first %}{% endif %}">
                                 {{ response.statusCode }}
                             </a>

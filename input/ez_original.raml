@@ -439,7 +439,7 @@ version: 2.5
                                     description: Error - the specified translation is the only one the version has or is the main translation.
                     /relations:
                         get:
-                            displayName: Load Relations of Content item
+                            displayName: Load Relations of Content item version
                             description: Loads the Relations of the given version.
                             queryParameters:
                                 offset:
@@ -465,7 +465,7 @@ version: 2.5
                                 404:
                                     description: Error - the Content item was not found.
                         post:
-                            displayName: Create new Relation.
+                            displayName: Create new Relation
                             description: Creates a new Relation of type COMMON for the given draft.
                             headers:
                                 Accept:
@@ -868,7 +868,7 @@ version: 2.5
                                 body:
                                     application/vnd.ez.api.ObjectState+xml:
                                         type: ObjectState
-                                        example: examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectState.xml.example
+                                        example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectState.xml.example
                             400:
                                 description: Error - The input does not match the input schema definition.
                             401:
