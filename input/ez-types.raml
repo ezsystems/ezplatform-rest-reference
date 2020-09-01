@@ -613,9 +613,18 @@ Event:
         name:
             description: 'Name of the calendar event.'
             type: string
-#        attributes:
-#            description: 'List of event attributes.'
-#            type: EventAttribute[]
+        attributes:
+            description: 'List of event attributes.'
+            type: EventAttribute[]
+EventAttribute:
+    type: object
+    properties:
+        label:
+            description: 'Label of the attribute.'
+            type: string
+        value:
+            description: 'Value of the attribute.'
+            type: string
 EventList:
     description: 'List of calendar events.'
     type: BaseObject
@@ -654,15 +663,6 @@ EventGroup:
             type: integer
         events:
             type: Event[]
-#EventAttribute:
-#    type: object
-#    properties:
-#        label:
-#            description: 'Label of an event.'
-#            type: string
-#        value:
-#            description: ''
-#            type: string
 FacetBuilder:
     description: 'This class is the base class for facet builders.'
     type: object
