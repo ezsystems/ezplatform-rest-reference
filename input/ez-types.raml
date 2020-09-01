@@ -625,27 +625,6 @@ EventAttribute:
         value:
             description: 'Value of the attribute.'
             type: string
-EventList:
-    description: 'List of calendar events.'
-    type: BaseObject
-    properties:
-        currentPage:
-            description: 'Current page representation.'
-            type: string
-        nextPage:
-            description: 'Next page representation.'
-            type: string
-        totalCount:
-            description: 'Total count of events.'
-            type: integer
-        events:
-            type: Event[]
-EventGroupList:
-    description: 'Grouped calendar event list.'
-    type: EventList
-    properties:
-        groups:
-            type: EventGroup[]
 EventGroup:
     description: 'Event group.'
     type: BaseObject
@@ -658,6 +637,27 @@ EventGroup:
             type: string
         groupKey:
             type: DateRange
+        totalCount:
+            description: 'Total count of events.'
+            type: integer
+        events:
+            type: Event[]
+EventGroupList:
+    description: 'Grouped calendar event list.'
+    type: EventList
+    properties:
+        groups:
+            type: EventGroup[]
+EventList:
+    description: 'List of calendar events.'
+    type: BaseObject
+    properties:
+        currentPage:
+            description: 'Current page representation.'
+            type: string
+        nextPage:
+            description: 'Next page representation.'
+            type: string
         totalCount:
             description: 'Total count of events.'
             type: integer
