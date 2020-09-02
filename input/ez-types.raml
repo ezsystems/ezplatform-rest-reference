@@ -592,9 +592,77 @@ Criterion:
         ValueTypeCheckCallback:
             description: 'Returns a callback that checks the values types depending on the operator specifications.'
             type: integer
+DateRange:
+  description: 'Representation of date range.'
+  type: object
 DateTime:
     description: 'Representation of date and time.'
     type: object
+Event:
+    description: 'Calendar event.'
+    type: BaseObject
+    properties:
+        id:
+            description: 'The unique ID.'
+            type: string
+        dateTime:
+            type: DateTime
+        type:
+            description: 'Event type identifier or name.'
+            type: string
+        name:
+            description: 'Name of the calendar event.'
+            type: string
+        attributes:
+            description: 'List of event attributes.'
+            type: EventAttribute[]
+EventAttribute:
+    type: object
+    properties:
+        label:
+            description: 'Label of the attribute.'
+            type: string
+        value:
+            description: 'Value of the attribute.'
+            type: string
+EventGroup:
+    description: 'Event group.'
+    type: BaseObject
+    properties:
+        currentPage:
+            description: 'Current page representation.'
+            type: string
+        nextPage:
+            description: 'Next page representation.'
+            type: string
+        groupKey:
+            type: DateRange
+        totalCount:
+            description: 'Total count of events.'
+            type: integer
+        events:
+            type: Event[]
+EventGroupList:
+    description: 'Grouped calendar event list.'
+    type: EventList
+    properties:
+        groups:
+            type: EventGroup[]
+EventList:
+    description: 'List of calendar events.'
+    type: BaseObject
+    properties:
+        currentPage:
+            description: 'Current page representation.'
+            type: string
+        nextPage:
+            description: 'Next page representation.'
+            type: string
+        totalCount:
+            description: 'Total count of events.'
+            type: integer
+        events:
+            type: Event[]
 FacetBuilder:
     description: 'This class is the base class for facet builders.'
     type: object
