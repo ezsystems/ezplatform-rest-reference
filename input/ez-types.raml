@@ -50,10 +50,10 @@ Content:
             type: BaseObject
         lastModificationDate:
             description: 'Content item modification date.'
-            type: DateTime
+            type: datetime
         publishedDate:
             description: 'Content item publication date.'
-            type: DateTime
+            type: datetime
         mainLanguageCode:
             description: 'The main language code of the Content item.'
             type: string
@@ -99,8 +99,8 @@ ContentCreateStruct:
             required: true
             type: string
         modificationDate:
-            descritpion: 'Modification date. If not given the current timestamp is used.'
-            type: DateTime
+            descritpion: 'Modification date. If not given the current integer is used.'
+            type: datetime
 ContentImageVariation:
     description: 'This class represents an image.'
     type: BaseObject
@@ -150,10 +150,10 @@ ContentInfo:
 #                type: integer
 #            modificationDate:
 #                description: 'Content modification date.'
-#                type: DateTime
+#                type: datetime
 #            publishedDate:
 #                description: 'Content publication date.'
-#                type: DateTime
+#                type: datetime
 #            alwaysAvailable:
 #                description: "Indicates if the Content item is shown in the main language if it's not present in an other requested language."
 #                type: boolean
@@ -178,10 +178,10 @@ ContentMetadataUpdateStruct:
             type: integer
         publishedDate:
             description: 'If set this value overrides the publication date of the content. (Used in staging scenarios).'
-            type: DateTime
+            type: datetime
         modificationDate:
             description: 'If set this value overrides the modification date. (Used for staging scenarios).'
-            type: DateTime
+            type: datetime
         mainLanguageCode:
             description: 'If set the main language of the Content item is changed.'
             type: string
@@ -232,10 +232,10 @@ ContentType:
             type: Value[]
         creationDate:
             description: 'Creation date of the Content Type.'
-            type: DateTime
+            type: datetime
         modificationDate:
             description: 'Modification date of the Content Type.'
-            type: DateTime
+            type: datetime
         Creator:
             descritpion: 'Creator User of the Content Type.'
             type: BaseObject
@@ -324,7 +324,7 @@ ContentTypeCreateStruct:
             type: integer
         creationDate:
             description: 'f set this value overrides the current time for creation.'
-            type: DateTime
+            type: datetime
 
 ContentTypeDraft:
     description: 'This class represents a draft of a Content Type.'
@@ -340,11 +340,11 @@ ContentTypeGroup:
             description: 'Readable string identifier of a group.'
             type: string
         created:
-            description: 'Created date (timestamp).'
-            type: DateTime
+            description: 'Created date (integer).'
+            type: datetime
         modified:
-            description: 'Modified date (timestamp).'
-            type: DateTime
+            description: 'Modified date (integer).'
+            type: datetime
         Creator:
             description: 'Creator User ID.'
             type: BaseObject
@@ -367,7 +367,7 @@ ContentTypeGroupCreateStruct:
             type: integer
         creationDate:
             description: 'If set this value overrides the current time for creation.'
-            type: DateTime
+            type: datetime
 ContentTypeGroupList:
     description: 'List of Content Type groups.'
     type: BaseObject
@@ -402,7 +402,7 @@ ContentTypeGroupUpdateStruct:
             type: integer
         modificationDate:
             description: 'If set this value overrides the current time for modified.'
-            type: DateTime
+            type: datetime
 ContentTypeInfo:
     description: 'This class stores Content Type information.'
     type: BaseObject
@@ -424,10 +424,10 @@ ContentTypeInfo:
             type: Value[]
         creationDate:
             description: 'Creation date of the Content Type.'
-            type: DateTime
+            type: datetime
         modificationDate:
             description: 'Modification date of the Content Type.'
-            type: DateTime
+            type: datetime
         Creator:
             descritpion: 'Creator User of the Content Type.'
             type: BaseObject
@@ -512,7 +512,7 @@ ContentTypeUpdateStruct:
             type: integer
         modificationDate:
             description: 'If set this value overrides the current time for creation.'
-            type: DateTime
+            type: datetime
         names:
             description: 'If set this array of names with languageCode keys replace the complete name collection.'
             type: array
@@ -595,7 +595,7 @@ Criterion:
 DateRange:
   description: 'Representation of date range.'
   type: object
-DateTime:
+datetime:
     description: 'Representation of date and time.'
     type: object
 Event:
@@ -605,8 +605,8 @@ Event:
         id:
             description: 'The unique ID.'
             type: string
-        dateTime:
-            type: DateTime
+        datetime:
+            type: datetime
         type:
             description: 'Event type identifier or name.'
             type: string
@@ -1023,7 +1023,7 @@ Notification:
             type: string
         created:
             description: 'Creation date.'
-            type: DateTime
+            type: datetime
         data:
             description: 'This class represents data.'
             type: array
@@ -1601,8 +1601,8 @@ TrashItem:
 #         TODO: Powinno byc w odpowiedzi:
 #        properties:
 #            trashed:
-#                description: 'Trashed timestamp.'
-#                type: DateTime
+#                description: 'Trashed integer.'
+#                type: datetime
 Unlink:
     description: 'Unlink a Content Type group from a Content Type.'
     type: object
@@ -1626,13 +1626,13 @@ URL:
             type: boolean
         lastChecked:
             description: 'Date of last check.'
-            type: DateTime
+            type: datetime
         created:
             description: 'Creation date.'
-            type: DateTime
+            type: datetime
         modified:
             description: 'Modified date.'
-            type: DateTime
+            type: datetime
 
 UrlAliasCreate:
     type: BaseObject
@@ -1712,7 +1712,7 @@ URLUpdateStruct:
             type: boolean
         lastChecked:
             description: 'Modified date.'
-            type: DateTime
+            type: datetime
 UrlWildcard:
     description: 'This class represents a URL alias in the Repository.'
     type: BaseObject
@@ -1785,10 +1785,10 @@ User:
             type: BaseObject
         publishDate:
             description: 'Content publication date.'
-            type: DateTime
+            type: datetime
         lastModificationDate:
             description: 'Content modification date.'
-            type: DateTime
+            type: datetime
         mainLanguageCode:
             description: 'The main language code of the Content item.'
             type: string
@@ -1935,7 +1935,7 @@ UserTokenUpdateStruct:
             type: string
         time:
             description: 'Time to which the token is valid.'
-            type: DateTime
+            type: datetime
 UserUpdateStruct:
     description: 'This class is used to update a User in the Repository.'
     type: object
@@ -2006,13 +2006,13 @@ VersionInfo:
             enum: []
         modificationDate:
             description: 'The last modified date of this version.'
-            type: DateTime
+            type: datetime
         Creator:
             description: 'Creator of the version, in the search API this is referred to as the modifier of the published content.'
             type: BaseObject
         creationDate:
             description: 'Content creation date.'
-            type: DateTime
+            type: datetime
         initialLanguageCode:
             description: 'The language code which is used for labeling a translation.'
             type: string

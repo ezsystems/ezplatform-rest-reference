@@ -6,10 +6,10 @@ displayName: Calendar
         queryParameters:
             start:
                 description: Query start date.
-                type: DateTime
+                type: datetime
             end:
                 description: Query end date.
-                type: DateTime
+                type: datetime
             types:
                 description: The types of events that are displayed.
                 type: string
@@ -44,10 +44,10 @@ displayName: Calendar
             queryParameters:
                 start:
                     description: Query start date.
-                    type: TimeStamp
+                    type: integer
                 end:
                     description: Query end date.
-                    type: TimeStamp
+                    type: integer
                 types:
                     description: The types of events that are displayed.
                     type: string
@@ -56,7 +56,7 @@ displayName: Calendar
                     type: string
                 count:
                     description: Number of parameters that are returned in the list.
-                    type: int
+                    type: integer
                 cursor:
                     description: Starting point of calendar event list. It should be taken from the URL.
                     type: string
