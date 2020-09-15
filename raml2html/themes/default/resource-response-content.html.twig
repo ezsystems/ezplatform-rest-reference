@@ -6,14 +6,13 @@
                 <div class="pb-3 response__code" id="{{ tabId }}">
                     <div class="d-flex justify-content-between align-items-baseline">
                         <ul class="nav nav-tabs border-bottom-0" id="{{ tabId }}Tab" role="tablist">
-                            {% set tabItems = response_tabs(response.bodies) %}
+                            {% set tabItems = examples_tabs(response.bodies) %}
                             {% if tabItems|length > 0 %}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link disabled">Responses</a>
                                 </li>
                                 {% for item in tabItems %}
                                     {% set itemId = tabId ~ '-' ~ item %}
-
                                     <li class="nav-item">
                                         <a class="nav-link {{ loop.index == 1 ? 'active' : '' }} text-gray" id="{{ itemId }}-tab"
                                            data-toggle="tab"
@@ -33,33 +32,10 @@
                             </div>
                         {% endif %}
                     </div>
-                    {% set examples = response_examples(response.bodies) %}
+                    {% set examples = examples_body(response.bodies) %}
                     {% if examples|length > 0 %}
-                        <div class="example position-relative border p-3 mb-3">
-                            <div class="tab-content" id="{{ tabId }}Content">
-                                {% for type, example in examples %}
-                                <div class="tab-pane fade {{ loop.index == 1 ? 'show active' : '' }}" id="{{ tabId ~ '-' ~ type }}" role="tabpanel"
-                                     aria-labelledby="{{ tabId ~ '-' ~ type }}-tab">
-                                    {% for body in example %}
-                                        <div class="position-relative">
-                                            {% set clipboardId = type ~ '_' ~ uuid() %}
-                                            <p class="mb-0 icon icon--copy-clipboard">
-                                                <i class="material-icons-outlined clipboard"
-                                                   data-toggle="tooltip"
-                                                   data-placement="top"
-                                                   data-clipboard-target="#{{ clipboardId }}"
-                                                   title="Copy to clipboard">file_copy
-                                                </i>
-                                            </p>
-                                            <pre id="{{ clipboardId }}" class="">
-                                        <code class="{{ type }}">{{ body }}</code>
-                                        </div>
-                                    </pre>
-                                    {% endfor %}
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                        {% include theme ~ "/example.html.twig" %}
+                        {% include theme ~ "/example-modal.html.twig" %}
                     {% endif %}
                 </div>
             {% endif %}

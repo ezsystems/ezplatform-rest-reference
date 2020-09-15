@@ -1,42 +1,35 @@
-<div id="{{ sectionId }}_{{ method.type|lower }}_request" {{ method.bodies ? 'class="mb-4"' : '' }}>
+<div class="request">
     {% if method.bodies %}
-        <h6 class="heading text-gray border-bottom pb-2">Request</h6>
-        {% for key, body in method.bodies %}
-            <div class="table-responsive mb-3">
-                <table class="table striped">
-                    <tbody>
-                    <tr>
-                        <th>Media type</th>
-                        <td>{{ body.mediaType }}</td>
-                    </tr>
-                    {% if body.description %}
-                        <tr>
-                            <th>Description</th>
-                            <td>{{ body.description }}</td>
-                        </tr>
+        {% set tabId = method_name_id(sectionId ~ '-' ~ method.type|lower ~ '-request') %}
+        <div class="pb-3" id="{{ tabId }}">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <ul class="nav nav-tabs border-bottom-0" id="{{ tabId }}Tab" role="tablist">
+                    {% set tabItems = examples_tabs(method.bodies) %}
+                    {% if tabItems|length > 0 %}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled">Request</a>
+                        </li>
+                        {% for item in tabItems %}
+                            {% set itemId = tabId ~ '-' ~ item %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ loop.index == 1 ? 'active' : '' }} text-gray" id="{{ itemId }}-tab"
+                                   data-toggle="tab"
+                                   href="#{{ itemId }}"
+                                   role="tab"
+                                   aria-controls="{{ itemId }}"
+                                   aria-selected="{{ loop.index == 1 ? 'true' : 'false' }}">
+                                    {{ item }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     {% endif %}
-                    {% if body.type %}
-                        <tr>
-                            <th>Schema</th>
-                            <td>
-                                {% include theme ~ "/type.html.twig" with {
-                                    type: body.type
-                                }%}
-                            </td>
-                        </tr>
-                    {% endif %}
-                    </tbody>
-                </table>
+                </ul>
             </div>
-            {% if body.examples %}
-                {% for example in body.examples %}
-                    <div class="example">
-                        {% set mediaType = body.type.name %}
-                        {% set clipboardId = mediaType ~ '_' ~ uuid() %}
-                        {% include theme ~ "/example.html.twig" %}
-                    </div>
-                {% endfor %}
+            {% set examples = examples_body(method.bodies) %}
+            {% if examples|length > 0 %}
+                {% include theme ~ "/example.html.twig" %}
+                {% include theme ~ "/example-modal.html.twig" %}
             {% endif %}
-        {% endfor %}
+        </div>
     {% endif %}
 </div>

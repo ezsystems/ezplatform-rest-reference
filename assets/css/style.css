@@ -75,7 +75,8 @@ body {
     right: 15px;
     opacity: 0.1;
 }
-.example:hover .icon--copy-clipboard {
+.example:hover .icon--copy-clipboard,
+.tab-pane:hover .icon--copy-clipboard {
     color: #f15a22!important;
     opacity: 1;
 }
@@ -292,6 +293,23 @@ code {
 }
 .example {
     border-radius: 10px;
+}
+.example__code-wrapper {
+    max-height: 200px;
+    overflow: hidden;
+}
+.btn--example-view-more {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    color: #2b2b2b;
+    background-color: #ededed;
+    margin: 0 auto;
+    width: 120px;
+}
+.btn--view-more:hover {
+    background-color: #dee2e6;
 }
 .examples code {
     background-color: transparent;

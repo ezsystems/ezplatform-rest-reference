@@ -43,8 +43,8 @@ class RenderExtension extends AbstractExtension
             }),
             new TwigFunction('schema_format', [$this, 'getSchemaFormat']),
             new TwigFunction('method_name_id', [$this, 'prepareMethodNameId']),
-            new TwigFunction('response_tabs', [$this, 'getResponseMediaTypes']),
-            new TwigFunction('response_examples', [$this, 'getResponseExamples']),
+            new TwigFunction('examples_tabs', [$this, 'getExamplesTabs']),
+            new TwigFunction('examples_body', [$this, 'getExamplesBody']),
         ];
     }
 
@@ -62,7 +62,7 @@ class RenderExtension extends AbstractExtension
         return $methodId;
     }
 
-    public function getResponseMediaTypes(array $responseBodies): array
+    public function getExamplesTabs(array $responseBodies): array
     {
         $tabs = [];
 
@@ -77,7 +77,7 @@ class RenderExtension extends AbstractExtension
         return array_unique($tabs);
     }
 
-    public function getResponseExamples(array $responseBodies): array
+    public function getExamplesBody(array $responseBodies): array
     {
         $examples = [];
 
