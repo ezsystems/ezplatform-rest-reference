@@ -10,7 +10,6 @@ The repository is separated into three directories:
 - raml2html - tool for generating static HTML from RAML definitions
 
 ## input
-
 To document new REST API, you need to:
  
 1. Add a new method with errors to `input/ez.raml`.
@@ -20,6 +19,12 @@ To document new REST API, you need to:
 For detailed information on how to use RAML to document API, see [Specification.](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md)
 
 ## raml2html
+####Installation
+Install required dependencies before use. Go to raml2html root directory and run:
+
+```
+composer install
+``` 
 
 To generate static HTML from RAML definitions, use the following code:
 
