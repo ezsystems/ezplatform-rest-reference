@@ -19,7 +19,7 @@ To document new REST API, you need to:
 For detailed information on how to use RAML to document API, see [Specification.](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md)
 
 ## raml2html
-####Installation
+#### Installation
 Install required dependencies before use. Go to raml2html root directory and run:
 
 ```
