@@ -1,6 +1,6 @@
 #%RAML 1.0
 ---
-title: eZ Platform
+title: Ibexa Platform
 baseUri: http://localhost/
 version: 2.5
 
@@ -8,7 +8,7 @@ version: 2.5
     displayName: Root resources
     get:
         displayName: List of root resources
-        description: Lists the root resources of the eZ Platform installation.
+        description: Lists the root resources of the Ibexa Platform installation.
         headers:
             Accept:
                 description: If set, the list is return in XML or JSON format.
@@ -3169,4 +3169,3 @@ version: 2.5
                             example: !include examples/services/countries/GET/CountriesList.xml.example
 
 types: !include ez-types.raml
-
