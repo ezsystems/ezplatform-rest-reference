@@ -2,7 +2,7 @@
 ---
 title: Ibexa REST API
 baseUri: https://ezsystems.github.io/ezplatform-rest-reference
-#version: 2.5
+version: v3.3.2
 
 /: !include ez-root.raml
 
@@ -35,5 +35,110 @@ baseUri: https://ezsystems.github.io/ezplatform-rest-reference
     /token: !include ez-user-token.raml
 
 /services: !include ez-services.raml
+
+/siso-rest:
+    /basket:
+        get:
+
+        delete:
+
+        /current:
+            get:
+                description: Gets current basket
+
+            /party:
+                /invoice:
+                    patch:
+                        description: Updates party information in the basket.
+
+                /delivery:
+                    patch:
+                        description: Updates party information in the basket.
+
+                /buyer:
+                    patch:
+                        description: Updates party information in the basket.
+
+                /{partyType}:
+                    patch:
+                        description: Updates party information in the basket.
+
+
+            /shippingmethod:
+                patch:
+                    description: Updates shipping information
+
+            /paymentmethod:
+                patch:
+                    description: Updates payment information
+
+            /voucher:
+                patch:
+                    description: Updates and checks voucher
+
+            /lines:
+                post:
+                    description: Adds a product to a basket
+
+        /copytocurrent/{id}:
+            get:
+
+        /createEmptyStored/{basketName}:
+            get:
+            post:
+
+        /deleteLine/{basketId}/{lineId}:
+            patch:
+
+        /headers/{type}:
+            get:
+                description: Reads list of baskets. Returns wishlist/stored baskets.
+
+        /update:
+            post:
+                description: Updates information in the basketline.
+
+            /{id}/{mode}:
+                post:
+
+        /update-stored/{basketId}:
+            post:
+
+        /stores/lines:
+            post:
+
+    /basketline/{id}/{basketLineId}:
+        delete:
+
+    /checkout:
+        /payment-methods:
+            get:
+                description: Gets list of payment methods.
+
+        /shipping-methods:
+            get:
+                description: Gets list of payment methods.
+
+        /update-referencenumber:
+            patch:
+
+        /update-remark:
+            patch:
+
+    /customer/addresses/shipping:
+        get:
+            description: Gets list of shipping addresses from customer.
+
+    /customerprice:
+        get:
+        post:
+
+    /common/check_sku_file:/{mode}:
+        post:
+
+    /country-selection:
+        get:
+            description: Gets list of payment methods.
+
 
 types: !include ez-types.raml
