@@ -1,0 +1,20 @@
+displayName: content/assets/images
+/assets/images/{assetId}/{assetSource}:
+    get:
+        displayName: Fetches image asset value
+        description: Fetches image asset value object.
+        headers:
+            Accept:
+                description: If set, the value XML object with image asset metadata is returned.
+                example:  |
+                    application/vnd.ez.api.Asset+xml
+        responses:
+            200:
+                body:
+                    application/vnd.ez.api.Asset+xml:
+                        type: Asset
+                        example: !include examples/content/assets/images/assetId/assetSource/GET/Asset.xml.example
+            401:
+                description: Error - the user is not authorized to read this image asset.
+            404:
+                description: Error - asset Id/asset source pair does not match any image asset.
