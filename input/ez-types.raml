@@ -1,5 +1,6 @@
 Asset:
     type: object
+    description: 'Asset value object'
     properties:
         uri: 
             type: string
@@ -15,6 +16,7 @@ Asset:
             description: Asset metadata object.
 assetMetadata:
     type: object
+    description: 'Asset metadata object'
     properties:
         alternativeText:
             type: datetime
@@ -32,7 +34,7 @@ assetMetadata:
             type: datetime
             description: Image asset's modification date
         author:
-            type: strings
+            type: string
             description: A name of the author of the image asset
         author_link_html:
             type: string
