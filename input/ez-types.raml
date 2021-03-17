@@ -12,21 +12,22 @@ Asset:
             type: string
             description: Asset provider's identifier.
         assetMetadata:
-            type: object
-            description: Asset metadata object.
+            type: assetMetadata
+            description: 'Asset metadata object. Depending on the provider, it can contain different parameters.'
+
 assetMetadata:
     type: object
-    description: 'Asset metadata object'
+    description: 'Asset metadata object. Depending on the provider, it can contain different parameters.'
     properties:
         alternativeText:
             type: datetime
-            description: Alternative text for the image asset
+            description: 'Alternative text for the image asset'
         width:
             type: integer
-            description: Image width
+            description: 'Image width'
         height:
             type: integer
-            description: Image height
+            description: 'Image height'
         created_at:
             type: datetime
             description: Image asset's creation date
@@ -35,10 +36,10 @@ assetMetadata:
             description: Image asset's modification date
         author:
             type: string
-            description: A name of the author of the image asset
+            description: 'A name of the author of the image asset'
         author_link_html:
             type: string
-            description: A URL address of the author of the image asset
+            description: 'A URL address of the author of the image asset'
 
 BaseObject:
     type: object
