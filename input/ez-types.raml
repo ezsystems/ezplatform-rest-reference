@@ -2113,14 +2113,14 @@ PolicyUpdate:
 SessionInput:
     type: BaseObject
 
-BaseCommerceObject:
+BaseCommerceResponse:
     type: object
     properties:
         _media-type:
             type: string
 
 Basket:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
 
 BasketLineData:
     type: object
@@ -2140,7 +2140,7 @@ BasketLineData:
             required: false
 
 PartyTypeInput:
-    type: BaseCommerceObject
+    type: object
 
 Party:
     type: object
@@ -2153,36 +2153,37 @@ Party:
         SesExtension: object
 
 ShippingMethodDataResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
     properties:
         shippingMethods: object
         defaultMethod: string
         shippingMethodsSorted: array
 
 PaymentMethodDataResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
 
 ShippingAddressesResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
 
 BasketListResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
     properties:
         Parties: Party[]
 
 ValidationResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
     properties:
         _media_type: string
         messages: array
 
 CountrySelectionResponse:
-    type: BaseCommerceObject
+    type: BaseCommerceResponse
     properties:
         _media_type: string
         countryOptions: object
 
 ShippingMethodData:
+    type: object
     properties:
         shippingMethod:
             type: string
@@ -2216,6 +2217,4 @@ BasketLinesData:
         lineNumber: integer
 
 PriceResponse:
-    type: object
-
-#default: BaseCommerceObject
+    type: BaseCommerceResponse
