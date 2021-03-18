@@ -2112,3 +2112,110 @@ PolicyUpdate:
 
 SessionInput:
     type: BaseObject
+
+BaseCommerceObject:
+    type: object
+    properties:
+        _media-type:
+            type: string
+
+Basket:
+    type: BaseCommerceObject
+
+BasketLineData:
+    type: object
+    properties:
+        quantity:
+            type: string
+            required: true
+        isVariant:
+            type: string
+        variantCode:
+            type: string
+        sku:
+            type: string
+            required: true
+        dataMap:
+            type: array
+            required: false
+
+PartyTypeInput:
+    type: BaseCommerceObject
+
+Party:
+    type: object
+    properties:
+        PartyIdentification: array
+        PartyName: array
+        PostalAddress: object
+        Contact: object
+        Person: object
+        SesExtension: object
+
+ShippingMethodDataResponse:
+    type: BaseCommerceObject
+    properties:
+        shippingMethods: object
+        defaultMethod: string
+        shippingMethodsSorted: array
+
+PaymentMethodDataResponse:
+    type: BaseCommerceObject
+
+ShippingAddressesResponse:
+    type: BaseCommerceObject
+
+BasketListResponse:
+    type: BaseCommerceObject
+    properties:
+        Parties: Party[]
+
+ValidationResponse:
+    type: BaseCommerceObject
+    properties:
+        _media_type: string
+        messages: array
+
+CountrySelectionResponse:
+    type: BaseCommerceObject
+    properties:
+        _media_type: string
+        countryOptions: object
+
+ShippingMethodData:
+    properties:
+        shippingMethod:
+            type: string
+            required: true
+
+PaymentMethodData:
+    type: object
+
+VoucherData:
+    type: object
+
+CustomerPriceData:
+    type: object
+    properties:
+        Meta:
+            type: object
+            required: false
+        Items: array
+
+BasketHeaderData:
+    type: object
+    properties:
+        value: string
+
+BasketLinesData:
+    type: object
+    properties:
+        sku: string
+        quantity: string
+        basketLineId: integer
+        lineNumber: integer
+
+PriceResponse:
+    type: object
+
+#default: BaseCommerceObject

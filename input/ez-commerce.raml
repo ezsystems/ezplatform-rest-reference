@@ -1,0 +1,289 @@
+displayName: eCommerce API
+# Known issue: Content-Type header is incorrectly set to "text/html" in each response.
+
+/basket:
+    get:
+        displayName: Reads list of baskets. Returns wishlist/stored baskets.
+        description: |
+            Returns baskets for the current user.
+            <br />Warning: Only "storedBasket" and "wishList" types are handled. Others will return validation error.
+        queryParameters:
+            type:
+                description: Either "storedBasket" or "wishList". "storedBasket" is assumed if not passed.
+        responses:
+            200:
+                body:
+                    application/vnd.ez.api.BasketListResponse+json:
+                        type: BasketListResponse
+                        example: !include examples/commerce/basket/headers/GET/BasketListResponse.json.example
+            400:
+                body:
+                    application/vnd.ez.api.ValidationResponse:
+                        type: ValidationResponse
+
+    /current:
+        get:
+            displayName: Get current basket
+            description: |
+                Returns a Basket instance for the current session. If there isn't one, a new one will be created.
+            headers:
+                Accept:
+                    example: application/vnd.ez.api.Basket+json
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.Basket+json:
+                            type: Basket
+                            example: !include examples/commerce/basket/Basket.json.example
+
+        /copyfrom/{basketId}:
+            post:
+                displayName: Copy basket to user session
+                description: |-
+                    This adds basket lines into current basket in user session, if any, using basket stored in permanent
+                    storage.
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+                                example: !include examples/commerce/basket/current/copyfrom/_basket_id_/POST/ValidationResponse.json.example
+
+        /party/{partyType}:
+            patch:
+                displayName: Update party (buyer, delivery, invoice) information in the basket.
+                description: Update party (buyer, delivery, invoice) information in the basket.
+                body:
+                    application/vnd.ez.api.PartyInvoice+json:
+                        type: PartyTypeInput
+                        example: !include examples/commerce/basket/current/party/invoice/PATCH/PartyInvoice.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+
+        /shippingmethod:
+            patch:
+                displayName: Update shipping information in current basket
+                description: Update shipping information in current basket
+                body:
+                    application/vnd.ez.api.ShippingMethodData+json:
+                        type: ShippingMethodData
+                        example: !include examples/commerce/basket/current/shippingmethod/PATCH/ShippingMethodData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+
+        /paymentmethod:
+            patch:
+                displayName: Update payment information in current basket
+                description: Update payment information in current basket
+                body:
+                    application/vnd.ez.api.PaymentMethodData.json:
+                        type: PaymentMethodData
+                        example: !include examples/commerce/basket/current/paymentmethod/PATCH/PaymentMethodData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+
+        /voucher:
+            patch:
+                displayName: Update and checks voucher in current basket
+                description: Update and checks voucher in current basket
+                body:
+                    application/vnd.ez.api.VoucherData.json:
+                        type: VoucherData
+                        example: !include examples/commerce/basket/current/voucher/PATCH/VoucherData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+
+        /line:
+            post:
+                displayName: Add products to current basket
+                description: Add products to current basket
+                body:
+                    application/vnd.ez.api.BasketLineData+json:
+                        type: BasketLineData
+                        example: !include examples/commerce/basket/current/lines/POST/BasketLineData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+                    400:
+                        body:
+                            application/vnd.ez.api.ValidationResponse+json:
+                                type: ValidationResponse
+                                example: !include examples/commerce/basket/current/lines/POST/ValidationResponse.json.example
+
+    /{basketId}:
+        get:
+            displayName: Get Basket by ID
+            description: Get Basket by ID
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.Basket+json:
+                            type: Basket
+                            example: !include examples/commerce/basket/_id_/GET/Basket.json.example
+
+        /{mode}:
+            post:
+                displayName: Update the name or the note of the stored basket.
+                description: |
+                    Update the name or the note of the stored basket.
+                    Possible "mode" values: "name", "note".
+                body:
+                    application/vnd.ez.api.BasketHeaderData+json:
+                        type: BasketHeaderData
+                        example: !include examples/commerce/basket/_id_/_mode_/POST/BasketHeaderData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+
+        /{basketId}:
+            /line:
+                post:
+                    displayName: Add lines to basket fields for item data, provided via POST data and parsed
+                    body:
+                        application/vnd.ez.api.BasketLinesData+json:
+                            type: BasketLinesData
+                            example: !include examples/commerce/basket/_id_/line/POST/BasketLinesData.json.example
+
+            /line/{lineId}:
+                delete:
+                    displayName: Delete a line from a stored basket
+                    responses:
+                        200:
+                            body:
+                                application/vnd.ez.api.Basket+json:
+                                    type: Basket
+                                    example: !include examples/commerce/basket/Basket.json.example
+                        400:
+                            body:
+                                application/vnd.ez.api.ValidationResponse+json:
+                                    type: ValidationResponse
+                                    example: !include examples/commerce/basket/_id_/line/
+
+    /{basketName}:
+        post:
+            displayName: Create a new persisted basket
+            description: Create a new persisted basket
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.Basket+json:
+                            type: Basket
+                            example: !include examples/commerce/basket/Basket.json.example
+                400:
+                    body:
+                        application/vnd.ez.api.ValidationResponse+json:
+                            type: ValidationResponse
+                            example: !include examples/commerce/basket/POST/ValidationResponse.json.example
+
+/checkout:
+    /paymentmethods:
+        get:
+            displayName: Gets list of payment methods.
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.PaymentMethodDataResponse+json:
+                            type: PaymentMethodDataResponse
+                            example: !include examples/commerce/checkout/payment-methods/GET/PaymentMethodDataResponse.json.example
+
+    /shippingmethods:
+        get:
+            displayName: Gets list of shipping methods.
+            responses:
+                200:
+                    body:
+                        application/vnd.ez.api.ShippingMethodDataResponse+json:
+                            type: ShippingMethodDataResponse
+                            example: !include examples/commerce/checkout/shipping-methods/GET/ShippingMethodDataResponse.json.example
+
+    /update-referencenumber:
+        patch:
+            displayName: Save the external reference number in basket
+
+    /update-remark:
+        patch:
+            displayName: Save the remark in basket
+
+/customer/addresses/shipping:
+    get:
+        displayName: Gets list of shipping addresses from customer.
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: ShippingAddressesResponse
+                        example: !include examples/commerce/customer/addresses/shipping/GET/ShippingAddressesResponse.json.example
+
+/customerprice:
+    post:
+        displayName: Get customer prices for the requested products
+        description: Get customer prices for the requested products
+        body:
+            application/json:
+                type: CustomerPriceData
+                example: !include examples/commerce/customerprice/POST/CustomerPriceData.json.example
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: PriceResponse
+                        example: !include examples/commerce/customerprice/POST/PriceResponse.json.example
+
+
+/common/check_sku_file:/{mode}:
+    post:
+        displayName: Add to basket the line from a CSV or Excel file
+        description: Add to basket the line from a CSV or Excel file
+
+/country:
+    get:
+        displayName: Gets list of countries.
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: CountrySelectionResponse
+                        example: !include examples/commerce/country-selection/GET/CountrySelectionResponse.json.example
