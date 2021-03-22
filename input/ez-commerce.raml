@@ -3,10 +3,9 @@ displayName: eCommerce API
 
 /basket:
     get:
-        displayName: Reads list of baskets. Returns wishlist/stored baskets.
+        displayName: Read list of baskets
         description: |
-            Returns baskets for the current user.
-            <br />Warning: Only "storedBasket" and "wishList" types are handled. Others will return validation error.
+            Returns baskets for the current user. Only "storedBasket" and "wishList" types are handled. Others will return validation error.
         queryParameters:
             type:
                 description: Either "storedBasket" or "wishList". "storedBasket" is assumed if not passed.
@@ -40,7 +39,7 @@ displayName: eCommerce API
             post:
                 displayName: Copy basket to user session
                 description: |-
-                    This adds basket lines into current basket in user session, if any, using basket stored in permanent
+                    Adds basket lines into current basket in user session, if any, using basket stored in permanent
                     storage.
                 responses:
                     200:
@@ -56,8 +55,8 @@ displayName: eCommerce API
 
         /party/{partyType}:
             patch:
-                displayName: Update party (buyer, delivery, invoice) information in the basket.
-                description: Update party (buyer, delivery, invoice) information in the basket.
+                displayName: Update party information in the basket
+                description: Updates party (buyer, delivery, invoice) information in the basket.
                 body:
                     application/vnd.ez.api.PartyInvoice+json:
                         type: PartyTypeInput
@@ -76,7 +75,7 @@ displayName: eCommerce API
         /shippingmethod:
             patch:
                 displayName: Update shipping information in current basket
-                description: Update shipping information in current basket
+                description: Updates shipping information in the current basket.
                 body:
                     application/vnd.ez.api.ShippingMethodData+json:
                         type: ShippingMethodData
@@ -95,7 +94,7 @@ displayName: eCommerce API
         /paymentmethod:
             patch:
                 displayName: Update payment information in current basket
-                description: Update payment information in current basket
+                description: Updates payment information in the current basket.
                 body:
                     application/vnd.ez.api.PaymentMethodData.json:
                         type: PaymentMethodData
@@ -113,8 +112,8 @@ displayName: eCommerce API
 
         /voucher:
             patch:
-                displayName: Update and checks voucher in current basket
-                description: Update and checks voucher in current basket
+                displayName: Update and check voucher in current basket
+                description: Updates and checks voucher in current basket.
                 body:
                     application/vnd.ez.api.VoucherData.json:
                         type: VoucherData
@@ -133,7 +132,7 @@ displayName: eCommerce API
         /line:
             post:
                 displayName: Add products to current basket
-                description: Add products to current basket
+                description: Adds products to the current basket.
                 body:
                     application/vnd.ez.api.BasketLineData+json:
                         type: BasketLineData
@@ -153,7 +152,7 @@ displayName: eCommerce API
     /{basketId}:
         get:
             displayName: Get Basket by ID
-            description: Get Basket by ID
+            description: Gets basket by ID.
             responses:
                 200:
                     body:
@@ -163,9 +162,9 @@ displayName: eCommerce API
 
         /{mode}:
             post:
-                displayName: Update the name or the note of the stored basket.
+                displayName: Update the name or the note of the stored basket
                 description: |
-                    Update the name or the note of the stored basket.
+                    Updates the name or the note of the stored basket.
                     Possible "mode" values: "name", "note".
                 body:
                     application/vnd.ez.api.BasketHeaderData+json:
@@ -181,7 +180,7 @@ displayName: eCommerce API
         /{basketId}:
             /line:
                 post:
-                    displayName: Add lines to basket fields for item data, provided via POST data and parsed
+                    displayName: Add lines to basket fields
                     body:
                         application/vnd.ez.api.BasketLinesData+json:
                             type: BasketLinesData
@@ -205,7 +204,7 @@ displayName: eCommerce API
     /{basketName}:
         post:
             displayName: Create a new persisted basket
-            description: Create a new persisted basket
+            description: Creates a new persisted basket.
             responses:
                 200:
                     body:
@@ -221,7 +220,7 @@ displayName: eCommerce API
 /checkout:
     /paymentmethods:
         get:
-            displayName: Gets list of payment methods.
+            displayName: Get list of payment methods
             responses:
                 200:
                     body:
@@ -231,7 +230,7 @@ displayName: eCommerce API
 
     /shippingmethods:
         get:
-            displayName: Gets list of shipping methods.
+            displayName: Get list of shipping methods
             responses:
                 200:
                     body:
@@ -249,7 +248,7 @@ displayName: eCommerce API
 
 /customer/addresses/shipping:
     get:
-        displayName: Gets list of shipping addresses from customer.
+        displayName: Get list of shipping addresses
         responses:
             200:
                 body:
@@ -259,8 +258,8 @@ displayName: eCommerce API
 
 /customerprice:
     post:
-        displayName: Get customer prices for the requested products
-        description: Get customer prices for the requested products
+        displayName: Get customer prices for products
+        description: Gets customer prices for the requested products.
         body:
             application/json:
                 type: CustomerPriceData
@@ -275,8 +274,8 @@ displayName: eCommerce API
 
 /common/check_sku_file:/{mode}:
     post:
-        displayName: Add to basket the line from a CSV or Excel file
-        description: Add to basket the line from a CSV or Excel file
+        displayName: Add to basket from CSV or Excel
+        description: Adds to basket a line from a CSV or Excel file.
 
 /country:
     get:
