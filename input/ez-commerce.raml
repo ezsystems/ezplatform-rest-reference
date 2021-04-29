@@ -160,12 +160,27 @@ displayName: eCommerce API
                             type: Basket
                             example: !include examples/commerce/basket/_id_/GET/Basket.json.example
 
-        /{mode}:
+        /name:
             post:
-                displayName: Update the name or the note of the stored basket
+                displayName: Update the name of the stored basket
                 description: |
-                    Updates the name or the note of the stored basket.
-                    Possible "mode" values: "name", "note".
+                    Updates the name of the stored basket.
+                body:
+                    application/vnd.ez.api.BasketHeaderData+json:
+                        type: BasketHeaderData
+                        example: !include examples/commerce/basket/_id_/_mode_/POST/BasketHeaderData.json.example
+                responses:
+                    200:
+                        body:
+                            application/vnd.ez.api.Basket+json:
+                                type: Basket
+                                example: !include examples/commerce/basket/Basket.json.example
+
+        /note:
+            post:
+                displayName: Update the note of the stored basket
+                description: |
+                    Updates the note of the stored basket.
                 body:
                     application/vnd.ez.api.BasketHeaderData+json:
                         type: BasketHeaderData
@@ -180,11 +195,23 @@ displayName: eCommerce API
         /{basketId}:
             /line:
                 post:
-                    displayName: Add lines to basket fields
+                    displayName: Add products to stored basket
+                    description: Adds products to the stored basket.
                     body:
-                        application/vnd.ez.api.BasketLinesData+json:
-                            type: BasketLinesData
-                            example: !include examples/commerce/basket/_id_/line/POST/BasketLinesData.json.example
+                        application/vnd.ez.api.BasketLineData+json:
+                            type: BasketLineData
+                            example: !include examples/commerce/basket/current/lines/POST/BasketLineData.json.example
+                    responses:
+                        200:
+                            body:
+                                application/vnd.ez.api.Basket+json:
+                                    type: Basket
+                                    example: !include examples/commerce/basket/Basket.json.example
+                        400:
+                            body:
+                                application/vnd.ez.api.ValidationResponse+json:
+                                    type: ValidationResponse
+                                    example: !include examples/commerce/basket/current/lines/POST/ValidationResponse.json.example
 
             /line/{lineId}:
                 delete:
