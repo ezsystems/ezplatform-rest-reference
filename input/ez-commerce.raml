@@ -35,8 +35,8 @@ displayName: eCommerce API
                             type: Basket
                             example: !include examples/commerce/basket/Basket.json.example
 
-        /copyfrom/{basketId}:
-            post:
+        /{basketId}:
+            copy:
                 displayName: Copy basket to user session
                 description: |-
                     Adds basket lines into current basket in user session, if any, using basket stored in permanent
@@ -52,6 +52,14 @@ displayName: eCommerce API
                             application/vnd.ez.api.ValidationResponse+json:
                                 type: ValidationResponse
                                 example: !include examples/commerce/basket/current/copyfrom/_basket_id_/POST/ValidationResponse.json.example
+
+        /referencenumber:
+            patch:
+                displayName: Save the external reference number in basket
+
+        /remark:
+            patch:
+                displayName: Save the remark in basket
 
         /party/{partyType}:
             patch:
@@ -161,7 +169,7 @@ displayName: eCommerce API
                             example: !include examples/commerce/basket/_id_/GET/Basket.json.example
 
         /name:
-            post:
+            patch:
                 displayName: Update the name of the stored basket
                 description: |
                     Updates the name of the stored basket.
@@ -177,7 +185,7 @@ displayName: eCommerce API
                                 example: !include examples/commerce/basket/Basket.json.example
 
         /note:
-            post:
+            patch:
                 displayName: Update the note of the stored basket
                 description: |
                     Updates the note of the stored basket.
@@ -264,14 +272,6 @@ displayName: eCommerce API
                         application/vnd.ez.api.ShippingMethodDataResponse+json:
                             type: ShippingMethodDataResponse
                             example: !include examples/commerce/checkout/shipping-methods/GET/ShippingMethodDataResponse.json.example
-
-    /update-referencenumber:
-        patch:
-            displayName: Save the external reference number in basket
-
-    /update-remark:
-        patch:
-            displayName: Save the remark in basket
 
 /customer/addresses/shipping:
     get:
