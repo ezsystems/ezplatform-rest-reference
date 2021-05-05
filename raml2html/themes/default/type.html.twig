@@ -4,12 +4,17 @@
     <span class="red-text">*</span>
 {% endif %}
 
-:
-<span class="blue-text">
-    {% if type is array type %}
-        {{ type.items.name }}[]
+(<span class="font-italic">
+    {%- if type is array type %}
+        {{- type.items.name -}}[]
     {% else %}
-        {{ type.type }}
+        {{- type.type -}}
+    {% endif -%}
+</span>)
+ - 
+<span>
+    {% if type.definition.description is defined %}
+        {{- type.definition.description -}}
     {% endif %}
 </span>
 
