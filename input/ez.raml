@@ -2,7 +2,7 @@
 ---
 title: Ibexa REST API
 baseUri: https://ezsystems.github.io/ezplatform-rest-reference
-#version: 2.5
+version: v3.3.2
 
 /: !include ez-root.raml
 
@@ -36,5 +36,7 @@ baseUri: https://ezsystems.github.io/ezplatform-rest-reference
     /token: !include ez-user-token.raml
 
 /services: !include ez-services.raml
+
+/commerce: !include ez-commerce.raml
 
 types: !include ez-types.raml
