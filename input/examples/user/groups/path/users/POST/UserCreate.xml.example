@@ -4,7 +4,7 @@
   <remoteId>remoteId-qwert426</remoteId>
   <login>yura</login>
   <email>yurarajzer@example.net</email>
-  <password>secret</password>
+  <password>Secrepassword5!</password>
   <fields>
     <field>
       <fieldDefinitionIdentifier>first_name</fieldDefinitionIdentifier>

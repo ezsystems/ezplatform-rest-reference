@@ -66,6 +66,9 @@ head:
                     application/vnd.ez.api.User+xml:
                         type: UserList
                         example: !include examples/user/users/user_id/GET/User.xml.example
+                    application/vnd.ez.api.User+json:
+                        type: UserList
+                        example: !include examples/user/users/user_id/GET/User.json.example
             401:
                 description: Error - the user has no permission to read Users.
             404:
@@ -91,6 +94,9 @@ head:
             application/vnd.ez.api.UserUpdate+xml:
                 type: UserUpdate
                 example: !include examples/user/users/user_id/PATCH/UserUpdate.xml.example
+                application/vnd.ez.api.UserUpdate+json:
+                type: UserUpdate
+                example: !include examples/user/users/user_id/PATCH/UserUpdate.json.example
         responses:
             200:
                 description: OK - User updated.
@@ -98,6 +104,9 @@ head:
                     application/vnd.ez.api.User+xml:
                         type: User
                         example: !include examples/user/users/user_id/PATCH/User.xml.example
+                    application/vnd.ez.api.User+json:
+                        type: User
+                        example: !include examples/user/users/user_id/PATCH/User.json.example
             400:
                 description: Error - the input does not match the input schema definition.
             401:
@@ -163,6 +172,9 @@ head:
                         application/vnd.ez.api.UserGroupRefList+xml:
                             type: UserGroupRefList
                             example: !include examples/user/users/user_id/groups/POST/UserGroupRefList.xml.example
+                        application/vnd.ez.api.UserGroupRefList+json:
+                            type: UserGroupRefList
+                            example: !include examples/user/users/user_id/groups/POST/UserGroupRefList.json.example
                 401:
                     description: Error - the user is not authorized to assign User Groups.
                 403:

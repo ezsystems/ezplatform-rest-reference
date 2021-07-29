@@ -42,6 +42,9 @@ get:
                 application/vnd.ez.api.SectionList+xml:
                     type: SectionList
                     example: !include examples/content/sections/GET/SectionList.xml.example
+            application/vnd.ez.api.SectionList+json:
+                    type: SectionList
+                    example: !include examples/content/sections/GET/SectionList.json.example
         401:
             description: Error - The user has no permission to read the Section.
 /{sectionId}:
@@ -62,6 +65,9 @@ get:
                     application/vnd.ez.api.Section+xml:
                         type: Section
                         example: !include examples/content/sections/section_id/GET/Section.xml.example
+                application/vnd.ez.api.Section+json:
+                        type: Section
+                        example: !include examples/content/sections/section_id/GET/Section.json.example
             401:
                 description: Error - The user is not authorized to read this Section.
             404:
@@ -86,6 +92,9 @@ get:
             application/vnd.ez.api.SectionInput+xml:
                 type: SectionInput
                 example: !include examples/content/sections/section_id/PATCH/SectionInput.xml.example
+            application/vnd.ez.api.SectionInput+json:
+                type: SectionInput
+                example: !include examples/content/sections/section_id/PATCH/SectionInput.json.example
         responses:
             200:
                 description: OK - Section updated.
@@ -93,6 +102,9 @@ get:
                     application/vnd.ez.api.Section+xml:
                         type: Section
                         example: !include examples/content/sections/section_id/PATCH/Section.xml.example
+                    application/vnd.ez.api.Section+json:
+                        type: Section
+                        example: !include examples/content/sections/section_id/PATCH/Section.json.example
             400:
                 description: Error - the input does not match the input schema definition.
             401:

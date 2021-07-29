@@ -19,7 +19,7 @@ get:
                     example: !include examples/content/objectstategroups/GET/ObjectStateGroupList.xml.example
                 application/vnd.ez.api.ObjectStateGroupList+json:
                     type: ObjectStateGroupList
-                    # example: !include examples/content/objectstategroups/GET/ObjectStateGroupList.json.example
+                    example: !include examples/content/objectstategroups/GET/ObjectStateGroupList.json.example
         401:
             description: Error - The user has no permission to read Object state groups.
 post:
@@ -77,7 +77,7 @@ post:
                         example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.xml.example
                     application/vnd.ez.api.ObjectStateGroup+json:
                         type: ObjectStateGroup
-                        # example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.xml.example
+                        example: !include examples/content/objectstategroups/object_state_group_id/GET/ObjectStateGroup.json.example
             401:
                 description: Error - The user is not authorized to read this Object state group.
             404:
@@ -98,10 +98,13 @@ post:
                     application/vnd.ez.api.ObjectStateGroupUpdate+xml
             If-Match:
                 description: ETag
-        body:
-            application/vnd.ez.api.ObjectStateGroupUpdate+xml:
-                type: ObjectStateGroupUpdate
-                example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroupUpdate.xml.example
+                body:
+                    application/vnd.ez.api.ObjectStateGroupUpdate+xml:
+                        type: ObjectStateGroupUpdate
+                        example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroupUpdate.xml.example
+                    application/vnd.ez.api.ObjectStateGroupUpdate+json:
+                        type: ObjectStateGroupUpdate
+                        example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroupUpdate.json.example
         responses:
             200:
                 description: OK - Object stated group updated.
@@ -109,6 +112,9 @@ post:
                     application/vnd.ez.api.ObjectStateGroup+xml:
                         type: ObjectStateGroup
                         example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroup.xml.example
+                    application/vnd.ez.api.ObjectStateGroup+json:
+                        type: ObjectStateGroup
+                        example: !include examples/content/objectstategroups/object_state_group_id/PATCH/ObjectStateGroup.json.example
             400:
                 description: Error - The input does not match the input schema definition.
             401:
@@ -146,6 +152,9 @@ post:
                     application/vnd.ez.api.ObjectStateList+xml:
                         type: ObjectStateList
                         example: !include examples/content/objectstategroups/object_state_group_id/objectstates/GET/ObjectStateList.xml.example
+                    application/vnd.ez.api.ObjectStateList+json:
+                        type: ObjectStateList
+                        example: !include examples/content/objectstategroups/object_state_group_id/objectstates/GET/ObjectStateList.json.example
             401:
                 description: Error - The user has no permission to read Object states.
     post:
@@ -166,6 +175,9 @@ post:
             application/vnd.ez.api.ObjectStateCreate+xml:
                 type: ObjectStateCreate
                 example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectStateCreate.xml.example
+            application/vnd.ez.api.ObjectStateCreate+json:
+                type: ObjectStateCreate
+                example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectStateCreate.json.example
         responses:
             201:
                 description: Object state created.
@@ -173,6 +185,9 @@ post:
                     application/vnd.ez.api.ObjectState+xml:
                         type: ObjectState
                         example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectState.xml.example
+                    application/vnd.ez.api.ObjectState+json:
+                        type: ObjectState
+                        example: !include examples/content/objectstategroups/object_state_group_id/objectstates/POST/ObjectState.json.example
             400:
                 description: Error - The input does not match the input schema definition.
             401:
@@ -198,6 +213,9 @@ post:
                         application/vnd.ez.api.ObjectState+xml:
                             type: ObjectState
                             example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/GET/ObjectState.xml.example
+                        application/vnd.ez.api.ObjectState+json:
+                            type: ObjectState
+                            example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/GET/ObjectState.json.example
                 401:
                     description: Error - The user is not authorized to read this Object state.
                 404:
@@ -222,6 +240,9 @@ post:
                 application/vnd.ez.api.ObjectStateUpdate+xml:
                     type: ObjectStateUpdate
                     example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectStateUpdate.xml.example
+                application/vnd.ez.api.ObjectStateUpdate+json:
+                    type: ObjectStateUpdate
+                    example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectStateUpdate.json.example
             responses:
                 200:
                     description: OK - Object State updated
@@ -229,6 +250,9 @@ post:
                         application/vnd.ez.api.ObjectState+xml:
                             type: ObjectState
                             example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectState.xml.example
+                        application/vnd.ez.api.ObjectState+json:
+                            type: ObjectState
+                            example: !include examples/content/objectstategroups/object_state_group_id/objectstates/object_state_id/PATCH/ObjectState.json.example
                 400:
                     description: Error - The input does not match the input schema definition.
                 401:

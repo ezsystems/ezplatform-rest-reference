@@ -36,6 +36,9 @@ get:
                     application/vnd.ez.api.Location+xml:
                         type: Location
                         example: !include examples/content/locations/path/GET/Location.xml.example
+                    application/vnd.ez.api.Location+json:
+                        type: Location
+                        example: !include examples/content/locations/path/GET/Location.json.example
             401:
                 description: Error - the user is not authorized to read this Location.
             404:

@@ -14,6 +14,9 @@ get:
                 application/vnd.ez.api.UrlAliasRefList+xml:
                     type: UrlAliasRefList
                     example: !include examples/content/urlaliases/GET/UrlAliasRefList.xml.example
+                application/vnd.ez.api.UrlAliasRefList+json:
+                    type: UrlAliasRefList
+                    example: !include examples/content/urlaliases/GET/UrlAliasRefList.json.example
         401:
             description: Error - The user has no permission to read URL aliases.
 post:
@@ -64,6 +67,9 @@ post:
                     application/vnd.ez.api.UrlAlias+xml:
                         type: UrlAlias
                         example: !include examples/content/urlaliases/url_alias_id/GET/UrlAlias.xml.example
+                    application/vnd.ez.api.UrlAlias+json:
+                        type: UrlAlias
+                        example: !include examples/content/urlaliases/url_alias_id/GET/UrlAlias.json.example
             401:
                 description: Error - The user is not authorized to read URL aliases.
             404:

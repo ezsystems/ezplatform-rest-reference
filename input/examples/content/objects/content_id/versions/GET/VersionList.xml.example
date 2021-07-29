@@ -3,12 +3,12 @@
     <VersionItem>
         <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/versions/1"/>
         <VersionInfo>
-            <id>522</id>
+            <id>521</id>
             <versionNo>1</versionNo>
-            <status>ARCHIVED</status>
-            <modificationDate>2019-02-20T11:30:15+01:00</modificationDate>
+            <status>PUBLISHED</status>
+            <modificationDate>2021-06-28T11:33:49+00:00</modificationDate>
             <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-            <creationDate>2018-11-09T14:50:16+01:00</creationDate>
+            <creationDate>2021-06-28T11:33:31+00:00</creationDate>
             <initialLanguageCode>eng-GB</initialLanguageCode>
             <languageCodes>eng-GB</languageCodes>
             <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
@@ -17,7 +17,7 @@
                 </Language>
             </VersionTranslationInfo>
             <names>
-                <value languageCode="eng-GB">777</value>
+                <value languageCode="eng-GB">Art1</value>
             </names>
             <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
         </VersionInfo>
@@ -25,12 +25,12 @@
     <VersionItem>
         <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/versions/2"/>
         <VersionInfo>
-            <id>543</id>
+            <id>580</id>
             <versionNo>2</versionNo>
-            <status>ARCHIVED</status>
-            <modificationDate>2019-02-20T11:31:52+01:00</modificationDate>
+            <status>DRAFT</status>
+            <modificationDate>2021-07-26T08:10:02+00:00</modificationDate>
             <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-            <creationDate>2019-02-19T14:59:15+01:00</creationDate>
+            <creationDate>2021-07-26T08:10:02+00:00</creationDate>
             <initialLanguageCode>eng-GB</initialLanguageCode>
             <languageCodes>eng-GB</languageCodes>
             <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
@@ -39,7 +39,7 @@
                 </Language>
             </VersionTranslationInfo>
             <names>
-                <value languageCode="eng-GB">777</value>
+                <value languageCode="eng-GB">Art1</value>
             </names>
             <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
         </VersionInfo>
@@ -47,12 +47,12 @@
     <VersionItem>
         <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/versions/3"/>
         <VersionInfo>
-            <id>550</id>
+            <id>581</id>
             <versionNo>3</versionNo>
-            <status>ARCHIVED</status>
-            <modificationDate>2019-02-20T11:32:12+01:00</modificationDate>
+            <status>DRAFT</status>
+            <modificationDate>2021-07-26T08:16:50+00:00</modificationDate>
             <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-            <creationDate>2019-02-20T11:31:34+01:00</creationDate>
+            <creationDate>2021-07-26T08:16:50+00:00</creationDate>
             <initialLanguageCode>eng-GB</initialLanguageCode>
             <languageCodes>eng-GB</languageCodes>
             <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
@@ -61,29 +61,7 @@
                 </Language>
             </VersionTranslationInfo>
             <names>
-                <value languageCode="eng-GB">7777</value>
-            </names>
-            <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
-        </VersionInfo>
-    </VersionItem>
-    <VersionItem>
-        <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/61/versions/4"/>
-        <VersionInfo>
-            <id>551</id>
-            <versionNo>4</versionNo>
-            <status>PUBLISHED</status>
-            <modificationDate>2019-02-20T11:32:12+01:00</modificationDate>
-            <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-            <creationDate>2019-02-20T11:32:06+01:00</creationDate>
-            <initialLanguageCode>eng-GB</initialLanguageCode>
-            <languageCodes>eng-GB</languageCodes>
-            <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
-                <Language>
-                    <languageCode>eng-GB</languageCode>
-                </Language>
-            </VersionTranslationInfo>
-            <names>
-                <value languageCode="eng-GB">7777</value>
+                <value languageCode="eng-GB">Art1</value>
             </names>
             <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/61"/>
         </VersionInfo>

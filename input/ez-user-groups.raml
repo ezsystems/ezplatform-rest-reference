@@ -22,6 +22,9 @@ get:
                 application/vnd.ez.api.UserGroupList+xml:
                     type: UserGroupList
                     example: !include examples/user/groups/GET/UserGroupList.xml.example
+                application/vnd.ez.api.UserGroupList+json:
+                    type: UserGroupList
+                    example: !include examples/user/groups/GET/UserGroupList.json.example
         401:
             description: Error - the user has no permission to read User Groups.
 /root:
@@ -51,6 +54,9 @@ get:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/GET/UserGroup.xml.example
+                    application/vnd.ez.api.UserGroup+json:
+                        type: UserGroup
+                        example: !include examples/user/groups/path/GET/UserGroup.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:
@@ -76,6 +82,9 @@ get:
             application/vnd.ez.api.UserGroupUpdate+xml:
                 type: UserGroupUpdate
                 example: !include examples/user/groups/path/PATCH/UserGroupUpdate.xml.example
+            application/vnd.ez.api.UserGroupUpdate+json:
+                type: UserGroupUpdate
+                example: !include examples/user/groups/path/PATCH/UserGroupUpdate.json.example
         responses:
             200:
                 description: OK - updated User Group.
@@ -83,6 +92,9 @@ get:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/PATCH/UserGroup.xml.example
+                    application/vnd.ez.api.UserGroup+json:
+                        type: UserGroup
+                        example: !include examples/user/groups/path/PATCH/UserGroup.json.example
             400:
                 description: Error - the input does not match the input schema definition.
             401:
@@ -132,7 +144,7 @@ get:
             body:
                 application/vnd.ez.api.UserCreate+xml:
                     type: UserCreate
-                    example: examples/user/groups/path/users/POST/UserCreate.xml.example
+                    example: !include examples/user/groups/path/users/POST/UserCreate.xml.example
             responses:
                 201:
                     body:
