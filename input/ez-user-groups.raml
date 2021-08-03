@@ -251,6 +251,10 @@ get:
                             application/vnd.ez.api.RoleAssignment+xml:
                                 type: RoleAssignment
                                 example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.xml.example
+                            application/vnd.ez.api.RoleAssignment+json:
+                                type: RoleAssignment
+                                example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.json.example
+                            
                     401:
                         description: Error - the user has no permission to read Roles.
             delete:
@@ -294,6 +298,9 @@ get:
                     application/vnd.ez.api.UserRefList+xml:
                         type: UserRefList
                         example: !include examples/user/groups/id/users/GET/UserRefList.xml.example
+                    application/vnd.ez.api.UserRefList+json:
+                        type: UserRefList
+                        example: !include examples/user/groups/id/users/GET/UserRefList.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:
@@ -322,6 +329,9 @@ get:
                     application/vnd.ez.api.UserGroupRefList+xml:
                         type: UserGroupRefList
                         example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.xml.example
+                    application/vnd.ez.api.UserGroupRefList+json:
+                        type: UserGroupRefList
+                        example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:

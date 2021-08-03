@@ -6,15 +6,15 @@
             "value": [
                 {
                     "_languageCode": "eng-GB",
-                            "#text": "Custom State"
+                    "#text": "Custom State"
                 }
             ]
         },
         "descriptions": {
             "value": [
                 {
-                     "_languageCode": "eng-GB",
-                            "#text": "Custom Object state"
+                    "_languageCode": "eng-GB",
+                    "#text": "Custom Object state"
                 }
             ]
         }

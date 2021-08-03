@@ -17,5 +17,8 @@ get:
                 application/vnd.ez.api.PolicyList+xml:
                     type: PolicyList
                     example: !include examples/user/policies/GET/PolicyList.xml.example
+                application/vnd.ez.api.PolicyList+json:
+                    type: PolicyList
+                    example: !include examples/user/policies/GET/PolicyList.json.example
         401:
             description: Error - the user has no permission to read Roles.

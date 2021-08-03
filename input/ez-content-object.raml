@@ -383,6 +383,9 @@ get:
                                 application/vnd.ez.api.RelationList+xml:
                                     type: RelationList
                                     example: !include examples/content/objects/content_id/versions/version_no/relations/GET/RelationList.xml.example
+                                application/vnd.ez.api.RelationList+json:
+                                    type: RelationList
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/GET/RelationList.json.example
                         401:
                             description: Error - the user is not authorized to read this Content item.
                         404:
@@ -401,16 +404,23 @@ get:
                             example:  |
                                 application/vnd.ez.api.RelationCreate+xml
                                 application/vnd.ez.api.RelationCreate+json
-                    body:
-                        application/vnd.ez.api.RelationCreate+xml:
-                            type: Relation
-                            example: !include examples/content/objects/content_id/versions/version_no/relations/POST/RelationCreate.xml.example
+                            body:
+                                application/vnd.ez.api.RelationCreate+xml:
+                                    type: Relation
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/POST/RelationCreate.xml.example
+                                application/vnd.ez.api.RelationCreate+json:
+                                    type: Relation
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/POST/RelationCreate.json.example
                     responses:
                         201:
                             body:
                                 application/vnd.ez.api.Relation+xml:
                                     type: Relation
                                     example: !include examples/content/objects/content_id/versions/version_no/relations/POST/Relation.xml.example
+                                application/vnd.ez.api.Relation+json:
+                                    type: Relation
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/POST/Relation.json.example
+                                
                 /{relationId}:
                     get:
                         displayName: Load Relation
@@ -424,10 +434,13 @@ get:
                         responses:
                             200:
                                 description: OK - loads a Relation for the given Content item.
-                                body:
-                                    application/vnd.ez.api.Relation+xml:
-                                        type: Relation
-                                        example: !include examples/content/objects/content_id/versions/version_no/relations/relation_id/GET/Relation.xml.example
+                            body:
+                                application/vnd.ez.api.Relation+xml:
+                                    type: Relation
+                                    example: !include examples/content/objects/content_id/versions/version_no/relations/relation_id/GET/Relation.xml.example
+                                application/vnd.ez.api.Relation+json:
+                                    type: Relation
+                                    example: examples/content/objects/content_id/versions/version_no/relations/relation_id/GET/Relation.json.example
                             401:
                                 description: Error - the user is not authorized to read this Content item.
                             404:
@@ -474,12 +487,18 @@ get:
                 application/vnd.ez.api.LocationCreate+xml:
                     type: LocationCreate
                     example: !include examples/content/objects/content_id/locations/POST/LocationCreate.xml.example
+                application/vnd.ez.api.LocationCreate+json:
+                    type: LocationCreate
+                    example: !include examples/content/objects/content_id/locations/POST/LocationCreate.json.example
             responses:
                 201:
                     body:
                         application/vnd.ez.api.Location+xml:
                             type: Location
                             example: !include examples/content/objects/content_id/locations/POST/Location.xml.example
+                        application/vnd.ez.api.Location+json:
+                            type: Location
+                            example: !include examples/content/objects/content_id/locations/POST/Location.json.example
                 400:
                     description: Error - the input does not match the input schema definition.
                 401:
@@ -529,6 +548,9 @@ get:
                         application/vnd.ez.api.ContentObjectStates+xml:
                             type: ContentObjectStates
                             example: !include examples/content/objects/content_id/objectstates/GET/ContentObjectStates.xml.example
+                        application/vnd.ez.api.ContentObjectStates+json:
+                            type: ContentObjectStates
+                            example: !include examples/content/objects/content_id/objectstates/GET/ContentObjectStates.json.example
                 404:
                     description: Error - The Content item does not exist.
         patch:

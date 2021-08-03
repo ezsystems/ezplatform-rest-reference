@@ -42,7 +42,7 @@ post:
             example: !include examples/content/objectstategroups/POST/ObjectStateGroupCreate.xml.example
         application/vnd.ez.api.ObjectStateGroupCreate+json:
             type: ObjectStateGroupCreate
-            #example: !include examples/content/objectstategroups/POST/ObjectStateGroupCreate.json.example
+            example: !include examples/content/objectstategroups/POST/ObjectStateGroupCreate.json.example
     responses:
         201:
             description: Object state group created.
@@ -50,6 +50,9 @@ post:
                 application/vnd.ez.api.ObjectStateGroup+xml:
                     type: ObjectStateGroup
                     example: !include examples/content/objectstategroups/POST/ObjectStateGroup.xml.example
+                application/vnd.ez.api.ObjectStateGroup+json:
+                    type: ObjectStateGroup
+                    example: !include examples/content/objectstategroups/POST/ObjectStateGroup.json.example
         400:
             description: Error - The input does not match the input schema definition.
         401:
