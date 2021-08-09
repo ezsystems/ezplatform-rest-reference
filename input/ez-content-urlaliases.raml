@@ -37,6 +37,9 @@ post:
         application/vnd.ez.api.UrlAliasCreate+xml:
             type: UrlAliasCreate
             example: !include examples/content/urlaliases/POST/UrlAliasCreate.xml.example
+        application/vnd.ez.api.UrlAliasCreate+json:
+            type: UrlAliasCreate
+            example: !include examples/content/urlaliases/POST/UrlAliasCreate.json.example
     responses:
         201:
             description: URL alias created.
@@ -44,6 +47,9 @@ post:
                 application/vnd.ez.api.UrlAlias+xml:
                     type: UrlAlias
                     example: !include examples/content/urlaliases/POST/UrlAlias.xml.example
+                application/vnd.ez.api.UrlAlias+json:
+                    type: UrlAlias
+                    example: !include examples/content/urlaliases/POST/UrlAlias.json.example
         400:
             description: Error - The input does not match the input schema definition.
         401:

@@ -151,9 +151,12 @@ post:
                         application/vnd.ez.api.ContentTypeInfoList+xml:
                             type: ContentTypeInfoList
                             example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeInfoList.xml.example
-                        application/vnd.ez.api.ContentTypeList+xml:
-                            type: ContentTypeList
-                            example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeList.xml.example
+                        #application/vnd.ez.api.ContentTypeInfoList+json:
+                            #type: ContentTypeInfoList
+                            #example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeInfoList.json.example
+                        #application/vnd.ez.api.ContentTypeList+json:
+                            #type: ContentTypeList
+                            #example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeList.json.example
                 401:
                     description: Error - The user has no permission to read the Content Types.
         post:

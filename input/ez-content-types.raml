@@ -246,6 +246,9 @@ get:
                                 application/vnd.ez.api.FieldDefinition+xml:
                                     type: FieldDefinition
                                     example: !include examples/content/types/content_type_id/draft/field_definitions/field_definition_id/GET/FieldDefinition.xml.example
+                                application/vnd.ez.api.FieldDefinition+xml:
+                                    type: FieldDefinition
+                                    example: !include examples/content/types/content_type_id/draft/field_definitions/field_definition_id/GET/FieldDefinition.xml.example
                         401:
                             description: Error - The user is not authorized to read the Content Type draft.
                         404:
@@ -307,6 +310,9 @@ get:
                         application/vnd.ez.api.ContentTypeGroupRefList+xml:
                             type: ContentTypeGroupRefList
                             example: !include examples/content/types/content_type_id/groups/GET/ContentTypeGroupRefList.xml.example
+                        application/vnd.ez.api.ContentTypeGroupRefList+json:
+                            type: ContentTypeGroupRefList
+                            example: !include examples/content/types/content_type_id/groups/GET/ContentTypeGroupRefList.json.example
                 401:
                     description: Error - The user is not authorized to read this Content Type.
                 404:

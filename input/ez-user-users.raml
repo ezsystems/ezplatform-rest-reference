@@ -150,6 +150,9 @@ head:
                         application/vnd.ez.api.UserGroupRefList+xml:
                             type: UserGroupRefList
                             example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.xml.example
+                        application/vnd.ez.api.UserGroupRefList+json:
+                            type: UserGroupRefList
+                            example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.json.example
                 401:
                     description: Error - the user has no permission to read User Groups.
                 404:
