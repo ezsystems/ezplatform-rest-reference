@@ -150,9 +150,9 @@ head:
                         application/vnd.ez.api.UserGroupRefList+xml:
                             type: UserGroupRefList
                             example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.xml.example
-                        application/vnd.ez.api.UserGroupRefList+json:
-                            type: UserGroupRefList
-                            example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.json.example
+                        #application/vnd.ez.api.UserGroupRefList+json:
+                            #type: UserGroupRefList
+                            #example: !include examples/user/users/user_id/groups/GET/UserGroupRefList.json.example
                 401:
                     description: Error - the user has no permission to read User Groups.
                 404:
@@ -298,5 +298,8 @@ head:
                             application/vnd.ez.api.RoleAssignmentList+xml:
                                 type: RoleAssignmentList
                                 example: !include examples/user/users/user_id/roles/role_id/DELETE/RoleAssignmentList.xml.example
+                            application/vnd.ez.api.RoleAssignmentList+json:
+                                type: RoleAssignmentList
+                                example: !include examples/user/users/user_id/roles/role_id/DELETE/RoleAssignmentList.json.example
                     401:
                         description: Error - the user is not authorized to delete this Content Type.

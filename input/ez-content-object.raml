@@ -18,12 +18,18 @@ post:
         application/vnd.ez.api.ContentCreate+xml:
             type: ContentCreate
             example: !include examples/content/objects/POST/ContentCreate.xml.example
+        application/vnd.ez.api.ContentCreate+json:
+            type: ContentCreate
+            example: !include examples/content/objects/POST/ContentCreate.json.example
     responses:
         201:
             body:
                 application/vnd.ez.api.Content+xml:
                     type: Content
                     example: !include examples/content/objects/POST/Content.xml.example
+                application/vnd.ez.api.Content+json:
+                    type: Content
+                    example: !include examples/content/objects/POST/Content.json.example
                 application/vnd.ez.api.ContentInfo+xml:
                     type: ContentInfo
                     example: !include examples/content/objects/POST/ContentInfo.xml.example

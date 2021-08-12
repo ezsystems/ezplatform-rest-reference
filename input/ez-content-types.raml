@@ -87,6 +87,9 @@ get:
             application/vnd.ez.api.ContentTypeUpdate+xml:
                 type: ContentTypeUpdate
                 example: !include examples/content/types/content_type_id/POST/ContentTypeUpdate.xml.example
+            application/vnd.ez.api.ContentTypeUpdate+json:
+                type: ContentTypeUpdate
+                example: !include examples/content/types/content_type_id/POST/ContentTypeUpdate.json.example
         responses:
             201:
                 description: Draft created.
@@ -94,6 +97,9 @@ get:
                     application/vnd.ez.api.ContentTypeInfo+xml:
                         type: ContentTypeInfo
                         example: !include examples/content/types/content_type_id/POST/ContentTypeInfo.xml.example
+                    application/vnd.ez.api.ContentTypeInfo+json:
+                        type: ContentTypeInfo
+                        example: !include examples/content/types/content_type_id/POST/ContentTypeInfo.json.example
             400:
                 description: Error - The input does not match the input schema definition.
             401:
@@ -155,6 +161,9 @@ get:
                 application/vnd.ez.api.ContentTypeUpdate+xml:
                     type: ContentTypeUpdate
                     example: !include examples/content/types/content_type_id/draft/PATCH/ContentTypeUpdate.xml.example
+                application/vnd.ez.api.ContentTypeUpdate+json:
+                    type: ContentTypeUpdate
+                    example: !include examples/content/types/content_type_id/draft/PATCH/ContentTypeUpdate.json.example
             responses:
                 200:
                     description: Draft metadata updated.
@@ -162,6 +171,9 @@ get:
                         application/vnd.ez.api.ContentTypeInfo+xml:
                             type: ContentTypeInfo
                             example: !include examples/content/types/content_type_id/draft/PATCH/ContentTypeInfo.xml.example
+                        application/vnd.ez.api.ContentTypeInfo+json:
+                            type: ContentTypeInfo
+                            example: !include examples/content/types/content_type_id/draft/PATCH/ContentTypeInfo.json.example
 
                 400:
                     description: Error - The input does not match the input schema definition.
@@ -246,9 +258,9 @@ get:
                                 application/vnd.ez.api.FieldDefinition+xml:
                                     type: FieldDefinition
                                     example: !include examples/content/types/content_type_id/draft/field_definitions/field_definition_id/GET/FieldDefinition.xml.example
-                                application/vnd.ez.api.FieldDefinition+xml:
+                                application/vnd.ez.api.FieldDefinition+json:
                                     type: FieldDefinition
-                                    example: !include examples/content/types/content_type_id/draft/field_definitions/field_definition_id/GET/FieldDefinition.xml.example
+                                    example: !include examples/content/types/content_type_id/draft/field_definitions/field_definition_id/GET/FieldDefinition.json.example
                         401:
                             description: Error - The user is not authorized to read the Content Type draft.
                         404:
@@ -336,6 +348,9 @@ get:
                         application/vnd.ez.api.ContentTypeGroupRefList+xml:
                             type: ContentTypeGroupRefList
                             example: !include examples/content/types/content_type_id/groups/POST/ContentTypeGroupRefList.xml.example
+                        application/vnd.ez.api.ContentTypeGroupRefList+json:
+                            type: ContentTypeGroupRefList
+                            example: !include examples/content/types/content_type_id/groups/POST/ContentTypeGroupRefList.json.example
                 400:
                     description: Error - The input does not match the input schema definition.
                 401:
@@ -358,6 +373,9 @@ get:
                             application/vnd.ez.api.ContentTypeGroup+xml:
                                 type: ContentTypeGroup
                                 example: !include examples/content/types/content_type_id/groups/id/DELETE/ContentTypeGroup.xml.example
+                            application/vnd.ez.api.ContentTypeGroup+json:
+                                type: ContentTypeGroup
+                                example: !include examples/content/types/content_type_id/groups/id/DELETE/ContentTypeGroup.json.example
                     401:
                         description: Error - The user is not authorized to delete this Content Type.
                     403:

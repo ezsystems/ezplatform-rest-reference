@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentTypeList media-type="application/vnd.ez.api.ContentTypeList+xml" href="/api/ezp/v2/content/types">
+<ContentTypeList media-type="application/vnd.ez.api.ContentTypeList+xml" href="/api/ezp/v2/content/typegroups/1/types">
     <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/2">
         <id>2</id>
         <status>DEFINED</status>
@@ -7,11 +7,9 @@
         <names>
             <value languageCode="eng-GB">Article</value>
         </names>
-        <descriptions>
-            <value languageCode="eng-GB"></value>
-        </descriptions>
+        <descriptions/>
         <creationDate>2002-06-18T09:21:38+00:00</creationDate>
-        <modificationDate>2021-06-28T11:31:22+00:00</modificationDate>
+        <modificationDate>2004-04-20T09:56:29+00:00</modificationDate>
         <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
         <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
         <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/2/groups"/>
@@ -39,9 +37,7 @@
                 <names>
                     <value languageCode="eng-GB">Title</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings/>
                 <validatorConfiguration>
                     <value key="StringLengthValidator">
@@ -63,9 +59,7 @@
                 <names>
                     <value languageCode="eng-GB">Short title</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings/>
                 <validatorConfiguration>
                     <value key="StringLengthValidator">
@@ -87,9 +81,7 @@
                 <names>
                     <value languageCode="eng-GB">Author</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings>
                     <value key="defaultAuthor">1</value>
                 </fieldSettings>
@@ -116,9 +108,7 @@
                 <names>
                     <value languageCode="eng-GB">Intro</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings/>
                 <validatorConfiguration/>
             </FieldDefinition>
@@ -143,9 +133,7 @@
                 <names>
                     <value languageCode="eng-GB">Body</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings/>
                 <validatorConfiguration/>
             </FieldDefinition>
@@ -163,331 +151,32 @@
                 <names>
                     <value languageCode="eng-GB">Enable comments</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings/>
                 <validatorConfiguration/>
             </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/2/fieldDefinitions/195">
-                <id>195</id>
+            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/2/fieldDefinitions/154">
+                <id>154</id>
                 <identifier>image</identifier>
-                <fieldType>ezimageasset</fieldType>
-                <fieldGroup>content</fieldGroup>
+                <fieldType>ezobjectrelation</fieldType>
+                <fieldGroup></fieldGroup>
                 <position>7</position>
-                <isTranslatable>false</isTranslatable>
+                <isTranslatable>true</isTranslatable>
                 <isRequired>false</isRequired>
                 <isInfoCollector>false</isInfoCollector>
                 <defaultValue>
                     <value key="destinationContentId"/>
-                    <value key="alternativeText"/>
-                    <value key="source"/>
                 </defaultValue>
-                <isSearchable>false</isSearchable>
+                <isSearchable>true</isSearchable>
                 <names>
                     <value languageCode="eng-GB">Image</value>
                 </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/50">
-        <id>50</id>
-        <status>DEFINED</status>
-        <identifier>copy_of_article_50</identifier>
-        <names>
-            <value languageCode="eng-GB">Article</value>
-        </names>
-        <descriptions>
-            <value languageCode="eng-GB"></value>
-        </descriptions>
-        <creationDate>2021-07-14T10:30:00+00:00</creationDate>
-        <modificationDate>2021-07-14T10:30:00+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/50/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/50/draft"/>
-        <remoteId>fc9434492469d136ffe13377bfdcbb28</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;short_title|title&gt;</nameSchema>
-        <isContainer>true</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>false</defaultAlwaysAvailable>
-        <defaultSortField>PATH</defaultSortField>
-        <defaultSortOrder>ASC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/197">
-                <id>197</id>
-                <identifier>title</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>New article</defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Title</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/198">
-                <id>198</id>
-                <identifier>short_title</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Short title</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/199">
-                <id>199</id>
-                <identifier>author</identifier>
-                <fieldType>ezauthor</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>3</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Author</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
+                <descriptions/>
                 <fieldSettings>
-                    <value key="defaultAuthor">1</value>
+                    <value key="selectionMethod">SELECTION_BROWSE</value>
+                    <value key="selectionRoot"></value>
+                    <value key="selectionContentTypes"/>
                 </fieldSettings>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/200">
-                <id>200</id>
-                <identifier>intro</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>4</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Intro</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/201">
-                <id>201</id>
-                <identifier>body</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>5</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Body</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/202">
-                <id>202</id>
-                <identifier>enable_comments</identifier>
-                <fieldType>ezboolean</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>6</position>
-                <isTranslatable>false</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>false</defaultValue>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Enable comments</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/50/fieldDefinitions/203">
-                <id>203</id>
-                <identifier>image</identifier>
-                <fieldType>ezimageasset</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>7</position>
-                <isTranslatable>false</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="destinationContentId"/>
-                    <value key="alternativeText"/>
-                    <value key="source"/>
-                </defaultValue>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Image</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/44">
-        <id>44</id>
-        <status>DEFINED</status>
-        <identifier>dog_breed</identifier>
-        <names>
-            <value languageCode="eng-GB">Dog Breed</value>
-        </names>
-        <descriptions>
-            <value languageCode="eng-GB"></value>
-        </descriptions>
-        <creationDate>2021-06-28T11:28:00+00:00</creationDate>
-        <modificationDate>2021-06-28T11:29:02+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/44/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/44/draft"/>
-        <remoteId>b348c95f7c573d4d502d6b59f80e618a</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;name&gt;</nameSchema>
-        <isContainer>false</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PUBLISHED</defaultSortField>
-        <defaultSortOrder>DESC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/44/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/44/fieldDefinitions/190">
-                <id>190</id>
-                <identifier>name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Name</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength"/>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/44/fieldDefinitions/191">
-                <id>191</id>
-                <identifier>photo</identifier>
-                <fieldType>ezimageasset</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="destinationContentId"/>
-                    <value key="alternativeText"/>
-                    <value key="source"/>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Photo</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/44/fieldDefinitions/192">
-                <id>192</id>
-                <identifier>description</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>3</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Full Description</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
                 <validatorConfiguration/>
             </FieldDefinition>
         </FieldDefinitions>
@@ -681,106 +370,6 @@
             </FieldDefinition>
         </FieldDefinitions>
     </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/45">
-        <id>45</id>
-        <status>DEFINED</status>
-        <identifier>tip</identifier>
-        <names>
-            <value languageCode="eng-GB">Tip</value>
-        </names>
-        <descriptions>
-            <value languageCode="eng-GB"></value>
-        </descriptions>
-        <creationDate>2021-06-28T11:29:19+00:00</creationDate>
-        <modificationDate>2021-07-26T09:33:06+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/45/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/45/draft"/>
-        <remoteId>e6490e8a785edacd48629f2022be3125</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;title&gt;</nameSchema>
-        <isContainer>false</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PUBLISHED</defaultSortField>
-        <defaultSortOrder>DESC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/45/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/45/fieldDefinitions/193">
-                <id>193</id>
-                <identifier>title</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Title</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength"/>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/45/fieldDefinitions/194">
-                <id>194</id>
-                <identifier>body</identifier>
-                <fieldType>eztext</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Body</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings>
-                    <value key="textRows">10</value>
-                </fieldSettings>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/45/fieldDefinitions/204">
-                <id>204</id>
-                <identifier>richtext</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup>content</fieldGroup>
-                <position>3</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">richtext</value>
-                </names>
-                <descriptions>
-                    <value languageCode="eng-GB"></value>
-                </descriptions>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
     <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/42">
         <id>42</id>
         <status>DEFINED</status>
@@ -885,405 +474,6 @@
                     <value key="editorMode">page_view_mode</value>
                 </fieldSettings>
                 <validatorConfiguration/>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/4">
-        <id>4</id>
-        <status>DEFINED</status>
-        <identifier>user</identifier>
-        <names>
-            <value languageCode="eng-GB">User</value>
-        </names>
-        <descriptions/>
-        <creationDate>2002-06-18T09:21:38+00:00</creationDate>
-        <modificationDate>2004-04-15T08:39:24+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/4/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/4/draft"/>
-        <remoteId>40faa822edc579b02c25f6bb7beec3ad</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;first_name&gt; &lt;last_name&gt;</nameSchema>
-        <isContainer>false</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PATH</defaultSortField>
-        <defaultSortOrder>ASC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions/8">
-                <id>8</id>
-                <identifier>first_name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">First name</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions/9">
-                <id>9</id>
-                <identifier>last_name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Last name</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions/12">
-                <id>12</id>
-                <identifier>user_account</identifier>
-                <fieldType>ezuser</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>3</position>
-                <isTranslatable>false</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">User account</value>
-                </names>
-                <descriptions/>
-                <fieldSettings>
-                    <value key="PasswordTTL">0</value>
-                    <value key="PasswordTTLWarning">0</value>
-                    <value key="RequireUniqueEmail">false</value>
-                    <value key="UsernamePattern">^[^@]+$</value>
-                </fieldSettings>
-                <validatorConfiguration>
-                    <value key="PasswordValueValidator">
-                        <value key="requireAtLeastOneUpperCaseCharacter">true</value>
-                        <value key="requireAtLeastOneLowerCaseCharacter">true</value>
-                        <value key="requireAtLeastOneNumericCharacter">true</value>
-                        <value key="requireAtLeastOneNonAlphanumericCharacter">false</value>
-                        <value key="requireNewPassword">false</value>
-                        <value key="minLength">10</value>
-                    </value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions/179">
-                <id>179</id>
-                <identifier>signature</identifier>
-                <fieldType>eztext</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>4</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Signature</value>
-                </names>
-                <descriptions/>
-                <fieldSettings>
-                    <value key="textRows">10</value>
-                </fieldSettings>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/4/fieldDefinitions/180">
-                <id>180</id>
-                <identifier>image</identifier>
-                <fieldType>ezimage</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>5</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Image</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="FileSizeValidator">
-                        <value key="maxFileSize">10</value>
-                    </value>
-                </validatorConfiguration>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/3">
-        <id>3</id>
-        <status>DEFINED</status>
-        <identifier>user_group</identifier>
-        <names>
-            <value languageCode="eng-GB">User group</value>
-        </names>
-        <descriptions/>
-        <creationDate>2002-06-18T09:21:38+00:00</creationDate>
-        <modificationDate>2003-03-24T08:32:23+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/3/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/3/draft"/>
-        <remoteId>25b4268cdcd01921b808a0d854b877ef</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;name&gt;</nameSchema>
-        <isContainer>true</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PATH</defaultSortField>
-        <defaultSortOrder>ASC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/3/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/3/fieldDefinitions/6">
-                <id>6</id>
-                <identifier>name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Name</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/3/fieldDefinitions/7">
-                <id>7</id>
-                <identifier>description</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Description</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">255</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/12">
-        <id>12</id>
-        <status>DEFINED</status>
-        <identifier>file</identifier>
-        <names>
-            <value languageCode="eng-GB">File</value>
-        </names>
-        <descriptions/>
-        <creationDate>2003-05-08T09:17:52+00:00</creationDate>
-        <modificationDate>2003-05-08T09:21:09+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/12/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/12/draft"/>
-        <remoteId>637d58bfddf164627bdfd265733280a0</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;name&gt;</nameSchema>
-        <isContainer>false</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PATH</defaultSortField>
-        <defaultSortOrder>ASC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/12/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/12/fieldDefinitions/146">
-                <id>146</id>
-                <identifier>name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>New file</defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Name</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength"/>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/12/fieldDefinitions/147">
-                <id>147</id>
-                <identifier>description</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Description</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/12/fieldDefinitions/148">
-                <id>148</id>
-                <identifier>file</identifier>
-                <fieldType>ezbinaryfile</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>3</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">File</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="FileSizeValidator">
-                        <value key="maxFileSize"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-        </FieldDefinitions>
-    </ContentType>
-    <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/5">
-        <id>5</id>
-        <status>DEFINED</status>
-        <identifier>image</identifier>
-        <names>
-            <value languageCode="eng-GB">Image</value>
-        </names>
-        <descriptions/>
-        <creationDate>2002-09-08T11:36:32+00:00</creationDate>
-        <modificationDate>2003-03-24T08:33:04+00:00</modificationDate>
-        <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Modifier media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-        <Groups media-type="application/vnd.ez.api.ContentTypeGroupRefList+xml" href="/api/ezp/v2/content/types/5/groups"/>
-        <Draft media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/5/draft"/>
-        <remoteId>f6df12aa74e36230eb675f364fccd25a</remoteId>
-        <urlAliasSchema></urlAliasSchema>
-        <nameSchema>&lt;name&gt;</nameSchema>
-        <isContainer>false</isContainer>
-        <mainLanguageCode>eng-GB</mainLanguageCode>
-        <defaultAlwaysAvailable>true</defaultAlwaysAvailable>
-        <defaultSortField>PATH</defaultSortField>
-        <defaultSortOrder>ASC</defaultSortOrder>
-        <FieldDefinitions media-type="application/vnd.ez.api.FieldDefinitionList+xml" href="/api/ezp/v2/content/types/5/fieldDefinitions">
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/5/fieldDefinitions/116">
-                <id>116</id>
-                <identifier>name</identifier>
-                <fieldType>ezstring</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>1</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>true</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Name</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="StringLengthValidator">
-                        <value key="maxStringLength">150</value>
-                        <value key="minStringLength"/></value>
-                </validatorConfiguration>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/5/fieldDefinitions/117">
-                <id>117</id>
-                <identifier>caption</identifier>
-                <fieldType>ezrichtext</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>2</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue>
-                    <value key="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://docbook.org/ns/docbook&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;5.0-variant ezpublish-1.0&quot;/&gt;
-</value>
-                    <value key="xhtml5edit">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;section xmlns=&quot;http://ez.no/namespaces/ezpublish5/xhtml5/edit&quot;/&gt;
-</value>
-                </defaultValue>
-                <isSearchable>true</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Caption</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration/>
-            </FieldDefinition>
-            <FieldDefinition media-type="application/vnd.ez.api.FieldDefinition+xml" href="/api/ezp/v2/content/types/5/fieldDefinitions/118">
-                <id>118</id>
-                <identifier>image</identifier>
-                <fieldType>ezimage</fieldType>
-                <fieldGroup></fieldGroup>
-                <position>3</position>
-                <isTranslatable>true</isTranslatable>
-                <isRequired>false</isRequired>
-                <isInfoCollector>false</isInfoCollector>
-                <defaultValue/>
-                <isSearchable>false</isSearchable>
-                <names>
-                    <value languageCode="eng-GB">Image</value>
-                </names>
-                <descriptions/>
-                <fieldSettings/>
-                <validatorConfiguration>
-                    <value key="FileSizeValidator">
-                        <value key="maxFileSize">10</value>
-                    </value>
-                </validatorConfiguration>
             </FieldDefinition>
         </FieldDefinitions>
     </ContentType>
