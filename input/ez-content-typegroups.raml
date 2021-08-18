@@ -19,6 +19,9 @@ get:
                 application/vnd.ez.api.ContentTypeGroupList+xml:
                     type: ContentTypeGroupList
                     example: !include examples/content/typegroups/GET/ContentTypeGroupList.xml.example
+                application/vnd.ez.api.ContentTypeGroupList+json:
+                    type: ContentTypeGroupList
+                    example: !include examples/content/typegroups/GET/ContentTypeGroupList.json.example
         307:
             description: Temporary redirect.
         401:
@@ -43,6 +46,9 @@ post:
         application/vnd.ez.api.ContentTypeGroupInput+xml:
             type: ContentTypeGroupInput
             example: !include examples/content/typegroups/POST/ContentTypeGroupInput.xml.example
+        application/vnd.ez.api.ContentTypeGroupInput+json:
+            type: ContentTypeGroupInput
+            example: !include examples/content/typegroups/POST/ContentTypeGroupInput.json.example
     responses:
         201:
             description: Content Type group created.
@@ -50,6 +56,9 @@ post:
                 application/vnd.ez.api.ContentTypeGroup+xml:
                     type: ContentTypeGroup
                     example: !include examples/content/typegroups/POST/ContentTypeGroup.xml.example
+                application/vnd.ez.api.ContentTypeGroup+json:
+                    type: ContentTypeGroup
+                    example: !include examples/content/typegroups/POST/ContentTypeGroup.json.example
         400:
             description: Error - The input does not match the input schema definition.
         401:
@@ -75,6 +84,9 @@ post:
                     application/vnd.ez.api.ContentTypeGroup+xml:
                         type: ContentTypeGroup
                         example: !include examples/content/typegroups/content_type_group_id/GET/ContentTypeGroup.xml.example
+                    application/vnd.ez.api.ContentTypeGroup+json:
+                        type: ContentTypeGroup
+                        example: !include examples/content/typegroups/content_type_group_id/GET/ContentTypeGroup.json.example
             401:
                 description: Error - The user is not authorized to read this Content Type group.
             404:
@@ -99,6 +111,9 @@ post:
             application/vnd.ez.api.ContentTypeGroupInput+xml:
                 type: ContentTypeGroupInput
                 example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroupInput.xml.example
+            application/vnd.ez.api.ContentTypeGroupInput+json:
+                type: ContentTypeGroupInput
+                example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroupInput.json.example
         responses:
             200:
                 description: Content Type group updated.
@@ -106,6 +121,9 @@ post:
                     application/vnd.ez.api.ContentTypeGroup+xml:
                         type: ContentTypeGroup
                         example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroup.xml.example
+                    application/vnd.ez.api.ContentTypeGroup+json:
+                        type: ContentTypeGroup
+                        example: !include examples/content/typegroups/content_type_group_id/PATCH/ContentTypeGroup.json.example
             400:
                 description: Error - The input does not match the input schema definition.
             401:
@@ -145,9 +163,9 @@ post:
                         application/vnd.ez.api.ContentTypeInfoList+xml:
                             type: ContentTypeInfoList
                             example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeInfoList.xml.example
-                        application/vnd.ez.api.ContentTypeList+xml:
-                            type: ContentTypeList
-                            example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeList.xml.example
+                        application/vnd.ez.api.ContentTypeInfoList+json:
+                            type: ContentTypeInfoList
+                            example: !include examples/content/typegroups/content_type_group_id/types/GET/ContentTypeInfoList.json.example
                 401:
                     description: Error - The user has no permission to read the Content Types.
         post:

@@ -22,6 +22,9 @@ get:
                 application/vnd.ez.api.UserGroupList+xml:
                     type: UserGroupList
                     example: !include examples/user/groups/GET/UserGroupList.xml.example
+                application/vnd.ez.api.UserGroupList+json:
+                    type: UserGroupList
+                    example: !include examples/user/groups/GET/UserGroupList.json.example
         401:
             description: Error - the user has no permission to read User Groups.
 /root:
@@ -51,6 +54,9 @@ get:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/GET/UserGroup.xml.example
+                    application/vnd.ez.api.UserGroup+json:
+                        type: UserGroup
+                        example: !include examples/user/groups/path/GET/UserGroup.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:
@@ -76,6 +82,9 @@ get:
             application/vnd.ez.api.UserGroupUpdate+xml:
                 type: UserGroupUpdate
                 example: !include examples/user/groups/path/PATCH/UserGroupUpdate.xml.example
+            application/vnd.ez.api.UserGroupUpdate+json:
+                type: UserGroupUpdate
+                example: !include examples/user/groups/path/PATCH/UserGroupUpdate.json.example
         responses:
             200:
                 description: OK - updated User Group.
@@ -83,6 +92,9 @@ get:
                     application/vnd.ez.api.UserGroup+xml:
                         type: UserGroup
                         example: !include examples/user/groups/path/PATCH/UserGroup.xml.example
+                    application/vnd.ez.api.UserGroup+json:
+                        type: UserGroup
+                        example: !include examples/user/groups/path/PATCH/UserGroup.json.example
             400:
                 description: Error - the input does not match the input schema definition.
             401:
@@ -132,13 +144,19 @@ get:
             body:
                 application/vnd.ez.api.UserCreate+xml:
                     type: UserCreate
-                    example: examples/user/groups/path/users/POST/UserCreate.xml.example
+                    example: !include examples/user/groups/path/users/POST/UserCreate.xml.example
+                application/vnd.ez.api.UserCreate+json:
+                    type: UserCreate
+                    example: !include examples/user/groups/path/users/POST/UserCreate.json.example
             responses:
                 201:
                     body:
                         application/vnd.ez.api.User+xml:
                             type: User
                             example: !include examples/user/groups/path/users/POST/User.xml.example
+                        application/vnd.ez.api.User+json:
+                            type: User
+                            example: !include examples/user/groups/path/users/POST/User.json.example
                 400:
                     description: Error - the input does not match the input schema definition.
                 401:
@@ -166,12 +184,18 @@ get:
                 application/vnd.ez.api.UserGroupCreate+xml:
                     type: UserGroupCreate
                     example: !include examples/user/groups/path/subgroups/POST/UserGroupCreate.xml.example
+                application/vnd.ez.api.UserGroupCreate+json:
+                    type: UserGroupCreate
+                    example: !include examples/user/groups/path/subgroups/POST/UserGroupCreate.json.example
             responses:
                 201:
                     body:
                         application/vnd.ez.api.UserGroup+xml:
                             type: UserGroup
                             example: !include examples/user/groups/path/subgroups/POST/UserGroup.xml.example
+                        application/vnd.ez.api.UserGroup+json:
+                            type: UserGroup
+                            example: !include examples/user/groups/path/subgroups/POST/UserGroup.json.example
                 400:
                     description: Error - the input does not match the input schema definition.
                 401:
@@ -192,6 +216,9 @@ get:
                         application/vnd.ez.api.RoleAssignmentList+xml:
                             type: RoleAssignmentList
                             example: !include examples/user/groups/path/roles/GET/RoleAssignmentList.xml.example
+                        #application/vnd.ez.api.RoleAssignmentList+json:
+                            #type: RoleAssignmentList
+                            #example: !include examples/user/groups/path/roles/GET/RoleAssignmentList.json.example
                 400:
                     description: Error - the user has no permission to read Roles.
         post:
@@ -212,12 +239,18 @@ get:
                 application/vnd.ez.api.RoleAssignInput+xml:
                     type: RoleAssignInput
                     example: !include examples/user/groups/path/roles/POST/RoleAssignInput.xml.example
+                application/vnd.ez.api.RoleAssignInput+json:
+                    type: RoleAssignInput
+                    example: !include examples/user/groups/path/roles/POST/RoleAssignInput.json.example
             responses:
                 200:
                     body:
                         application/vnd.ez.api.RoleAssignmentList+xml:
                             type: RoleAssignmentList
                             example: !include examples/user/groups/path/roles/POST/RoleAssignmentList.xml.example
+                        application/vnd.ez.api.RoleAssignmentList+json:
+                            type: RoleAssignmentList
+                            example: !include examples/user/groups/path/roles/POST/RoleAssignmentList.json.example
                 400:
                     description: Error - validation of limitation in RoleAssignInput fails.
                 401:
@@ -239,6 +272,10 @@ get:
                             application/vnd.ez.api.RoleAssignment+xml:
                                 type: RoleAssignment
                                 example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.xml.example
+                            application/vnd.ez.api.RoleAssignment+json:
+                                type: RoleAssignment
+                                example: !include examples/user/groups/path/roles/role_id/GET/RoleAssignment.json.example
+                            
                     401:
                         description: Error - the user has no permission to read Roles.
             delete:
@@ -256,6 +293,9 @@ get:
                             application/vnd.ez.api.RoleAssignmentList+xml:
                                 type: RoleAssignmentList
                                 example: !include examples/user/groups/path/roles/role_id/DELETE/RoleAssignmentList.xml.example
+                            application/vnd.ez.api.RoleAssignmentList+json:
+                                type: RoleAssignmentList
+                                example: !include examples/user/groups/path/roles/role_id/DELETE/RoleAssignmentList.json.example
                     401:
                         description: Error - the user is not authorized to delete this Role assignment.
 /{id}/users:
@@ -282,6 +322,9 @@ get:
                     application/vnd.ez.api.UserRefList+xml:
                         type: UserRefList
                         example: !include examples/user/groups/id/users/GET/UserRefList.xml.example
+                    application/vnd.ez.api.UserRefList+json:
+                        type: UserRefList
+                        example: !include examples/user/groups/id/users/GET/UserRefList.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:
@@ -310,6 +353,9 @@ get:
                     application/vnd.ez.api.UserGroupRefList+xml:
                         type: UserGroupRefList
                         example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.xml.example
+                    application/vnd.ez.api.UserGroupRefList+json:
+                        type: UserGroupRefList
+                        example: !include examples/user/groups/id/subgroups/GET/UserGroupRefList.json.example
             401:
                 description: Error - the user has no permission to read User Groups.
             404:

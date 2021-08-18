@@ -15,15 +15,28 @@
     </ObjectStateGroup>
     <ObjectStateGroup media-type="application/vnd.ez.api.ObjectStateGroup+xml" href="/api/ezp/v2/content/objectstategroups/3">
         <id>3</id>
-        <identifier>testgroup</identifier>
+        <identifier>accessibility</identifier>
         <defaultLanguageCode>eng-GB</defaultLanguageCode>
         <languageCodes>eng-GB</languageCodes>
         <ObjectStates media-type="application/vnd.ez.api.ObjectStateList+xml" href="/api/ezp/v2/content/objectstategroups/3/objectstates"/>
         <names>
-            <value languageCode="eng-GB">Testgroup</value>
+            <value languageCode="eng-GB">Accessibility</value>
         </names>
         <descriptions>
             <value languageCode="eng-GB"></value>
+        </descriptions>
+    </ObjectStateGroup>
+    <ObjectStateGroup media-type="application/vnd.ez.api.ObjectStateGroup+xml" href="/api/ezp/v2/content/objectstategroups/6">
+        <id>6</id>
+        <identifier>custom-states</identifier>
+        <defaultLanguageCode>eng-GB</defaultLanguageCode>
+        <languageCodes>eng-GB</languageCodes>
+        <ObjectStates media-type="application/vnd.ez.api.ObjectStateList+xml" href="/api/ezp/v2/content/objectstategroups/6/objectstates"/>
+        <names>
+            <value languageCode="eng-GB">Custom State</value>
+        </names>
+        <descriptions>
+            <value languageCode="eng-GB">Custom Object state</value>
         </descriptions>
     </ObjectStateGroup>
 </ObjectStateGroupList>

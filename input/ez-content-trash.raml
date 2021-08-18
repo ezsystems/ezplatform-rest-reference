@@ -19,6 +19,9 @@ get:
                 application/vnd.ez.api.Trash+xml:
                     type: Trash
                     example: !include examples/content/trash/GET/Trash.xml.example
+                application/vnd.ez.api.Trash+json:
+                    type: Trash
+                    example: !include examples/content/trash/GET/Trash.json.example
         401:
             description: Error - The user has no permission to read the Trash.
 delete:
@@ -45,6 +48,9 @@ delete:
                     application/vnd.ez.api.TrashItem+xml:
                         type: TrashItem
                         example: !include examples/content/trash/trash_itemid/GET/TrashItem.xml.example
+                    application/vnd.ez.api.TrashItem+json:
+                        type: TrashItem
+                        example: !include examples/content/trash/trash_itemid/GET/TrashItem.json.example
             401:
                 description: Error - The user has no permission to read the item in Trash.
             404:

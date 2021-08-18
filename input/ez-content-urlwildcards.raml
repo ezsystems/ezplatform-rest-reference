@@ -14,6 +14,9 @@ get:
                 application/vnd.ez.api.UrlWildcardList+xml:
                     type: UrlWildcardList
                     example: !include examples/content/urlwildcards/GET/UrlWildcardList.xml.example
+                application/vnd.ez.api.UrlWildcardList+json:
+                    type: UrlWildcardList
+                    example: !include examples/content/urlwildcards/GET/UrlWildcardList.json.example
         401:
             description: Error - The user has no permission to read URL wildcards.
 post:
@@ -33,7 +36,10 @@ post:
     body:
         application/vnd.ez.api.UrlWildcardCreate.xml:
             type: UrlWildcardCreate
-            # example: !include examples/content/urlwildcards/POST/UrlWildcardCreate.xml.example
+            example: !include examples/content/urlwildcards/POST/UrlWildcardCreate.xml.example
+        application/vnd.ez.api.UrlWildcardCreate.json:
+            type: UrlWildcardCreate
+            example: !include examples/content/urlwildcards/POST/UrlWildcardCreate.json.example
     responses:
         201:
             description: URL wildcard created.
@@ -41,6 +47,9 @@ post:
                 application/vnd.ez.api.UrlWildcard+xml:
                     type: UrlWildcard
                     example: !include examples/content/urlwildcards/POST/UrlWildcard.xml.example
+                application/vnd.ez.api.UrlWildcard+json:
+                    type: UrlWildcard
+                    example: !include examples/content/urlwildcards/POST/UrlWildcard.json.example
         400:
             description: Error - The input does not match the input schema definition.
         401:
@@ -64,6 +73,9 @@ post:
                     application/vnd.ez.api.UrlWildcard+xml:
                         type: UrlWildcard
                         example: !include examples/content/urlwildcards/wildcard_id/GET/UrlWildcard.xml.example
+                    application/vnd.ez.api.UrlWildcard+json:
+                        type: UrlWildcard
+                        example: !include examples/content/urlwildcards/wildcard_id/GET/UrlWildcard.json.example
             401:
                 description: Error - The user is not authorized to read URL wildcards.
             404:

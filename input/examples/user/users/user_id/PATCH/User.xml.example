@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<User media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/55" id="55" remoteId="3c1d660927760cc2b812526735c52539">
+<User media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/79" id="79" remoteId="bcf0764b417f05af21852a1f03fb1f13">
     <ContentType media-type="application/vnd.ez.api.ContentType+xml" href="/api/ezp/v2/content/types/4"/>
-    <name>Jessica Andaya</name>
-    <Versions media-type="application/vnd.ez.api.VersionList+xml" href="/api/ezp/v2/content/objects/55/versions"/>
+    <name>Jose Vargas</name>
+    <Versions media-type="application/vnd.ez.api.VersionList+xml" href="/api/ezp/v2/content/objects/79/versions"/>
     <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/2"/>
-    <MainLocation media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/5/14/62"/>
-    <Locations media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/objects/55/locations"/>
-    <Groups media-type="application/vnd.ez.api.UserGroupRefList+xml" href="/api/ezp/v2/user/users/55/groups"/>
-    <Owner media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-    <publishDate>2019-02-27T08:46:07+01:00</publishDate>
-    <lastModificationDate>2019-02-27T08:46:07+01:00</lastModificationDate>
+    <MainLocation media-type="application/vnd.ez.api.Location+xml" href="/api/ezp/v2/content/locations/1/5/12/79"/>
+    <Locations media-type="application/vnd.ez.api.LocationList+xml" href="/api/ezp/v2/content/objects/79/locations"/>
+    <Groups media-type="application/vnd.ez.api.UserGroupRefList+xml" href="/api/ezp/v2/user/users/79/groups"/>
+    <Owner media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/10"/>
+    <publishDate>2021-06-29T08:23:42+00:00</publishDate>
+    <lastModificationDate>2021-07-29T11:45:07+00:00</lastModificationDate>
     <mainLanguageCode>eng-GB</mainLanguageCode>
     <alwaysAvailable>true</alwaysAvailable>
-    <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/55/versions/1">
+    <Version media-type="application/vnd.ez.api.Version+xml" href="/api/ezp/v2/content/objects/79/versions/6">
         <VersionInfo>
-            <id>510</id>
-            <versionNo>1</versionNo>
+            <id>609</id>
+            <versionNo>6</versionNo>
             <status>PUBLISHED</status>
-            <modificationDate>2019-02-27T08:46:08+01:00</modificationDate>
+            <modificationDate>2021-07-29T11:45:07+00:00</modificationDate>
             <Creator media-type="application/vnd.ez.api.User+xml" href="/api/ezp/v2/user/users/14"/>
-            <creationDate>2019-02-27T08:46:07+01:00</creationDate>
+            <creationDate>2021-07-29T11:45:07+00:00</creationDate>
             <initialLanguageCode>eng-GB</initialLanguageCode>
             <languageCodes>eng-GB</languageCodes>
             <VersionTranslationInfo media-type="application/vnd.ez.api.VersionTranslationInfo+xml">
@@ -28,59 +28,67 @@
                 </Language>
             </VersionTranslationInfo>
             <names>
-                <value languageCode="eng-GB">Jessica Andaya</value>
+                <value languageCode="eng-GB">Jose Vargas</value>
             </names>
-            <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/55"/>
+            <Content media-type="application/vnd.ez.api.ContentInfo+xml" href="/api/ezp/v2/content/objects/79"/>
         </VersionInfo>
         <Fields>
             <field>
-                <id>193</id>
+                <id>342</id>
                 <fieldDefinitionIdentifier>first_name</fieldDefinitionIdentifier>
                 <languageCode>eng-GB</languageCode>
                 <fieldTypeIdentifier>ezstring</fieldTypeIdentifier>
-                <fieldValue>Jessica</fieldValue>
+                <fieldValue>Jose</fieldValue>
             </field>
             <field>
-                <id>194</id>
+                <id>343</id>
                 <fieldDefinitionIdentifier>last_name</fieldDefinitionIdentifier>
                 <languageCode>eng-GB</languageCode>
                 <fieldTypeIdentifier>ezstring</fieldTypeIdentifier>
-                <fieldValue>Andaya</fieldValue>
+                <fieldValue>Vargas</fieldValue>
             </field>
             <field>
-                <id>195</id>
+                <id>344</id>
                 <fieldDefinitionIdentifier>user_account</fieldDefinitionIdentifier>
                 <languageCode>eng-GB</languageCode>
                 <fieldTypeIdentifier>ezuser</fieldTypeIdentifier>
                 <fieldValue>
                     <value key="hasStoredLogin">true</value>
-                    <value key="contentId">55</value>
-                    <value key="login">jessica</value>
-                    <value key="email">jandaya@example.com</value>
+                    <value key="contentId">79</value>
+                    <value key="login">josevargas</value>
+                    <value key="email">aa@bb.cc</value>
+                    <value key="passwordUpdatedAt"/>
                     <value key="enabled">false</value>
                     <value key="maxLogin">0</value>
+                    <value key="plainPassword"/>
                 </fieldValue>
             </field>
             <field>
-                <id>196</id>
+                <id>345</id>
                 <fieldDefinitionIdentifier>signature</fieldDefinitionIdentifier>
                 <languageCode>eng-GB</languageCode>
                 <fieldTypeIdentifier>eztext</fieldTypeIdentifier>
                 <fieldValue/>
             </field>
             <field>
-                <id>197</id>
+                <id>346</id>
                 <fieldDefinitionIdentifier>image</fieldDefinitionIdentifier>
                 <languageCode>eng-GB</languageCode>
                 <fieldTypeIdentifier>ezimage</fieldTypeIdentifier>
                 <fieldValue/>
             </field>
         </Fields>
-        <Relations media-type="application/vnd.ez.api.RelationList+xml" href="/api/ezp/v2/content/objects/55/versions/1/relations"/>
+        <Relations media-type="application/vnd.ez.api.RelationList+xml" href="/api/ezp/v2/content/objects/79/versions/6/relations"/>
+        <Thumbnail media-type="application/vnd.ez.api.Thumbnail+xml">
+            <resource>/bundles/ezplatformadminui/img/ez-icons.svg#user</resource>
+            <width></width>
+            <height></height>
+            <mimeType>image/svg+xml</mimeType>
+        </Thumbnail>
     </Version>
-    <login>jessica</login>
-    <email>jandaya@example.com</email>
+    <login>josevargas</login>
+    <email>aa@bb.cc</email>
     <enabled>false</enabled>
-    <UserGroups media-type="application/vnd.ez.api.UserGroupList+xml" href="/api/ezp/v2/user/users/55/groups"/>
-    <Roles media-type="application/vnd.ez.api.RoleAssignmentList+xml" href="/api/ezp/v2/user/users/55/roles"/>
+    <UserGroups media-type="application/vnd.ez.api.UserGroupList+xml" href="/api/ezp/v2/user/users/79/groups"/>
+    <Roles media-type="application/vnd.ez.api.RoleAssignmentList+xml" href="/api/ezp/v2/user/users/79/roles"/>
 </User>

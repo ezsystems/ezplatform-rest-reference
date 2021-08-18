@@ -15,16 +15,6 @@
         <identifier>media</identifier>
         <name>Media</name>
     </Section>
-    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/4">
-        <sectionId>4</sectionId>
-        <identifier>setup</identifier>
-        <name>Setup</name>
-    </Section>
-    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/5">
-        <sectionId>5</sectionId>
-        <identifier>design</identifier>
-        <name>Design</name>
-    </Section>
     <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/6">
         <sectionId>6</sectionId>
         <identifier>form</identifier>
@@ -32,6 +22,11 @@
     </Section>
     <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/7">
         <sectionId>7</sectionId>
+        <identifier>template</identifier>
+        <name>Template</name>
+    </Section>
+    <Section media-type="application/vnd.ez.api.Section+xml" href="/api/ezp/v2/content/sections/8">
+        <sectionId>8</sectionId>
         <identifier>restricted</identifier>
         <name>Restricted</name>
     </Section>
