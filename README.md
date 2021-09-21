@@ -1,5 +1,9 @@
 # eZ Platform REST reference
 
+**This repository is deprecated.
+See [Ibexa developer documentation](https://github.com/ezsystems/developer-documentation/tree/master/docs/api/rest_api_reference)
+for the current REST API reference.**
+
 This repository contains the REST API reference for eZ Platform.
 It is built based on RESTful API Modeling Language (RAML), for more information see <https://raml.org/>.
 
